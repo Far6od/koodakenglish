@@ -1,0 +1,2929 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>KoodakEnglish | اینجا انگلیسی بازی می‌شه!</title>
+<meta name="description" content="کودک‌انگلیش، دنیای بازی‌محور یادگیری زبان انگلیسی برای کودکان ۵ تا ۱۰ سال. رنگ‌ها، حیوانات، اعداد، الفبا، بازی و داستان — همه با تلفظ واقعی.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#4FB6E8;
+  --sky-deep:#2F8FCB;
+  --sky-light:#CFEBFA;
+  --purple:#8D7BF0;
+  --purple-deep:#6C5CE0;
+  --purple-light:#E6E1FD;
+  --coral:#FF8F6B;
+  --coral-deep:#FF7048;
+  --yellow:#FFD166;
+  --yellow-deep:#FFB627;
+  --pink:#FF9ECF;
+  --green:#5FCB8F;
+  --ink:#1E2A4A;
+  --ink-soft:#54608A;
+  --ink-faint:#8892B0;
+  --cream:#FFF8EF;
+  --white:#FFFFFF;
+  --glass-bg: rgba(255,255,255,0.6);
+  --glass-bg-strong: rgba(255,255,255,0.82);
+  --glass-border: rgba(255,255,255,0.75);
+  --r-xl: 32px;
+  --r-lg: 24px;
+  --r-md: 18px;
+  --r-sm: 12px;
+  --shadow-soft: 0 12px 32px rgba(30,42,74,0.12);
+  --shadow-strong: 0 20px 48px rgba(30,42,74,0.22);
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Vazirmatn', sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  overflow-x:hidden;
+}
+::selection{background:var(--yellow); color:var(--ink);}
+.en{font-family:'Baloo 2', cursive; direction:ltr; unicode-bidi:isolate;}
+img,svg{display:block;}
+button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit;}
+a{color:inherit; text-decoration:none;}
+h1,h2,h3,p{margin:0;}
+.container{max-width:1180px; margin:0 auto; padding:0 24px;}
+.visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+}
+
+/* ---------- Loading Screen ---------- */
+#loading{
+  position:fixed; inset:0; z-index:9999;
+  background:linear-gradient(160deg,var(--purple-deep),var(--sky-deep));
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  transition:opacity .6s var(--ease), visibility .6s;
+  gap:18px;
+}
+#loading.hide{opacity:0; visibility:hidden; pointer-events:none;}
+.loading-logo{font-family:'Baloo 2',cursive; font-size:clamp(28px,6vw,44px); color:#fff; font-weight:800; display:flex; align-items:center; gap:10px;}
+.loading-mascot{width:76px; height:76px; animation:loadBounce 1s ease-in-out infinite;}
+@keyframes loadBounce{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-14px) scale(1.04);}}
+.loading-text{color:#eaf3ff; font-size:15px; font-weight:600;}
+.loading-bar{width:180px; height:8px; border-radius:99px; background:rgba(255,255,255,.25); overflow:hidden;}
+.loading-bar-fill{height:100%; width:0%; background:linear-gradient(90deg,var(--yellow),var(--coral)); border-radius:99px; transition:width .3s var(--ease);}
+
+/* ---------- Navigation ---------- */
+.navwrap{position:fixed; top:16px; left:0; right:0; z-index:500; display:flex; justify-content:center; padding:0 16px;}
+.nav{
+  display:flex; align-items:center; gap:6px; padding:8px;
+  background:var(--glass-bg); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%);
+  border:1px solid var(--glass-border); border-radius:99px; box-shadow:var(--shadow-soft);
+  max-width:100%;
+}
+.nav-logo{display:flex; align-items:center; gap:6px; padding:8px 14px; font-weight:800; font-size:17px; color:var(--purple-deep); font-family:'Baloo 2',cursive;}
+.nav-links{display:flex; gap:2px;}
+.nav-links a{
+  padding:10px 16px; border-radius:99px; font-size:14px; font-weight:600; color:var(--ink-soft);
+  transition:background .25s var(--ease), color .25s var(--ease);
+  white-space:nowrap;
+}
+.nav-links a:hover, .nav-links a:focus-visible{background:rgba(141,123,240,.14); color:var(--purple-deep);}
+.nav-sound{width:38px; height:38px; border-radius:50%; background:rgba(141,123,240,.14); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; transition:transform .2s var(--ease);}
+.nav-sound:hover{transform:scale(1.08);}
+@media (max-width:880px){ .nav-links{display:none;} }
+
+.bottomnav{
+  position:fixed; bottom:14px; left:50%; transform:translateX(-50%); z-index:500;
+  display:none; gap:4px; background:var(--glass-bg-strong); backdrop-filter:blur(16px);
+  border:1px solid var(--glass-border); border-radius:24px; padding:8px 6px; box-shadow:var(--shadow-strong);
+}
+@media (max-width:880px){ .bottomnav{display:flex;} }
+.bottomnav a{display:flex; flex-direction:column; align-items:center; gap:2px; font-size:10px; font-weight:700; color:var(--ink-soft); padding:8px 12px; border-radius:16px;}
+.bottomnav a span.ic{font-size:19px;}
+.bottomnav a.active{background:var(--purple-light); color:var(--purple-deep);}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative; min-height:100svh; display:flex; align-items:center; justify-content:center;
+  overflow:hidden; padding:140px 20px 100px;
+  background:linear-gradient(180deg,#EAF7FF 0%, #CFEBFA 45%, #FFF8EF 100%);
+}
+.hero-layer{position:absolute; inset:0; pointer-events:none;}
+.cloud{position:absolute; opacity:.9; animation:drift linear infinite;}
+.cloud svg{width:100%; height:100%;}
+@keyframes drift{ from{transform:translateX(-6%);} to{transform:translateX(6%);} }
+.floaty{position:absolute; animation:floaty 5s ease-in-out infinite; filter:drop-shadow(0 8px 14px rgba(30,42,74,.15));}
+@keyframes floaty{0%,100%{transform:translateY(0px) rotate(-3deg);}50%{transform:translateY(-22px) rotate(3deg);}}
+.sun{position:absolute; top:8%; left:8%; width:110px; height:110px; border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, #FFF3C4, var(--yellow) 60%, var(--yellow-deep));
+  box-shadow:0 0 60px 20px rgba(255,209,102,.45); animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+.hero-hill{position:absolute; bottom:-4%; left:0; right:0; z-index:1;}
+.hero-content{position:relative; z-index:5; text-align:center; max-width:760px;}
+.hero-eyebrow{display:inline-flex; align-items:center; gap:8px; background:var(--glass-bg-strong); border:1px solid var(--glass-border); padding:8px 18px; border-radius:99px; font-size:14px; font-weight:700; color:var(--purple-deep); box-shadow:var(--shadow-soft); margin-bottom:22px;}
+.hero-title{font-size:clamp(34px,6.4vw,64px); font-weight:900; line-height:1.28; color:var(--ink);}
+.hero-title .accent{color:var(--coral-deep);}
+.hero-sub{margin-top:18px; font-size:clamp(16px,2.2vw,20px); color:var(--ink-soft); font-weight:500; line-height:1.9;}
+.hero-ctas{display:flex; gap:14px; justify-content:center; margin-top:34px; flex-wrap:wrap;}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:16px 30px; border-radius:99px; font-weight:800; font-size:16px;
+  transition:transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+.btn:active{transform:scale(.94);}
+.btn-primary{background:linear-gradient(135deg,var(--coral),var(--coral-deep)); color:#fff; box-shadow:0 10px 26px rgba(255,112,72,.42);}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02); box-shadow:0 16px 32px rgba(255,112,72,.5);}
+.btn-secondary{background:var(--glass-bg-strong); border:1px solid var(--glass-border); color:var(--purple-deep); box-shadow:var(--shadow-soft);}
+.btn-secondary:hover{transform:translateY(-3px) scale(1.02);}
+.btn-ghost{background:rgba(30,42,74,.06); color:var(--ink);}
+
+.mascot-wrap{position:relative; z-index:4; margin:0 auto 8px; width:170px; height:170px; cursor:pointer;}
+.mascot-wrap svg{width:100%; height:100%; animation:mascotIdle 3.2s ease-in-out infinite;}
+@keyframes mascotIdle{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-10px) rotate(-2deg);}}
+.mascot-wrap:hover svg{animation:mascotWave .6s ease-in-out;}
+@keyframes mascotWave{0%,100%{transform:rotate(0deg);}25%{transform:rotate(-8deg);}75%{transform:rotate(8deg);}}
+.eye{animation:blink 4.5s infinite;}
+@keyframes blink{0%,92%,100%{transform:scaleY(1);}94%,97%{transform:scaleY(.1);}}
+.speech-bubble{
+  position:absolute; top:-14px; right:-46px; background:#fff; padding:8px 14px; border-radius:16px; font-size:13px; font-weight:700;
+  box-shadow:var(--shadow-soft); opacity:0; transform:translateY(6px) scale(.9); transition:all .3s var(--ease); white-space:nowrap; pointer-events:none;
+}
+.mascot-wrap:hover .speech-bubble{opacity:1; transform:translateY(0) scale(1);}
+
+/* ---------- Sections generic ---------- */
+.section{padding:90px 0;}
+.section-cream{background:var(--cream);}
+.section-sky{background:linear-gradient(180deg,#fff,#EAF7FF);}
+.section-lav{background:linear-gradient(180deg,#fff,#F1EEFE);}
+.section-head{text-align:center; max-width:640px; margin:0 auto 44px;}
+.section-kicker{font-size:14px; font-weight:800; color:var(--purple-deep); margin-bottom:8px;}
+.section-title{font-size:clamp(24px,4vw,36px); font-weight:900; color:var(--ink); line-height:1.4;}
+.section-desc{margin-top:12px; font-size:16px; color:var(--ink-soft); line-height:1.9;}
+
+/* reveal on scroll */
+.reveal{opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ---------- Continue learning ---------- */
+.continue-row{display:flex; gap:18px; overflow-x:auto; padding:6px 4px 18px; scroll-snap-type:x proximity;}
+.continue-row::-webkit-scrollbar{height:6px;}
+.continue-row::-webkit-scrollbar-thumb{background:var(--purple-light); border-radius:99px;}
+.continue-card{
+  scroll-snap-align:start; flex:0 0 260px; background:#fff; border-radius:var(--r-lg); padding:20px; box-shadow:var(--shadow-soft);
+  border:1px solid #EFEAFB; transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.continue-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-strong);}
+.cc-top{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+.cc-icon{font-size:30px; width:52px; height:52px; border-radius:16px; display:flex; align-items:center; justify-content:center;}
+.cc-title{font-weight:800; font-size:16px;}
+.cc-bar-track{height:10px; border-radius:99px; background:#F0EEFB; overflow:hidden; margin:12px 0 14px;}
+.cc-bar-fill{height:100%; border-radius:99px; background:linear-gradient(90deg,var(--sky),var(--purple));}
+.cc-btn{width:100%; text-align:center; padding:10px; border-radius:99px; background:var(--purple-light); color:var(--purple-deep); font-weight:800; font-size:13px;}
+.cc-btn:hover{background:var(--purple-deep); color:#fff;}
+
+/* ---------- Mission ---------- */
+.mission-card{
+  max-width:640px; margin:0 auto; background:linear-gradient(135deg,var(--yellow),var(--coral)); border-radius:var(--r-xl);
+  padding:30px; color:#fff; box-shadow:var(--shadow-strong); display:flex; align-items:center; gap:22px; flex-wrap:wrap;
+}
+.mission-emoji{font-size:52px;}
+.mission-text{flex:1; min-width:200px;}
+.mission-title{font-weight:800; font-size:19px; margin-bottom:6px;}
+.mission-sub{font-size:14px; opacity:.95;}
+.mission-check{background:rgba(255,255,255,.28); padding:10px 20px; border-radius:99px; font-weight:800; font-size:14px; white-space:nowrap;}
+.mission-check.done{background:#fff; color:var(--coral-deep);}
+
+/* ---------- Topic Grid ---------- */
+.topic-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:20px;}
+.topic-card{
+  position:relative; border-radius:var(--r-lg); padding:26px 20px; text-align:center; overflow:hidden;
+  box-shadow:var(--shadow-soft); transition:transform .3s var(--ease), box-shadow .3s var(--ease); border:1px solid rgba(255,255,255,.6);
+}
+.topic-card:hover{transform:translateY(-8px) scale(1.02); box-shadow:var(--shadow-strong);}
+.topic-card:focus-visible{outline:3px solid var(--purple-deep); outline-offset:3px;}
+.topic-emoji{font-size:46px; margin-bottom:10px; display:inline-block; transition:transform .3s var(--ease);}
+.topic-card:hover .topic-emoji{transform:scale(1.18) rotate(-6deg);}
+.topic-name-fa{font-weight:800; font-size:16px; color:var(--ink);}
+.topic-name-en{font-size:12px; color:var(--ink-faint); margin-top:2px; font-weight:600;}
+.topic-progress{margin-top:12px; height:6px; border-radius:99px; background:rgba(30,42,74,.08); overflow:hidden;}
+.topic-progress-fill{height:100%; background:var(--ink); opacity:.55; border-radius:99px;}
+
+/* ---------- Vocab modal ---------- */
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(20,20,40,.5); backdrop-filter:blur(4px); z-index:2000; display:flex;
+  align-items:center; justify-content:center; padding:20px; opacity:0; visibility:hidden; transition:opacity .3s var(--ease), visibility .3s;
+}
+.modal-overlay.open{opacity:1; visibility:visible;}
+.modal-box{
+  background:#fff; border-radius:var(--r-xl); max-width:640px; width:100%; max-height:88vh; overflow-y:auto; padding:30px;
+  box-shadow:var(--shadow-strong); transform:scale(.92) translateY(10px); transition:transform .3s var(--ease);
+  position:relative;
+}
+.modal-overlay.open .modal-box{transform:scale(1) translateY(0);}
+.modal-close{position:absolute; top:16px; left:16px; width:36px; height:36px; border-radius:50%; background:#F1EEFE; font-size:18px; display:flex; align-items:center; justify-content:center;}
+.modal-close:hover{background:var(--purple-light);}
+.modal-head{display:flex; align-items:center; gap:12px; margin-bottom:20px;}
+.modal-head-emoji{font-size:36px;}
+.modal-head-title{font-weight:900; font-size:22px;}
+.vocab-list{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+@media (max-width:560px){ .vocab-list{grid-template-columns:1fr;} }
+.vocab-item{
+  border:2px solid #F1EEFE; border-radius:var(--r-md); padding:16px; text-align:center; transition:border-color .25s var(--ease), transform .25s var(--ease);
+  cursor:pointer; position:relative;
+}
+.vocab-item:hover{border-color:var(--purple); transform:translateY(-3px);}
+.vocab-item.learned{border-color:var(--green); background:#F3FBF6;}
+.vocab-item .em{font-size:38px;}
+.vocab-item .word{font-weight:800; font-size:18px; color:var(--ink); margin-top:6px;}
+.vocab-item .translation{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+.vocab-item .learned-badge{position:absolute; top:6px; left:6px; font-size:14px;}
+.vocab-item .speak{margin-top:8px; font-size:13px; color:var(--purple-deep); font-weight:700;}
+
+/* ---------- Big word reveal ---------- */
+.wordstage{
+  margin-top:10px; text-align:center; background:linear-gradient(135deg,#F1EEFE,#EAF7FF); border-radius:var(--r-lg); padding:26px; display:none;
+}
+.wordstage.show{display:block; animation:popIn .4s var(--ease);}
+@keyframes popIn{0%{transform:scale(.8); opacity:0;}100%{transform:scale(1); opacity:1;}}
+.wordstage .em{font-size:64px;}
+.wordstage .word{font-size:38px; font-weight:900; letter-spacing:1px; color:var(--ink); margin:6px 0;}
+.wordstage .ipa{color:var(--ink-faint); font-size:14px; margin-bottom:4px;}
+.wordstage .fa{font-size:18px; font-weight:700; color:var(--purple-deep);}
+.speaker-btn{
+  margin-top:14px; width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,var(--sky),var(--purple)); color:#fff;
+  font-size:26px; display:flex; align-items:center; justify-content:center; margin-inline:auto; box-shadow:0 10px 22px rgba(109,92,224,.35);
+  transition:transform .2s var(--ease);
+}
+.speaker-btn.playing{animation:pulseSpeak .5s ease-in-out infinite;}
+@keyframes pulseSpeak{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+.speaker-btn:hover{transform:scale(1.08);}
+.mark-learned{margin-top:14px; padding:10px 22px; border-radius:99px; background:var(--green); color:#fff; font-weight:800; font-size:14px;}
+.mark-learned:disabled{background:#CFEFDC; color:#5FA97A;}
+
+/* ---------- Games ---------- */
+.game-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:20px;}
+.game-card{
+  background:#fff; border-radius:var(--r-lg); padding:22px; box-shadow:var(--shadow-soft); border:1px solid #F1EEFE;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease); text-align:center;
+}
+.game-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-strong);}
+.game-icon{width:64px; height:64px; border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:32px; margin:0 auto 14px;}
+.game-title{font-weight:800; font-size:17px;}
+.game-desc{font-size:13px; color:var(--ink-soft); margin-top:6px; line-height:1.7;}
+.game-play{margin-top:16px; display:inline-block; padding:10px 22px; border-radius:99px; background:var(--purple-light); color:var(--purple-deep); font-weight:800; font-size:13px;}
+.game-card:hover .game-play{background:var(--purple-deep); color:#fff;}
+
+.game-stage{
+  background:#fff; border-radius:var(--r-xl); padding:28px; box-shadow:var(--shadow-strong); max-width:720px; margin:0 auto;
+}
+.game-stage-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; gap:12px; flex-wrap:wrap;}
+.game-prompt{font-size:19px; font-weight:800;}
+.game-prompt .en{color:var(--coral-deep);}
+.game-score{font-size:13px; font-weight:800; color:var(--purple-deep); background:var(--purple-light); padding:6px 14px; border-radius:99px;}
+.game-board{display:grid; gap:14px;}
+.game-obj{
+  background:var(--cream); border:3px solid transparent; border-radius:var(--r-md); padding:20px 10px; text-align:center; font-size:38px;
+  transition:transform .18s var(--ease), border-color .18s var(--ease); position:relative;
+}
+.game-obj:hover{transform:translateY(-4px) scale(1.05);}
+.game-obj.correct{border-color:var(--green); animation:goodBounce .4s var(--ease);}
+.game-obj.wrong{animation:shake .4s;}
+@keyframes goodBounce{0%{transform:scale(1);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+.game-obj-label{font-size:11px; font-weight:700; color:var(--ink-faint); margin-top:6px;}
+.color-swatch{width:100%; aspect-ratio:1; border-radius:var(--r-md); border:4px solid transparent; transition:transform .18s var(--ease), border-color .18s var(--ease);}
+.color-swatch:hover{transform:scale(1.06);}
+.game-feedback{text-align:center; font-weight:800; font-size:16px; margin-top:16px; min-height:24px;}
+.game-feedback.good{color:var(--green);}
+.game-feedback.bad{color:var(--coral-deep);}
+.game-restart{display:block; margin:18px auto 0; padding:10px 24px; border-radius:99px; background:var(--ink); color:#fff; font-weight:800; font-size:13px;}
+
+/* memory game */
+.memory-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+@media (max-width:520px){ .memory-grid{grid-template-columns:repeat(3,1fr);} }
+.mem-card{aspect-ratio:1; perspective:600px; cursor:pointer;}
+.mem-inner{position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d;}
+.mem-card.flip .mem-inner{transform:rotateY(180deg);}
+.mem-face{position:absolute; inset:0; border-radius:14px; display:flex; align-items:center; justify-content:center; backface-visibility:hidden; font-size:26px; font-weight:800;}
+.mem-front{background:linear-gradient(135deg,var(--purple),var(--sky)); color:#fff; font-size:22px;}
+.mem-back{background:#fff; border:2px solid #F1EEFE; transform:rotateY(180deg); flex-direction:column; gap:2px;}
+.mem-back .lbl{font-size:11px; color:var(--ink-faint); font-weight:700;}
+.mem-card.matched .mem-back{border-color:var(--green); background:#F3FBF6;}
+
+/* ---------- Video / Story cards ---------- */
+.media-row{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px;}
+.video-card{background:#fff; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-soft); transition:transform .3s var(--ease), box-shadow .3s var(--ease);}
+.video-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-strong);}
+.video-thumb{height:140px; display:flex; align-items:center; justify-content:center; font-size:44px; position:relative;}
+.video-play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0); transition:background .25s;}
+.video-card:hover .video-play{background:rgba(0,0,0,.12);}
+.play-btn{width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,.9); display:flex; align-items:center; justify-content:center; font-size:18px; opacity:0; transform:scale(.8); transition:all .25s var(--ease);}
+.video-card:hover .play-btn{opacity:1; transform:scale(1);}
+.video-info{padding:14px 16px;}
+.video-tag{font-size:11px; font-weight:800; color:var(--purple-deep); background:var(--purple-light); display:inline-block; padding:3px 10px; border-radius:99px; margin-bottom:6px;}
+.video-title{font-weight:800; font-size:14px;}
+.video-dur{font-size:12px; color:var(--ink-faint); margin-top:4px;}
+
+.story-card{background:#fff; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-soft); cursor:pointer; transition:transform .3s var(--ease), box-shadow .3s var(--ease);}
+.story-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-strong);}
+.story-cover{height:150px; font-size:56px; display:flex; align-items:center; justify-content:center;}
+.story-info{padding:16px;}
+.story-title-fa{font-weight:800; font-size:15px;}
+.story-meta{display:flex; gap:8px; margin-top:8px; font-size:11px; color:var(--ink-faint); font-weight:700;}
+
+.reader-box{max-width:600px; margin:0 auto; background:#fff; border-radius:var(--r-xl); box-shadow:var(--shadow-strong); padding:30px; text-align:center;}
+.reader-illustration{font-size:70px; margin-bottom:14px;}
+.reader-en{font-size:24px; font-weight:800; color:var(--ink); font-family:'Baloo 2',cursive;}
+.reader-fa{font-size:15px; color:var(--ink-soft); margin-top:10px; font-weight:600;}
+.reader-controls{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:22px;}
+.reader-dots{display:flex; gap:6px; justify-content:center; margin-top:16px;}
+.reader-dot{width:8px; height:8px; border-radius:50%; background:#E4E1F5;}
+.reader-dot.active{background:var(--purple-deep); width:18px; border-radius:6px; transition:all .3s;}
+
+/* ---------- Progress ---------- */
+.progress-panel{
+  background:linear-gradient(135deg,var(--ink),#2A3968); border-radius:var(--r-xl); padding:36px; color:#fff; box-shadow:var(--shadow-strong);
+  display:grid; grid-template-columns:1fr 1fr; gap:30px;
+}
+@media (max-width:700px){ .progress-panel{grid-template-columns:1fr;} }
+.level-badge{display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.12); padding:10px 18px; border-radius:99px; font-weight:800; margin-bottom:16px;}
+.xp-row{display:flex; align-items:center; justify-content:space-between; font-size:13px; font-weight:700; margin-bottom:8px; opacity:.85;}
+.xp-track{height:14px; background:rgba(255,255,255,.15); border-radius:99px; overflow:hidden;}
+.xp-fill{height:100%; background:linear-gradient(90deg,var(--yellow),var(--coral)); border-radius:99px; transition:width .5s var(--ease);}
+.stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px;}
+.stat-box{background:rgba(255,255,255,.1); border-radius:var(--r-md); padding:14px; text-align:center;}
+.stat-num{font-size:22px; font-weight:900;}
+.stat-lbl{font-size:11px; opacity:.8; margin-top:2px;}
+.badge-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(90px,1fr)); gap:10px;}
+.badge-chip{background:rgba(255,255,255,.1); border-radius:var(--r-md); padding:14px 8px; text-align:center; font-size:12px; font-weight:700;}
+.badge-chip .em{font-size:26px; display:block; margin-bottom:4px;}
+.badge-chip.locked{opacity:.4;}
+
+/* ---------- Parent area ---------- */
+.parent-box{
+  background:#fff; border:1px solid #F1EEFE; border-radius:var(--r-xl); padding:30px; box-shadow:var(--shadow-soft);
+  display:flex; gap:26px; align-items:center; flex-wrap:wrap;
+}
+.parent-icon{font-size:44px; background:var(--sky-light); width:80px; height:80px; border-radius:20px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+.parent-stats{display:flex; gap:24px; flex-wrap:wrap; flex:1;}
+.parent-stat b{display:block; font-size:20px; font-weight:900; color:var(--ink);}
+.parent-stat span{font-size:12px; color:var(--ink-faint); font-weight:700;}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
+.footer-top{display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; padding-bottom:30px; border-bottom:1px solid rgba(255,255,255,.1);}
+.footer-brand{font-family:'Baloo 2',cursive; font-size:22px; font-weight:800; color:#fff;}
+.footer-tag{font-size:13px; color:#9AA4CC; margin-top:8px; max-width:260px; line-height:1.8;}
+.footer-links{display:flex; gap:40px; flex-wrap:wrap;}
+.footer-col a{display:block; font-size:13px; color:#B9C1E6; margin-bottom:10px; font-weight:600;}
+.footer-col a:hover{color:#fff;}
+.footer-col-title{font-size:12px; font-weight:800; color:#fff; margin-bottom:12px;}
+.footer-bottom{padding-top:22px; text-align:center; font-size:12px; color:#7C86AC;}
+
+/* ---------- Toast ---------- */
+#toast{
+  position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px); z-index:3000;
+  background:var(--ink); color:#fff; padding:14px 24px; border-radius:99px; font-weight:700; font-size:14px;
+  box-shadow:var(--shadow-strong); opacity:0; transition:all .35s var(--ease); pointer-events:none; display:flex; align-items:center; gap:8px;
+}
+#toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+/* confetti */
+.confetti-piece{position:fixed; top:-20px; z-index:4000; border-radius:2px; pointer-events:none;}
+
+@media (max-width:880px){
+  .section{padding:60px 0;}
+  .progress-panel{padding:24px;}
+}
+
+/* ================= V2.0 ADDITIONS ================= */
+
+/* Lock overlay reused on topics/games/stories/grammar/conversation cards */
+.lockable{position:relative;}
+.lock-overlay{
+  position:absolute; inset:0; border-radius:inherit; background:rgba(30,42,74,.72); backdrop-filter:blur(2px);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; color:#fff; z-index:2;
+  transition:transform .2s var(--ease);
+}
+.lockable:hover .lock-overlay{transform:scale(1.03);}
+.lock-icon{font-size:26px;}
+.lock-req{font-size:11px; font-weight:800; background:rgba(255,255,255,.18); padding:3px 10px; border-radius:99px;}
+
+/* Search */
+.search-btn{width:38px; height:38px; border-radius:50%; background:rgba(141,123,240,.14); display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;}
+.search-btn:hover{transform:scale(1.08);}
+.search-overlay{position:fixed; inset:0; z-index:2500; background:rgba(20,20,40,.55); backdrop-filter:blur(4px); display:flex; align-items:flex-start; justify-content:center; padding:80px 20px; opacity:0; visibility:hidden; transition:all .25s var(--ease);}
+.search-overlay.open{opacity:1; visibility:visible;}
+.search-panel{background:#fff; border-radius:var(--r-xl); width:100%; max-width:560px; padding:22px; box-shadow:var(--shadow-strong); max-height:74vh; display:flex; flex-direction:column;}
+.search-input-row{display:flex; align-items:center; gap:10px; border:2px solid #F1EEFE; border-radius:99px; padding:10px 18px;}
+.search-input-row input{flex:1; border:none; outline:none; font-family:inherit; font-size:15px; background:transparent; color:var(--ink);}
+.search-results{margin-top:14px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;}
+.search-result-item{display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:14px; background:var(--cream); font-weight:700; font-size:14px;}
+.search-result-item:hover{background:var(--purple-light);}
+.search-result-tag{font-size:10px; font-weight:800; color:var(--purple-deep); background:var(--purple-light); padding:2px 8px; border-radius:99px; margin-inline-start:auto;}
+.search-empty{text-align:center; color:var(--ink-faint); font-size:13px; padding:20px 0;}
+
+/* Next recommendation */
+.next-card{
+  max-width:640px; margin:0 auto; background:#fff; border:2px solid var(--purple-light); border-radius:var(--r-xl);
+  padding:24px; display:flex; align-items:center; gap:18px; box-shadow:var(--shadow-soft); flex-wrap:wrap;
+}
+.next-emoji{font-size:40px;}
+.next-text{flex:1; min-width:200px;}
+.next-label{font-size:12px; font-weight:800; color:var(--purple-deep); margin-bottom:4px;}
+.next-title{font-weight:800; font-size:16px; color:var(--ink);}
+
+/* Level map */
+.levelmap-scroll{display:flex; gap:14px; overflow-x:auto; padding:10px 4px 20px;}
+.levelmap-scroll::-webkit-scrollbar{height:6px;}
+.levelmap-scroll::-webkit-scrollbar-thumb{background:var(--purple-light); border-radius:99px;}
+.level-node{
+  flex:0 0 150px; border-radius:var(--r-lg); padding:18px 14px; text-align:center; background:#fff; border:2px solid #F1EEFE;
+  box-shadow:var(--shadow-soft); cursor:pointer; transition:transform .25s var(--ease);
+}
+.level-node:hover{transform:translateY(-4px);}
+.level-node.current{border-color:var(--coral-deep); background:linear-gradient(135deg,#FFF3EE,#fff);}
+.level-node.done{border-color:var(--green); background:#F3FBF6;}
+.level-node.locked{opacity:.55;}
+.level-node .ln-icon{font-size:28px; margin-bottom:6px;}
+.level-node .ln-num{font-size:11px; font-weight:800; color:var(--ink-faint);}
+.level-node .ln-name{font-size:13px; font-weight:800; margin-top:2px;}
+
+/* Achievements full grid */
+.ach-tabs{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:26px;}
+.ach-tab{padding:8px 16px; border-radius:99px; background:#fff; border:2px solid #F1EEFE; font-weight:700; font-size:13px; color:var(--ink-soft);}
+.ach-tab.active{background:var(--purple-deep); color:#fff; border-color:var(--purple-deep);}
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:16px;}
+.ach-card{background:#fff; border-radius:var(--r-lg); padding:18px 14px; text-align:center; box-shadow:var(--shadow-soft); border:2px solid #F1EEFE; transition:transform .25s var(--ease);}
+.ach-card:hover{transform:translateY(-5px);}
+.ach-card.locked{opacity:.5; filter:grayscale(.3);}
+.ach-em{font-size:34px; margin-bottom:8px;}
+.ach-title{font-weight:800; font-size:13px;}
+.ach-desc{font-size:11px; color:var(--ink-faint); margin-top:4px; line-height:1.6;}
+.ach-xp{margin-top:8px; font-size:11px; font-weight:800; color:var(--coral-deep);}
+
+/* Grammar */
+.grammar-tier{margin-bottom:34px;}
+.grammar-tier-title{font-weight:800; font-size:15px; margin-bottom:14px; display:flex; align-items:center; gap:8px;}
+.grammar-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
+.grammar-card{background:#fff; border-radius:var(--r-lg); padding:20px; box-shadow:var(--shadow-soft); border:2px solid #F1EEFE; transition:transform .25s var(--ease); text-align:right;}
+.grammar-card:hover{transform:translateY(-5px);}
+.grammar-card .gc-title{font-weight:800; font-size:15px;}
+.grammar-card .gc-en{font-size:12px; color:var(--ink-faint); margin-top:2px;}
+.grammar-card .gc-status{margin-top:10px; font-size:11px; font-weight:800; color:var(--green);}
+
+/* Conversation */
+.convo-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
+.convo-card{background:#fff; border-radius:var(--r-lg); padding:20px; text-align:center; box-shadow:var(--shadow-soft); border:2px solid #F1EEFE; transition:transform .25s var(--ease);}
+.convo-card:hover{transform:translateY(-5px);}
+.convo-em{font-size:36px; margin-bottom:8px;}
+.dialogue-box{background:var(--cream); border-radius:var(--r-lg); padding:20px; margin-top:16px;}
+.dialogue-npc{display:flex; gap:10px; align-items:flex-start;}
+.dialogue-npc-em{font-size:34px;}
+.dialogue-bubble{background:#fff; border-radius:16px; padding:12px 16px; font-weight:700; font-size:15px; box-shadow:var(--shadow-soft); flex:1;}
+.dialogue-options{display:flex; flex-direction:column; gap:10px; margin-top:16px;}
+.dialogue-opt{background:#fff; border:2px solid #F1EEFE; border-radius:14px; padding:12px 16px; font-weight:700; font-size:14px; text-align:right; transition:all .2s var(--ease);}
+.dialogue-opt:hover{border-color:var(--purple);}
+.dialogue-opt.correct{border-color:var(--green); background:#F3FBF6;}
+.dialogue-opt.wrong{border-color:var(--coral-deep); background:#FFF3F0;}
+.dialogue-progress{display:flex; gap:5px; margin-top:14px; justify-content:center;}
+.dialogue-dot{width:8px; height:8px; border-radius:50%; background:#E4E1F5;}
+.dialogue-dot.active{background:var(--purple-deep); width:16px; border-radius:6px;}
+
+/* Exams */
+.exam-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px;}
+.exam-card{background:#fff; border-radius:var(--r-lg); padding:20px; text-align:center; box-shadow:var(--shadow-soft); border:2px solid #F1EEFE; transition:transform .25s var(--ease);}
+.exam-card:hover{transform:translateY(-5px);}
+.exam-card.passed{border-color:var(--green);}
+.exam-em{font-size:32px; margin-bottom:8px;}
+.exam-score-pill{margin-top:8px; font-size:12px; font-weight:800; padding:3px 12px; border-radius:99px; display:inline-block;}
+.exam-score-pill.high{background:#E6F9EE; color:var(--green);}
+.exam-score-pill.mid{background:#FFF6E0; color:var(--yellow-deep);}
+.exam-score-pill.low{background:#FFEDE8; color:var(--coral-deep);}
+.exam-stage{background:#fff; border-radius:var(--r-xl); box-shadow:var(--shadow-strong); padding:28px; max-width:680px; margin:24px auto 0;}
+.exam-progress-track{height:8px; background:#F0EEFB; border-radius:99px; overflow:hidden; margin-bottom:18px;}
+.exam-progress-fill{height:100%; background:linear-gradient(90deg,var(--sky),var(--purple)); border-radius:99px; transition:width .3s var(--ease);}
+.exam-q{font-weight:800; font-size:17px; margin-bottom:16px;}
+.exam-options{display:grid; gap:10px;}
+.exam-opt{background:var(--cream); border:2px solid transparent; border-radius:14px; padding:14px 16px; font-weight:700; text-align:right; transition:all .2s var(--ease);}
+.exam-opt:hover{border-color:var(--purple);}
+.exam-opt.correct{border-color:var(--green); background:#F3FBF6;}
+.exam-opt.wrong{border-color:var(--coral-deep); background:#FFF3F0;}
+.grade-hero{text-align:center; padding:10px 0 20px;}
+.grade-pct{font-size:52px; font-weight:900; color:var(--ink);}
+.grade-label{font-size:18px; font-weight:800; margin-top:6px;}
+.grade-msg{font-size:14px; color:var(--ink-soft); margin-top:8px;}
+.breakdown-row{display:flex; align-items:center; gap:10px; margin-top:10px;}
+.breakdown-label{width:110px; font-size:12px; font-weight:700; color:var(--ink-soft); flex-shrink:0;}
+.breakdown-track{flex:1; height:8px; background:#F0EEFB; border-radius:99px; overflow:hidden;}
+.breakdown-fill{height:100%; border-radius:99px; background:linear-gradient(90deg,var(--sky),var(--green));}
+.breakdown-pct{font-size:12px; font-weight:800; width:36px; text-align:left;}
+
+/* Runner game */
+.runner-track{position:relative; height:220px; border-radius:var(--r-lg); overflow:hidden; background:linear-gradient(180deg,#BEE6FA,#8FD3EE 60%,#6FC08C); margin-bottom:16px;}
+.runner-road{position:absolute; left:50%; bottom:0; width:70%; height:100%; transform:translateX(-50%); background:repeating-linear-gradient(0deg,#D8D2E0 0 26px,#C9C2D6 26px 30px); animation:roadScroll 0.5s linear infinite;}
+@keyframes roadScroll{ from{background-position-y:0;} to{background-position-y:30px;} }
+.runner-target{position:absolute; top:10px; left:50%; transform:translateX(-50%); background:rgba(255,255,255,.9); border-radius:16px; padding:8px 16px; font-size:26px; box-shadow:var(--shadow-soft);}
+.runner-char{position:absolute; bottom:14px; left:50%; transform:translateX(-50%); font-size:36px;}
+.runner-lanes{position:absolute; bottom:70px; left:50%; transform:translateX(-50%); width:70%; display:flex; justify-content:space-between;}
+.runner-lane-word{background:#fff; border-radius:12px; padding:10px 14px; font-weight:800; box-shadow:var(--shadow-soft); font-size:20px; cursor:pointer; transition:transform .15s var(--ease);}
+.runner-lane-word:hover{transform:scale(1.06);}
+.runner-hud{display:flex; justify-content:space-between; font-size:13px; font-weight:800; color:var(--ink-soft); margin-bottom:6px;}
+.runner-combo{color:var(--coral-deep);}
+
+/* World builder game */
+.builder-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+@media (max-width:520px){ .builder-grid{grid-template-columns:repeat(2,1fr);} }
+.builder-plot{aspect-ratio:1; border-radius:16px; background:var(--cream); border:2px dashed #D9D3F0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-size:13px; font-weight:700; color:var(--ink-faint); cursor:pointer; transition:transform .2s var(--ease);}
+.builder-plot:hover{transform:scale(1.04);}
+.builder-plot.built{border-style:solid; border-color:var(--green); background:#F3FBF6; color:var(--ink); cursor:default;}
+.builder-plot .bp-em{font-size:30px;}
+.builder-coins{text-align:center; font-weight:800; color:var(--coral-deep); margin-bottom:14px;}
+
+/* Sentence builder game */
+.sentence-target-track{display:flex; flex-wrap:wrap; gap:8px; min-height:56px; padding:12px; border:2px dashed #D9D3F0; border-radius:14px; margin-bottom:16px; justify-content:center;}
+.sentence-word-slot{background:var(--purple-light); color:var(--purple-deep); font-weight:800; padding:8px 16px; border-radius:10px; font-size:15px;}
+.sentence-bank{display:flex; flex-wrap:wrap; gap:8px; justify-content:center;}
+.sentence-bank .word-chip{background:#fff; border:2px solid #F1EEFE; border-radius:10px; padding:10px 18px; font-weight:800; font-size:15px; transition:all .18s var(--ease);}
+.sentence-bank .word-chip:hover{border-color:var(--purple); transform:translateY(-2px);}
+.sentence-bank .word-chip.used{opacity:.25; pointer-events:none;}
+
+/* Weekly challenge */
+.weekly-card{max-width:640px; margin:20px auto 0; background:linear-gradient(135deg,var(--purple),var(--sky)); border-radius:var(--r-xl); padding:26px; color:#fff; box-shadow:var(--shadow-strong);}
+.weekly-title{font-weight:800; font-size:17px; margin-bottom:14px; display:flex; align-items:center; gap:8px;}
+.weekly-task{display:flex; align-items:center; gap:10px; font-size:13px; font-weight:700; margin-bottom:8px; opacity:.95;}
+.weekly-task .wt-check{width:18px; height:18px; border-radius:50%; background:rgba(255,255,255,.25); display:flex; align-items:center; justify-content:center; font-size:11px; flex-shrink:0;}
+.weekly-task.done .wt-check{background:#fff; color:var(--purple-deep);}
+.weekly-reward{margin-top:10px; font-size:12px; font-weight:800; opacity:.9;}
+
+/* Level up celebration overlay */
+#levelUpOverlay{
+  position:fixed; inset:0; z-index:5000; background:radial-gradient(circle at 50% 40%, rgba(141,123,240,.96), rgba(30,42,74,.96));
+  display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition:all .4s var(--ease); padding:20px;
+}
+#levelUpOverlay.open{opacity:1; visibility:visible;}
+.levelup-box{text-align:center; color:#fff; max-width:420px;}
+.levelup-mascot{width:100px; height:100px; margin:0 auto 14px; animation:mascotWave 1.2s ease-in-out infinite;}
+.levelup-kicker{font-weight:800; font-size:16px; opacity:.85; letter-spacing:1px;}
+.levelup-title{font-size:44px; font-weight:900; margin:6px 0; font-family:'Baloo 2',cursive;}
+.levelup-name{font-size:20px; font-weight:800; color:var(--yellow);}
+.levelup-unlocks{margin-top:20px; background:rgba(255,255,255,.12); border-radius:var(--r-lg); padding:16px; text-align:right; font-size:13px; font-weight:700;}
+.levelup-unlocks div{margin-bottom:6px;}
+.levelup-close{margin-top:22px; padding:12px 30px; border-radius:99px; background:#fff; color:var(--purple-deep); font-weight:800;}
+
+/* Requirement / lock info toast-modal */
+.reqinfo-box{background:#fff; border-radius:var(--r-lg); padding:20px; max-width:320px; text-align:center; box-shadow:var(--shadow-strong);}
+
+/* Contact */
+.contact-box{background:#fff; border:1px solid #F1EEFE; border-radius:var(--r-xl); padding:30px; box-shadow:var(--shadow-soft); text-align:center; max-width:480px; margin:0 auto;}
+.contact-btns{display:flex; gap:12px; justify-content:center; margin-top:18px; flex-wrap:wrap;}
+.contact-btn{display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:99px; font-weight:800; font-size:14px;}
+.contact-github{background:var(--ink); color:#fff;}
+.contact-telegram{background:#2AABEE; color:#fff;}
+.reset-btn{margin-top:20px; font-size:12px; color:var(--ink-faint); text-decoration:underline; font-weight:700;}
+
+/* how it works */
+.howit-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px;}
+.howit-step{background:#fff; border-radius:var(--r-lg); padding:20px 14px; text-align:center; box-shadow:var(--shadow-soft);}
+.howit-num{width:32px; height:32px; border-radius:50%; background:var(--purple-light); color:var(--purple-deep); font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:14px;}
+.howit-em{font-size:28px; margin-bottom:6px;}
+.howit-title{font-weight:800; font-size:13px;}
+
+@media (max-width:880px){
+  .progress-panel{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="loading-logo"><svg class="loading-mascot" viewBox="0 0 100 100"><use href="#mascotSvg"/></svg> KoodakEnglish</div>
+  <div class="loading-text">داریم دنیای انگلیسی رو آماده می‌کنیم... 🚀</div>
+  <div class="loading-bar"><div class="loading-bar-fill" id="loadFill"></div></div>
+</div>
+
+<!-- reusable mascot svg def -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <g id="mascotSvg">
+      <ellipse cx="50" cy="60" rx="34" ry="30" fill="#FF9E62"/>
+      <ellipse cx="50" cy="66" rx="20" ry="16" fill="#FFE3C7"/>
+      <path d="M20 40 Q10 15 32 26 Q28 40 20 40Z" fill="#FF9E62"/>
+      <path d="M80 40 Q90 15 68 26 Q72 40 80 40Z" fill="#FF9E62"/>
+      <circle class="eye" cx="38" cy="52" r="5.5" fill="#1E2A4A"/>
+      <circle class="eye" cx="62" cy="52" r="5.5" fill="#1E2A4A"/>
+      <circle cx="40" cy="50" r="1.6" fill="#fff"/>
+      <circle cx="64" cy="50" r="1.6" fill="#fff"/>
+      <path d="M42 64 Q50 70 58 64" stroke="#1E2A4A" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <ellipse cx="26" cy="60" rx="5" ry="3.4" fill="#FFB27A" opacity=".7"/>
+      <ellipse cx="74" cy="60" rx="5" ry="3.4" fill="#FFB27A" opacity=".7"/>
+    </g>
+  </defs>
+</svg>
+
+<div id="toast"></div>
+
+<!-- ================= NAV ================= -->
+<div class="navwrap">
+  <nav class="nav">
+    <div class="nav-logo"><span>🦊</span><span>Koodak<span class="en">English</span></span></div>
+    <div class="nav-links">
+      <a href="#home">خانه</a>
+      <a href="#learning-world">یادگیری</a>
+      <a href="#grammar">گرامر</a>
+      <a href="#conversation">مکالمه</a>
+      <a href="#games">بازی‌ها</a>
+      <a href="#exams">آزمون‌ها</a>
+      <a href="#stories">داستان‌ها</a>
+      <a href="#achievements">دستاوردها</a>
+      <a href="#progress">پیشرفت من</a>
+    </div>
+    <button class="search-btn" id="searchToggle" aria-label="جستجو" title="جستجو">🔍</button>
+    <button class="nav-sound" id="soundToggle" aria-label="روشن/خاموش کردن صدا" title="صدا">🔊</button>
+  </nav>
+</div>
+
+<nav class="bottomnav" aria-label="ناوبری موبایل">
+  <a href="#home" class="active"><span class="ic">🏠</span>خانه</a>
+  <a href="#learning-world"><span class="ic">🎨</span>یادگیری</a>
+  <a href="#games"><span class="ic">🎮</span>بازی</a>
+  <a href="#exams"><span class="ic">📝</span>آزمون</a>
+  <a href="#progress"><span class="ic">🏆</span>پیشرفت</a>
+</nav>
+
+<!-- ================= SEARCH OVERLAY ================= -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-panel">
+    <div class="search-input-row">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="چی می‌خوای یاد بگیری؟ مثلاً cat" autocomplete="off">
+      <button id="searchClose" aria-label="بستن">✕</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-empty">اسم یه کلمه، بازی، داستان یا موضوع رو تایپ کن 🔎</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="home">
+  <div class="hero-layer" id="parallaxLayer">
+    <div class="sun" data-depth="0.02"></div>
+    <div class="cloud" style="top:14%; left:60%; width:140px; height:60px; animation-duration:22s;" data-depth="0.01">
+      <svg viewBox="0 0 200 90"><ellipse cx="60" cy="55" rx="55" ry="30" fill="#fff" opacity=".9"/><ellipse cx="110" cy="40" rx="45" ry="34" fill="#fff" opacity=".9"/><ellipse cx="150" cy="58" rx="40" ry="24" fill="#fff" opacity=".9"/></svg>
+    </div>
+    <div class="cloud" style="top:26%; left:8%; width:110px; height:50px; animation-duration:28s; animation-direction:reverse;" data-depth="0.015">
+      <svg viewBox="0 0 200 90"><ellipse cx="60" cy="55" rx="55" ry="30" fill="#fff" opacity=".85"/><ellipse cx="120" cy="45" rx="40" ry="30" fill="#fff" opacity=".85"/></svg>
+    </div>
+    <div class="floaty" style="top:20%; left:16%; font-size:40px;" data-depth="0.05">🎈</div>
+    <div class="floaty" style="top:60%; left:10%; font-size:34px; animation-delay:.6s;" data-depth="0.07">⭐</div>
+    <div class="floaty en" style="top:16%; left:78%; font-size:44px; font-weight:800; color:var(--coral-deep); animation-delay:.3s;" data-depth="0.06">A</div>
+    <div class="floaty en" style="top:66%; left:82%; font-size:38px; font-weight:800; color:var(--purple-deep); animation-delay:.9s;" data-depth="0.04">B</div>
+    <div class="floaty en" style="top:40%; left:4%; font-size:34px; font-weight:800; color:var(--sky-deep); animation-delay:1.2s;" data-depth="0.03">C</div>
+    <div class="floaty" style="top:12%; left:42%; font-size:30px; animation-delay:.4s;" data-depth="0.03">☁️</div>
+    <div class="floaty" style="top:70%; left:70%; font-size:36px; animation-delay:.8s;" data-depth="0.05">🍎</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="mascot-wrap" id="mascotHero" tabindex="0" role="button" aria-label="سلام از طرف راکی">
+      <div class="speech-bubble">سلام! 👋</div>
+      <svg viewBox="0 0 100 100"><use href="#mascotSvg"/></svg>
+    </div>
+    <div class="hero-eyebrow">🦊 راکی خوش‌آمد می‌گه</div>
+    <h1 class="hero-title">اینجا انگلیسی <span class="accent">بازی</span> می‌شه! 🚀</h1>
+    <p class="hero-sub">با بازی، داستان، و سرگرمی، انگلیسی رو مثل یه ماجراجویی یاد بگیر — بدون فشار، فقط با لذت.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" id="startLearningBtn">شروع یادگیری 🚀</button>
+      <a class="btn btn-secondary" href="#learning-world">دنیای KoodakEnglish 🌎</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= CONTINUE LEARNING ================= -->
+<section class="section section-cream" id="continue-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">ادامه بده 🚀</div>
+      <h2 class="section-title">همون‌جایی که موندی، ادامه بده</h2>
+    </div>
+    <div class="continue-row reveal" id="continueRow"></div>
+  </div>
+</section>
+
+<!-- ================= MISSION ================= -->
+<section class="section section-sky">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">امروز</div>
+      <h2 class="section-title">🌟 مأموریت امروز</h2>
+    </div>
+    <div class="mission-card reveal" id="missionCard"></div>
+    <div class="weekly-card reveal" id="weeklyCard"></div>
+  </div>
+</section>
+
+<!-- ================= NEXT RECOMMENDATION ================= -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">پیشنهاد بعدی 👇</div>
+      <h2 class="section-title">حالا چیکار کنم؟</h2>
+    </div>
+    <div class="next-card reveal" id="nextCard"></div>
+  </div>
+</section>
+
+<!-- ================= LEVEL MAP ================= -->
+<section class="section section-sky" id="levelmap">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">نقشه پیشرفت 🗺️</div>
+      <h2 class="section-title">مسیر سطح‌های KoodakEnglish</h2>
+      <p class="section-desc">هر سطح، دنیای جدیدی از یادگیری رو باز می‌کنه.</p>
+    </div>
+    <div class="levelmap-scroll reveal" id="levelMapRow"></div>
+  </div>
+</section>
+
+<!-- ================= LEARNING WORLD ================= -->
+<section class="section section-cream" id="learning-world">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">دنیای یادگیری 🌎</div>
+      <h2 class="section-title">یه موضوع رو انتخاب کن و کشفش کن</h2>
+      <p class="section-desc">هر کارت یه دنیای کوچیکه — کلیک کن و کلمه‌های جدید انگلیسی رو با تلفظ واقعی یاد بگیر.</p>
+    </div>
+    <div class="topic-grid reveal" id="topicGrid"></div>
+  </div>
+</section>
+
+<!-- ================= GRAMMAR ================= -->
+<section class="section section-lav" id="grammar">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">گرامر 📚</div>
+      <h2 class="section-title">گرامر رو با بازی یاد بگیر</h2>
+      <p class="section-desc">درس‌های کوتاه، مثال‌های ساده و یه تمرین کوچیک برای هر درس.</p>
+    </div>
+    <div id="grammarWrap" class="reveal"></div>
+  </div>
+</section>
+
+<!-- ================= CONVERSATION ================= -->
+<section class="section section-cream" id="conversation">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">مکالمه و آشنایی 🗣️</div>
+      <h2 class="section-title">با شخصیت‌های KoodakEnglish حرف بزن</h2>
+      <p class="section-desc">گزینه درست رو انتخاب کن و مکالمه رو ادامه بده.</p>
+    </div>
+    <div class="convo-grid reveal" id="convoGrid"></div>
+    <div id="convoStageWrap" style="margin-top:28px; display:none;">
+      <div class="dialogue-box" id="convoStage" style="max-width:600px;margin:0 auto;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GAMES ================= -->
+<section class="section section-lav" id="games">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">بازی‌های انگلیسی 🎮</div>
+      <h2 class="section-title">با بازی کردن، یاد بگیر</h2>
+      <p class="section-desc">هر بازی یه مهارت جدید بهت یاد می‌ده. برنده که بشی، امتیاز می‌گیری!</p>
+    </div>
+    <div class="game-grid reveal" id="gameGrid"></div>
+    <div id="gameStageWrap" style="margin-top:34px; display:none;">
+      <div class="game-stage" id="gameStage"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXAMS ================= -->
+<section class="section section-sky" id="exams">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">آزمون‌ها 📝</div>
+      <h2 class="section-title">آزمون سطحت رو بده و برو جلو</h2>
+      <p class="section-desc">هر آزمون، ترکیبی از کلمه، گرامر و جمله‌سازیه. نمره کم گرفتی؟ اشکالی نداره، دوباره تمرین کن!</p>
+    </div>
+    <div class="exam-list reveal" id="examList"></div>
+    <div id="examStageWrap" style="margin-top:28px; display:none;">
+      <div class="exam-stage" id="examStage"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIDEOS ================= -->
+<section class="section section-cream" id="videos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">ویدیوهای آموزشی 🎬</div>
+      <h2 class="section-title">ببین، بشنو، و تکرار کن</h2>
+    </div>
+    <div class="media-row reveal" id="videoGrid"></div>
+  </div>
+</section>
+
+<!-- ================= STORIES ================= -->
+<section class="section section-sky" id="stories">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">داستان‌های انگلیسی 📖</div>
+      <h2 class="section-title">وارد یه کتاب داستان کارتونی شو</h2>
+    </div>
+    <div class="media-row reveal" id="storyGrid"></div>
+  </div>
+</section>
+
+<!-- ================= PROGRESS ================= -->
+<section class="section section-cream" id="progress">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">پیشرفت من 📈</div>
+      <h2 class="section-title">ببین چقدر پیشرفت کردی</h2>
+    </div>
+    <div class="progress-panel reveal">
+      <div>
+        <div class="level-badge" id="levelBadge">🚀 سطح ۱ — کاوشگر کوچولو</div>
+        <div class="xp-row"><span id="xpLabel">۰ XP</span><span id="xpNext">تا سطح بعد: ۱۰۰</span></div>
+        <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-num" id="statWords">0</div><div class="stat-lbl">📚 کلمه یاد گرفته</div></div>
+          <div class="stat-box"><div class="stat-num" id="statGames">0</div><div class="stat-lbl">🎮 بازی تمام‌شده</div></div>
+          <div class="stat-box"><div class="stat-num" id="statStreak">0</div><div class="stat-lbl">🔥 روز پشت سر هم</div></div>
+          <div class="stat-box"><div class="stat-num" id="statBadges">0</div><div class="stat-lbl">🏆 نشان‌ها</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="xp-row"><span>🏆 چند تا از نشان‌هام</span><a href="#achievements" style="font-size:12px;color:#FFD166;font-weight:800;">مشاهده همه ←</a></div>
+        <div class="badge-grid" id="badgeGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACHIEVEMENTS FULL ================= -->
+<section class="section section-cream" id="achievements">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">دستاوردهای من 🏆</div>
+      <h2 class="section-title">مجموعه کامل نشان‌ها</h2>
+      <p class="section-desc">بعضی نشان‌ها مخفی هستن — با کاوش کردن پیداشون کن!</p>
+    </div>
+    <div class="ach-tabs reveal" id="achTabs"></div>
+    <div class="ach-grid reveal" id="achGrid"></div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section section-sky">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">راهنما</div>
+      <h2 class="section-title">چطور کار می‌کنه؟ 🤔</h2>
+    </div>
+    <div class="howit-grid reveal">
+      <div class="howit-step"><div class="howit-num">۱</div><div class="howit-em">📚</div><div class="howit-title">یاد بگیر</div></div>
+      <div class="howit-step"><div class="howit-num">۲</div><div class="howit-em">🎮</div><div class="howit-title">تمرین کن</div></div>
+      <div class="howit-step"><div class="howit-num">۳</div><div class="howit-em">⭐</div><div class="howit-title">XP بگیر</div></div>
+      <div class="howit-step"><div class="howit-num">۴</div><div class="howit-em">🏆</div><div class="howit-title">دستاورد بگیر</div></div>
+      <div class="howit-step"><div class="howit-num">۵</div><div class="howit-em">📝</div><div class="howit-title">آزمون بده</div></div>
+      <div class="howit-step"><div class="howit-num">۶</div><div class="howit-em">🚀</div><div class="howit-title">سطح بالاتر برو</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARENT AREA ================= -->
+<section class="section section-lav">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">برای والدین 👨‍👩‍👧</div>
+      <h2 class="section-title">پیشرفت فرزندتون رو دنبال کنید</h2>
+      <p class="section-desc">KoodakEnglish از یه سیستم پیشرفت مرحله‌ای استفاده می‌کنه: هرچی بچه‌تون بیشتر تمرین کنه، محتوای بیشتری باز می‌شه.</p>
+    </div>
+    <div class="parent-box reveal">
+      <div class="parent-icon">📊</div>
+      <div class="parent-stats">
+        <div class="parent-stat"><b id="pWords">0</b><span>کلمه یاد گرفته</span></div>
+        <div class="parent-stat"><b id="pGames">0</b><span>بازی تکمیل‌شده</span></div>
+        <div class="parent-stat"><b id="pStreak">0</b><span>روز مداوم یادگیری</span></div>
+        <div class="parent-stat"><b id="pLevel">1</b><span>سطح فعلی</span></div>
+        <div class="parent-stat"><b id="pExam">-</b><span>میانگین نمره آزمون</span></div>
+      </div>
+    </div>
+    <div class="parent-box reveal" style="margin-top:16px; flex-direction:column; align-items:stretch; gap:14px;">
+      <div style="font-weight:800; font-size:14px;">📈 وضعیت مهارت‌ها</div>
+      <div id="parentBreakdown"></div>
+      <div id="parentRecommend" style="font-size:13px; color:var(--ink-soft); font-weight:600; line-height:1.9;"></div>
+      <button class="reset-btn" id="resetProgressBtn" style="align-self:flex-start;">پاک کردن همه پیشرفت (فقط برای والدین)</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">تماس با ما</div>
+      <h2 class="section-title">با سازنده KoodakEnglish در ارتباط باش</h2>
+    </div>
+    <div class="contact-box reveal">
+      <div style="font-size:40px;">🦊</div>
+      <p style="margin-top:10px; color:var(--ink-soft); font-size:14px;">سوال، پیشنهاد یا باگ پیدا کردی؟ خوشحال می‌شم بشنوم.</p>
+      <div class="contact-btns">
+        <a class="contact-btn contact-github" href="https://github.com/Fa6od" target="_blank" rel="noopener">🐙 GitHub</a>
+        <a class="contact-btn contact-telegram" href="https://t.me/Farbod_H" target="_blank" rel="noopener">✈️ Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">🦊 Koodak<span class="en">English</span></div>
+        <div class="footer-tag">یادگیری انگلیسی، این بار با بازی و سرگرمی.</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">درباره</div>
+          <a href="#home">خانه</a>
+          <a href="#learning-world">آموزش‌ها</a>
+          <a href="#games">بازی‌ها</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">محتوا</div>
+          <a href="#videos">ویدیوها</a>
+          <a href="#stories">داستان‌ها</a>
+          <a href="#progress">پیشرفت من</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">ارتباط</div>
+          <a href="#" id="aboutLink">درباره ما</a>
+          <a href="#" id="contactLink">تماس با ما</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© KoodakEnglish — همه حقوق محفوظ است</div>
+  </div>
+</footer>
+
+<!-- Vocab modal -->
+<div class="modal-overlay" id="vocabModal">
+  <div class="modal-box">
+    <button class="modal-close" id="closeVocabModal" aria-label="بستن">✕</button>
+    <div class="modal-head">
+      <div class="modal-head-emoji" id="modalEmoji">🎨</div>
+      <div>
+        <div class="modal-head-title" id="modalTitle">رنگ‌ها</div>
+      </div>
+    </div>
+    <div class="wordstage" id="wordStage">
+      <div class="em" id="wsEm">🍎</div>
+      <div class="word en" id="wsWord">APPLE</div>
+      <div class="ipa en" id="wsIpa">/ˈæpəl/</div>
+      <div class="fa" id="wsFa">سیب</div>
+      <button class="speaker-btn" id="wsSpeak" aria-label="پخش تلفظ">🔊</button>
+      <button class="mark-learned" id="wsLearn">یاد گرفتم! ✅</button>
+    </div>
+    <div class="vocab-list" id="vocabList" style="margin-top:18px;"></div>
+  </div>
+</div>
+
+<!-- Story reader modal -->
+<div class="modal-overlay" id="storyModal">
+  <div class="modal-box">
+    <button class="modal-close" id="closeStoryModal" aria-label="بستن">✕</button>
+    <div class="reader-box">
+      <div class="reader-illustration" id="readerEm">🐱</div>
+      <div class="reader-en" id="readerEn">The Little Cat</div>
+      <div class="reader-fa" id="readerFa">گربه‌ی کوچولو</div>
+      <div class="reader-controls">
+        <button class="btn btn-secondary" id="readerPrev">→ قبلی</button>
+        <button class="speaker-btn" style="margin:0;" id="readerSpeak">🔊</button>
+        <button class="btn btn-primary" id="readerNext">بعدی ←</button>
+      </div>
+      <div class="reader-dots" id="readerDots"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Grammar lesson modal -->
+<div class="modal-overlay" id="grammarModal">
+  <div class="modal-box">
+    <button class="modal-close" id="closeGrammarModal" aria-label="بستن">✕</button>
+    <div class="modal-head">
+      <div class="modal-head-emoji" id="gmEmoji">📚</div>
+      <div><div class="modal-head-title" id="gmTitle">درس گرامر</div></div>
+    </div>
+    <div id="gmBody"></div>
+  </div>
+</div>
+
+<!-- Requirement / lock info modal -->
+<div class="modal-overlay" id="reqModal">
+  <div class="reqinfo-box" id="reqBox" style="margin:auto;"></div>
+</div>
+
+<!-- Level up celebration overlay -->
+<div id="levelUpOverlay">
+  <div class="levelup-box">
+    <svg class="levelup-mascot" viewBox="0 0 100 100"><use href="#mascotSvg"/></svg>
+    <div class="levelup-kicker">LEVEL UP</div>
+    <div class="levelup-title">🚀</div>
+    <div class="levelup-name" id="luName">سطح جدید</div>
+    <div class="levelup-unlocks" id="luUnlocks"></div>
+    <button class="levelup-close" id="luClose">ادامه بده →</button>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ======================= DATA ======================= */
+const TOPICS = [
+  {id:"colors", emoji:"🎨", fa:"رنگ‌ها", en:"Colors", bg:"linear-gradient(135deg,#FFEFEF,#FFF7E0)", levelReq:1,
+    words:[
+      {em:"🔴",word:"Red",ipa:"/rɛd/",fa:"قرمز"},
+      {em:"🔵",word:"Blue",ipa:"/bluː/",fa:"آبی"},
+      {em:"🟡",word:"Yellow",ipa:"/ˈjɛloʊ/",fa:"زرد"},
+      {em:"🟢",word:"Green",ipa:"/ɡriːn/",fa:"سبز"},
+      {em:"🟣",word:"Purple",ipa:"/ˈpɜːrpəl/",fa:"بنفش"},
+      {em:"🟠",word:"Orange",ipa:"/ˈɔːrɪndʒ/",fa:"نارنجی"},
+      {em:"🩷",word:"Pink",ipa:"/pɪŋk/",fa:"صورتی"},
+      {em:"🤎",word:"Brown",ipa:"/braʊn/",fa:"قهوه‌ای"},
+      {em:"⚫",word:"Black",ipa:"/blæk/",fa:"سیاه"},
+      {em:"⚪",word:"White",ipa:"/waɪt/",fa:"سفید"}
+    ]},
+  {id:"animals", emoji:"🐾", fa:"حیوانات", en:"Animals", bg:"linear-gradient(135deg,#EAFBF0,#E9F6FF)", levelReq:1,
+    words:[
+      {em:"🐱",word:"Cat",ipa:"/kæt/",fa:"گربه"},
+      {em:"🐶",word:"Dog",ipa:"/dɔːɡ/",fa:"سگ"},
+      {em:"🐰",word:"Rabbit",ipa:"/ˈræbɪt/",fa:"خرگوش"},
+      {em:"🐘",word:"Elephant",ipa:"/ˈɛlɪfənt/",fa:"فیل"},
+      {em:"🦁",word:"Lion",ipa:"/ˈlaɪən/",fa:"شیر"},
+      {em:"🐟",word:"Fish",ipa:"/fɪʃ/",fa:"ماهی"},
+      {em:"🐮",word:"Cow",ipa:"/kaʊ/",fa:"گاو"},
+      {em:"🐴",word:"Horse",ipa:"/hɔːrs/",fa:"اسب"},
+      {em:"🐢",word:"Turtle",ipa:"/ˈtɜːrtl/",fa:"لاک‌پشت"},
+      {em:"🐦",word:"Bird",ipa:"/bɜːrd/",fa:"پرنده"}
+    ]},
+  {id:"numbers", emoji:"🔢", fa:"اعداد", en:"Numbers", bg:"linear-gradient(135deg,#EFF0FF,#E8FAFF)", levelReq:1,
+    words:[
+      {em:"1️⃣",word:"One",ipa:"/wʌn/",fa:"یک"},
+      {em:"2️⃣",word:"Two",ipa:"/tuː/",fa:"دو"},
+      {em:"3️⃣",word:"Three",ipa:"/θriː/",fa:"سه"},
+      {em:"4️⃣",word:"Four",ipa:"/fɔːr/",fa:"چهار"},
+      {em:"5️⃣",word:"Five",ipa:"/faɪv/",fa:"پنج"},
+      {em:"6️⃣",word:"Six",ipa:"/sɪks/",fa:"شش"},
+      {em:"7️⃣",word:"Seven",ipa:"/ˈsɛvən/",fa:"هفت"},
+      {em:"8️⃣",word:"Eight",ipa:"/eɪt/",fa:"هشت"},
+      {em:"9️⃣",word:"Nine",ipa:"/naɪn/",fa:"نه"},
+      {em:"🔟",word:"Ten",ipa:"/tɛn/",fa:"ده"}
+    ]},
+  {id:"food", emoji:"🍎", fa:"غذاها", en:"Food", bg:"linear-gradient(135deg,#FFF3E8,#FFEFF6)", levelReq:1,
+    words:[
+      {em:"🍎",word:"Apple",ipa:"/ˈæpəl/",fa:"سیب"},
+      {em:"🍌",word:"Banana",ipa:"/bəˈnænə/",fa:"موز"},
+      {em:"🍕",word:"Pizza",ipa:"/ˈpiːtsə/",fa:"پیتزا"},
+      {em:"🍞",word:"Bread",ipa:"/brɛd/",fa:"نان"},
+      {em:"🥛",word:"Milk",ipa:"/mɪlk/",fa:"شیر"},
+      {em:"🍇",word:"Grapes",ipa:"/ɡreɪps/",fa:"انگور"},
+      {em:"🥕",word:"Carrot",ipa:"/ˈkærət/",fa:"هویج"},
+      {em:"🍦",word:"Ice Cream",ipa:"/aɪs kriːm/",fa:"بستنی"}
+    ]},
+  {id:"family", emoji:"👨‍👩‍👧", fa:"خانواده", en:"Family", bg:"linear-gradient(135deg,#F0EEFF,#FFF0F5)", levelReq:1,
+    words:[
+      {em:"👨",word:"Father",ipa:"/ˈfɑːðər/",fa:"پدر"},
+      {em:"👩",word:"Mother",ipa:"/ˈmʌðər/",fa:"مادر"},
+      {em:"👦",word:"Brother",ipa:"/ˈbrʌðər/",fa:"برادر"},
+      {em:"👧",word:"Sister",ipa:"/ˈsɪstər/",fa:"خواهر"},
+      {em:"👶",word:"Baby",ipa:"/ˈbeɪbi/",fa:"نوزاد"},
+      {em:"👴",word:"Grandpa",ipa:"/ˈɡrænpɑː/",fa:"پدربزرگ"}
+    ]},
+  {id:"alphabet", emoji:"🔤", fa:"الفبا", en:"Alphabet", bg:"linear-gradient(135deg,#E9F6FF,#F0EEFF)", levelReq:1,
+    words:[
+      {em:"🍎",word:"A",ipa:"/eɪ/",fa:"سیب - A"},
+      {em:"🐝",word:"B",ipa:"/biː/",fa:"زنبور - B"},
+      {em:"🐱",word:"C",ipa:"/siː/",fa:"گربه - C"},
+      {em:"🐶",word:"D",ipa:"/diː/",fa:"سگ - D"},
+      {em:"🥚",word:"E",ipa:"/iː/",fa:"تخم‌مرغ - E"},
+      {em:"🐟",word:"F",ipa:"/ɛf/",fa:"ماهی - F"}
+    ]},
+  {id:"home", emoji:"🏠", fa:"خانه", en:"Home", bg:"linear-gradient(135deg,#FFF6E5,#EAF7FF)", levelReq:2,
+    words:[
+      {em:"🛏️",word:"Bed",ipa:"/bɛd/",fa:"تخت"},
+      {em:"🚪",word:"Door",ipa:"/dɔːr/",fa:"در"},
+      {em:"🪟",word:"Window",ipa:"/ˈwɪndoʊ/",fa:"پنجره"},
+      {em:"🛋️",word:"Sofa",ipa:"/ˈsoʊfə/",fa:"مبل"},
+      {em:"🍽️",word:"Kitchen",ipa:"/ˈkɪtʃɪn/",fa:"آشپزخانه"},
+      {em:"🚿",word:"Bathroom",ipa:"/ˈbæθruːm/",fa:"حمام"}
+    ]},
+  {id:"clothes", emoji:"👕", fa:"لباس‌ها", en:"Clothes", bg:"linear-gradient(135deg,#F0EEFF,#FFEDF5)", levelReq:2,
+    words:[
+      {em:"👕",word:"Shirt",ipa:"/ʃɜːrt/",fa:"پیراهن"},
+      {em:"👖",word:"Pants",ipa:"/pænts/",fa:"شلوار"},
+      {em:"👟",word:"Shoes",ipa:"/ʃuːz/",fa:"کفش"},
+      {em:"🧢",word:"Hat",ipa:"/hæt/",fa:"کلاه"},
+      {em:"🧥",word:"Jacket",ipa:"/ˈdʒækɪt/",fa:"ژاکت"},
+      {em:"👗",word:"Dress",ipa:"/drɛs/",fa:"لباس"}
+    ]},
+  {id:"transport", emoji:"🚗", fa:"وسایل نقلیه", en:"Transportation", bg:"linear-gradient(135deg,#E8F6FF,#EEF0FF)", levelReq:2,
+    words:[
+      {em:"🚗",word:"Car",ipa:"/kɑːr/",fa:"ماشین"},
+      {em:"🚌",word:"Bus",ipa:"/bʌs/",fa:"اتوبوس"},
+      {em:"🚆",word:"Train",ipa:"/treɪn/",fa:"قطار"},
+      {em:"✈️",word:"Plane",ipa:"/pleɪn/",fa:"هواپیما"},
+      {em:"🚲",word:"Bicycle",ipa:"/ˈbaɪsɪkəl/",fa:"دوچرخه"},
+      {em:"⛵",word:"Boat",ipa:"/boʊt/",fa:"قایق"}
+    ]},
+  {id:"weather", emoji:"🌦️", fa:"آب‌وهوا", en:"Weather", bg:"linear-gradient(135deg,#E8F2FF,#F5F0FF)", levelReq:3,
+    words:[
+      {em:"☀️",word:"Sunny",ipa:"/ˈsʌni/",fa:"آفتابی"},
+      {em:"🌧️",word:"Rainy",ipa:"/ˈreɪni/",fa:"بارانی"},
+      {em:"☁️",word:"Cloudy",ipa:"/ˈklaʊdi/",fa:"ابری"},
+      {em:"💨",word:"Windy",ipa:"/ˈwɪndi/",fa:"بادی"},
+      {em:"❄️",word:"Snowy",ipa:"/ˈsnoʊi/",fa:"برفی"},
+      {em:"⛈️",word:"Stormy",ipa:"/ˈstɔːrmi/",fa:"طوفانی"}
+    ]},
+  {id:"school", emoji:"🏫", fa:"مدرسه", en:"School", bg:"linear-gradient(135deg,#FFF0E5,#E5F5FF)", levelReq:3,
+    words:[
+      {em:"👩‍🏫",word:"Teacher",ipa:"/ˈtiːtʃər/",fa:"معلم"},
+      {em:"🧑‍🎓",word:"Student",ipa:"/ˈstuːdnt/",fa:"دانش‌آموز"},
+      {em:"📖",word:"Book",ipa:"/bʊk/",fa:"کتاب"},
+      {em:"✏️",word:"Pencil",ipa:"/ˈpɛnsl/",fa:"مداد"},
+      {em:"🎒",word:"Backpack",ipa:"/ˈbækpæk/",fa:"کوله‌پشتی"},
+      {em:"🪑",word:"Chair",ipa:"/tʃɛr/",fa:"صندلی"}
+    ]},
+  {id:"emotions", emoji:"😊", fa:"احساسات", en:"Emotions", bg:"linear-gradient(135deg,#FFF3F3,#FFF9E5)", levelReq:3,
+    words:[
+      {em:"😊",word:"Happy",ipa:"/ˈhæpi/",fa:"خوشحال"},
+      {em:"😢",word:"Sad",ipa:"/sæd/",fa:"غمگین"},
+      {em:"😠",word:"Angry",ipa:"/ˈæŋɡri/",fa:"عصبانی"},
+      {em:"😴",word:"Tired",ipa:"/ˈtaɪərd/",fa:"خسته"},
+      {em:"😨",word:"Scared",ipa:"/skɛrd/",fa:"ترسیده"},
+      {em:"😲",word:"Surprised",ipa:"/sərˈpraɪzd/",fa:"متعجب"}
+    ]}
+];
+
+const STORIES = [
+  {id:"cat", emoji:"🐱", titleFa:"گربه‌ی کوچولو", diff:"مبتدی", time:"۲ دقیقه", category:"حیوانات", levelReq:1,
+    pages:[
+      {em:"🐱",en:"This is a little cat.",fa:"این یه گربه‌ی کوچولوئه."},
+      {em:"🥛",en:"The cat likes milk.",fa:"گربه شیر دوست داره."},
+      {em:"☀️",en:"The cat plays in the sun.",fa:"گربه زیر آفتاب بازی می‌کنه."},
+      {em:"😴",en:"At night, the cat sleeps.",fa:"شب‌ها، گربه می‌خوابه."}
+    ]},
+  {id:"bus", emoji:"🚌", titleFa:"اتوبوس مدرسه", diff:"مبتدی", time:"۳ دقیقه", category:"مدرسه", levelReq:1,
+    pages:[
+      {em:"🚌",en:"The school bus is yellow.",fa:"اتوبوس مدرسه زرده."},
+      {em:"🧒",en:"Children go to school.",fa:"بچه‌ها به مدرسه می‌رن."},
+      {em:"📚",en:"They learn new things.",fa:"اونا چیزهای جدید یاد می‌گیرن."},
+      {em:"🏡",en:"Then they go home.",fa:"بعدش به خونه می‌رن."}
+    ]},
+  {id:"star", emoji:"⭐", titleFa:"ستاره‌ی کوچک", diff:"متوسط", time:"۳ دقیقه", category:"طبیعت", levelReq:1,
+    pages:[
+      {em:"🌌",en:"A little star shines at night.",fa:"یه ستاره‌ی کوچیک شب‌ها می‌درخشه."},
+      {em:"🌠",en:"It looks down at the world.",fa:"به دنیا نگاه می‌کنه."},
+      {em:"🌍",en:"It sees children sleeping.",fa:"بچه‌هایی رو می‌بینه که خوابیدن."},
+      {em:"✨",en:"Good night, little star!",fa:"شب بخیر، ستاره‌ی کوچولو!"}
+    ]},
+  {id:"puppy", emoji:"🐶", titleFa:"سگ گمشده", diff:"متوسط", time:"۳ دقیقه", category:"ماجراجویی", levelReq:4,
+    pages:[
+      {em:"🐶",en:"The little puppy is lost.",fa:"توله‌سگ کوچولو گم شده."},
+      {em:"🌳",en:"It looks around the park.",fa:"دور و بر پارک رو نگاه می‌کنه."},
+      {em:"👦",en:"A boy finds the puppy.",fa:"یه پسر توله‌سگ رو پیدا می‌کنه."},
+      {em:"🏡",en:"They walk home together.",fa:"با هم به خونه می‌رن."}
+    ]},
+  {id:"forest", emoji:"🌳", titleFa:"ماجراجویی در جنگل", diff:"متوسط", time:"۴ دقیقه", category:"ماجراجویی", levelReq:6,
+    pages:[
+      {em:"🌳",en:"Three friends walk into the forest.",fa:"سه تا دوست وارد جنگل می‌شن."},
+      {em:"🦉",en:"An owl says hello.",fa:"یه جغد بهشون سلام می‌کنه."},
+      {em:"🗺️",en:"They find an old map.",fa:"یه نقشه‌ی قدیمی پیدا می‌کنن."},
+      {em:"🏕️",en:"They camp under the stars.",fa:"زیر ستاره‌ها چادر می‌زنن."}
+    ]},
+  {id:"space", emoji:"🚀", titleFa:"ماجراجویی فضایی", diff:"پیشرفته", time:"۴ دقیقه", category:"فضا", levelReq:8,
+    pages:[
+      {em:"🚀",en:"The rocket flies into space.",fa:"موشک به فضا پرواز می‌کنه."},
+      {em:"🪐",en:"They see a big planet.",fa:"یه سیاره بزرگ می‌بینن."},
+      {em:"👽",en:"A friendly alien waves.",fa:"یه بیگانه‌ی مهربون دست تکون می‌ده."},
+      {em:"🌍",en:"They fly back home.",fa:"به خونه برمی‌گردن."}
+    ]},
+  {id:"castle", emoji:"🏰", titleFa:"راز قلعه قدیمی", diff:"پیشرفته", time:"۵ دقیقه", category:"فانتزی", levelReq:10,
+    pages:[
+      {em:"🏰",en:"There is an old castle on the hill.",fa:"یه قلعه‌ی قدیمی روی تپه‌ست."},
+      {em:"🗝️",en:"A girl finds a golden key.",fa:"یه دختر یه کلید طلایی پیدا می‌کنه."},
+      {em:"📜",en:"Inside, there is a secret map.",fa:"داخلش یه نقشه‌ی مخفیه."},
+      {em:"👑",en:"She becomes the hero of the story.",fa:"اون قهرمان داستان می‌شه."}
+    ]},
+  {id:"funny-frog", emoji:"🐸", titleFa:"قورباغه‌ی شیطون", diff:"مبتدی", time:"۲ دقیقه", category:"طنز", levelReq:2,
+    pages:[
+      {em:"🐸",en:"The frog loves to jump.",fa:"قورباغه عاشق پریدنه."},
+      {em:"💦",en:"It jumps into the water.",fa:"توی آب می‌پره."},
+      {em:"😂",en:"Everyone laughs and claps.",fa:"همه می‌خندن و دست می‌زنن."},
+      {em:"🎉",en:"The frog is very happy.",fa:"قورباغه خیلی خوشحاله."}
+    ]}
+];
+
+const VIDEOS = [
+  {emoji:"🎬", tag:"آموزش", title:"رنگ‌ها به انگلیسی", dur:"۳:۲۰"},
+  {emoji:"🎵", tag:"آهنگ", title:"آهنگ الفبا", dur:"۲:۱۰"},
+  {emoji:"📖", tag:"داستان", title:"داستان گربه‌ی کوچولو", dur:"۴:۰۰"},
+  {emoji:"😂", tag:"سرگرمی", title:"حیوانات بامزه", dur:"۲:۴۵"},
+  {emoji:"🗣️", tag:"تلفظ", title:"تلفظ کلمات غذا", dur:"۳:۱۵"},
+  {emoji:"🔢", tag:"کلمات", title:"شمردن تا ۱۰", dur:"۲:۳۰"}
+];
+
+/* ------- Achievements (BADGES) ------- */
+const BADGES = [
+  // Learning
+  {id:"first-word", em:"🥇", title:"اولین کلمه", desc:"اولین کلمه‌ات رو یاد گرفتی", xp:20, cat:"learning"},
+  {id:"ten-words", em:"📚", title:"۱۰ کلمه", desc:"۱۰ تا کلمه یاد گرفتی", xp:30, cat:"learning"},
+  {id:"fifty-words", em:"📗", title:"۵۰ کلمه", desc:"۵۰ تا کلمه یاد گرفتی", xp:60, cat:"learning"},
+  {id:"hundred-words", em:"📘", title:"۱۰۰ کلمه", desc:"۱۰۰ تا کلمه یاد گرفتی", xp:100, cat:"learning"},
+  {id:"vocab-master", em:"🧠", title:"استاد واژگان", desc:"تمام کلمه‌های موجود رو یاد گرفتی", xp:200, cat:"learning", secret:true},
+  {id:"color-master", em:"🎨", title:"استاد رنگ‌ها", desc:"همه رنگ‌ها رو یاد گرفتی", xp:40, cat:"learning"},
+  {id:"animal-friend", em:"🐾", title:"دوست حیوانات", desc:"همه حیوانات رو یاد گرفتی", xp:40, cat:"learning"},
+  {id:"number-champ", em:"🔢", title:"قهرمان اعداد", desc:"همه اعداد رو یاد گرفتی", xp:40, cat:"learning"},
+  // Games
+  {id:"first-game", em:"🎮", title:"اولین بازی", desc:"اولین بازی‌ات رو تموم کردی", xp:20, cat:"game"},
+  {id:"game-pro", em:"🕹️", title:"بازی‌باز حرفه‌ای", desc:"۳ بازی رو تموم کردی", xp:40, cat:"game"},
+  {id:"game-master", em:"🏅", title:"استاد بازی", desc:"۱۰ بازی رو تموم کردی", xp:80, cat:"game"},
+  // Levels
+  {id:"level-3", em:"🚀", title:"به سطح ۳ رسیدی", desc:"سطح ۳ رو باز کردی", xp:50, cat:"level"},
+  {id:"level-5", em:"🌟", title:"به سطح ۵ رسیدی", desc:"سطح ۵ رو باز کردی", xp:70, cat:"level"},
+  {id:"level-10", em:"🏆", title:"به سطح ۱۰ رسیدی", desc:"سطح ۱۰ رو باز کردی", xp:120, cat:"level"},
+  {id:"level-15", em:"👑", title:"استاد KoodakEnglish", desc:"به بالاترین سطح رسیدی", xp:250, cat:"level"},
+  // Exam
+  {id:"first-exam", em:"📝", title:"اولین آزمون", desc:"اولین آزمونت رو دادی", xp:30, cat:"exam"},
+  {id:"exam-pass", em:"✅", title:"قبولی در آزمون", desc:"یه آزمون رو قبول شدی", xp:40, cat:"exam"},
+  {id:"exam-80", em:"🌟", title:"نمره بالای ۸۰", desc:"توی یه آزمون بالای ۸۰٪ گرفتی", xp:60, cat:"exam"},
+  {id:"exam-90", em:"💎", title:"نمره بالای ۹۰", desc:"توی یه آزمون بالای ۹۰٪ گرفتی", xp:80, cat:"exam"},
+  {id:"exam-perfect", em:"🏆", title:"نمره کامل", desc:"۱۰۰٪ توی یه آزمون گرفتی", xp:150, cat:"exam"},
+  // Grammar
+  {id:"grammar-first", em:"📘", title:"اولین درس گرامر", desc:"اولین درس گرامرت رو تموم کردی", xp:20, cat:"grammar"},
+  {id:"grammar-10", em:"📚", title:"۱۰ مفهوم گرامری", desc:"۱۰ تا درس گرامر یاد گرفتی", xp:60, cat:"grammar"},
+  {id:"grammar-explorer", em:"🧩", title:"کاوشگر گرامر", desc:"همه درس‌های گرامر رو تموم کردی", xp:100, cat:"grammar", secret:true},
+  // Story
+  {id:"story-first", em:"📖", title:"اولین داستان", desc:"اولین داستانت رو خوندی", xp:20, cat:"story"},
+  {id:"story-5", em:"📗", title:"۵ داستان", desc:"۵ تا داستان خوندی", xp:50, cat:"story"},
+  {id:"story-10", em:"📕", title:"۱۰ داستان", desc:"۱۰ تا داستان خوندی", xp:90, cat:"story"},
+  {id:"story-explorer", em:"🗺️", title:"کاوشگر داستان", desc:"یه داستان مخفی رو باز کردی", xp:60, cat:"story", secret:true},
+  // Streak
+  {id:"streak-3", em:"🔥", title:"۳ روز پشت‌سرهم", desc:"۳ روز متوالی تمرین کردی", xp:30, cat:"streak"},
+  {id:"streak-7", em:"🔥", title:"۷ روز پشت‌سرهم", desc:"یک هفته‌ی کامل تمرین کردی", xp:60, cat:"streak"},
+  {id:"streak-14", em:"🔥", title:"۱۴ روز پشت‌سرهم", desc:"دو هفته‌ی کامل تمرین کردی", xp:100, cat:"streak"},
+  {id:"streak-30", em:"🔥", title:"۳۰ روز پشت‌سرهم", desc:"یک ماه کامل تمرین کردی", xp:200, cat:"streak"},
+  // Exploration
+  {id:"explore-5", em:"🌎", title:"کاوش ۵ موضوع", desc:"۵ تا موضوع رو باز کردی", xp:30, cat:"explore"},
+  {id:"explorer", em:"🧭", title:"English Explorer", desc:"همه موضوعات یادگیری رو باز کردی", xp:80, cat:"explore"},
+  {id:"night-owl", em:"🦉", title:"کاوشگر شبانه", desc:"🔒 یک دستاورد مخفی...", xp:50, cat:"explore", secret:true}
+];
+
+/* ------- Levels ------- */
+const LEVEL_DEFS = [
+  {id:1, name:"کاوشگر کوچولو", requiredXP:0},
+  {id:2, name:"شروع‌کننده کلمات", requiredXP:120},
+  {id:3, name:"کاوشگر کلمات", requiredXP:260},
+  {id:4, name:"سازنده جمله", requiredXP:430},
+  {id:5, name:"ماجراجوی انگلیسی", requiredXP:620, reqAchievements:3},
+  {id:6, name:"شروع‌کننده گرامر", requiredXP:830},
+  {id:7, name:"کاوشگر گرامر", requiredXP:1060},
+  {id:8, name:"شروع‌کننده مکالمه", requiredXP:1320},
+  {id:9, name:"English Explorer", requiredXP:1600, reqAchievements:8},
+  {id:10, name:"استاد انگلیسی", requiredXP:1900},
+  {id:11, name:"کاوشگر پیشرفته", requiredXP:2220},
+  {id:12, name:"قهرمان انگلیسی", requiredXP:2560},
+  {id:13, name:"قهرمان زبان", requiredXP:2920},
+  {id:14, name:"متخصص انگلیسی", requiredXP:3300},
+  {id:15, name:"استاد KoodakEnglish", requiredXP:3700}
+];
+const MILESTONE_EXAMS = [3,6,9,12,15];
+
+/* ------- Sentences (for sentence-builder game & exams) ------- */
+const SENTENCES = [
+  {id:"s1", levelReq:1, en:["I","am","happy"], fa:"من خوشحالم."},
+  {id:"s2", levelReq:1, en:["This","is","a","cat"], fa:"این یک گربه است."},
+  {id:"s3", levelReq:2, en:["I","like","apples"], fa:"من سیب دوست دارم."},
+  {id:"s4", levelReq:2, en:["I","have","a","blue","ball"], fa:"من یک توپ آبی دارم."},
+  {id:"s5", levelReq:4, en:["My","dog","is","very","happy"], fa:"سگ من خیلی خوشحاله."},
+  {id:"s6", levelReq:4, en:["I","like","playing","football"], fa:"من فوتبال بازی کردن رو دوست دارم."},
+  {id:"s7", levelReq:6, en:["She","doesn't","like","cold","weather"], fa:"اون هوای سرد رو دوست نداره."},
+  {id:"s8", levelReq:6, en:["I","went","to","the","park","yesterday"], fa:"من دیروز به پارک رفتم."},
+  {id:"s9", levelReq:8, en:["I","usually","play","football","after","school"], fa:"من معمولا بعد از مدرسه فوتبال بازی می‌کنم."}
+];
+
+/* ------- Grammar lessons ------- */
+const GRAMMAR = [
+  {id:"g1", tier:"beginner", levelReq:1, titleFa:"من، تو، او", titleEn:"I / You / He / She / It",
+    explain:"از این کلمات برای اشاره به خودمون یا دیگران استفاده می‌کنیم.",
+    example:{en:"I am Ali. She is happy.", fa:"من علی هستم. او خوشحاله."},
+    practice:{q:"کدوم جمله درسته؟", options:["He am happy","He is happy","He are happy"], correct:1}},
+  {id:"g2", tier:"beginner", levelReq:1, titleFa:"am / is / are", titleEn:"am / is / are",
+    explain:"برای I از am، برای he/she/it از is، و برای you/we/they از are استفاده می‌کنیم.",
+    example:{en:"They are students.", fa:"اونا دانش‌آموزن."},
+    practice:{q:"جای خالی رو پر کن: We ___ friends.", options:["is","am","are"], correct:2}},
+  {id:"g3", tier:"beginner", levelReq:2, titleFa:"جمع اسم‌ها", titleEn:"Plural nouns",
+    explain:"معمولاً برای جمع بستن اسم، به آخرش s اضافه می‌کنیم.",
+    example:{en:"one cat → two cats", fa:"یک گربه ← دو گربه"},
+    practice:{q:"جمع book چیه؟", options:["bookes","books","bookies"], correct:1}},
+  {id:"g4", tier:"beginner", levelReq:2, titleFa:"این / آن", titleEn:"This / That",
+    explain:"this برای چیزهای نزدیک و that برای چیزهای دور استفاده می‌شه.",
+    example:{en:"This is my book. That is your car.", fa:"این کتاب منه. اون ماشین توئه."},
+    practice:{q:"برای چیز دور از کدوم استفاده می‌کنیم؟", options:["this","that","these"], correct:1}},
+  {id:"g5", tier:"intermediate", levelReq:6, titleFa:"زمان حال ساده", titleEn:"Present Simple",
+    explain:"برای کارهای همیشگی و عادت‌ها از زمان حال ساده استفاده می‌کنیم.",
+    example:{en:"I play football every day.", fa:"من هر روز فوتبال بازی می‌کنم."},
+    practice:{q:"کدوم جمله درسته؟", options:["She play tennis","She plays tennis","She playing tennis"], correct:1}},
+  {id:"g6", tier:"intermediate", levelReq:6, titleFa:"زمان حال استمراری", titleEn:"Present Continuous",
+    explain:"برای کاری که همین الان داره اتفاق می‌افته از is/am/are + فعل‌ing استفاده می‌کنیم.",
+    example:{en:"I am eating breakfast now.", fa:"من الان دارم صبحونه می‌خورم."},
+    practice:{q:"جای خالی: She ___ swimming.", options:["is","do","has"], correct:0}},
+  {id:"g7", tier:"intermediate", levelReq:7, titleFa:"می‌تونم / نمی‌تونم", titleEn:"Can / Can't",
+    explain:"از can برای توانایی و can't برای نداشتن توانایی استفاده می‌کنیم.",
+    example:{en:"I can swim. I can't fly.", fa:"من می‌تونم شنا کنم. نمی‌تونم پرواز کنم."},
+    practice:{q:"کدوم درسته؟", options:["I can to swim","I can swim","I cans swim"], correct:1}},
+  {id:"g8", tier:"advanced", levelReq:10, titleFa:"زمان گذشته ساده", titleEn:"Past Simple",
+    explain:"برای کارهایی که در گذشته تموم شدن از past simple استفاده می‌کنیم.",
+    example:{en:"I went to the park yesterday.", fa:"من دیروز به پارک رفتم."},
+    practice:{q:"گذشته‌ی go چیه؟", options:["goed","went","going"], correct:1}},
+  {id:"g9", tier:"advanced", levelReq:11, titleFa:"صفت تفضیلی", titleEn:"Comparatives",
+    explain:"برای مقایسه دو چیز از تر (er) استفاده می‌کنیم.",
+    example:{en:"This is bigger than that.", fa:"این از اون بزرگ‌تره."},
+    practice:{q:"تفضیلی big چیه؟", options:["biger","bigger","more big"], correct:1}}
+];
+
+/* ------- Conversations ------- */
+const CONVERSATIONS = [
+  {id:"c1", levelReq:1, emoji:"👋", titleFa:"سلام و آشنایی", npc:"🦊",
+    steps:[
+      {line:"Hello! What's your name?", options:[{text:"My name is Ali.",correct:true},{text:"I'm hungry.",correct:false},{text:"It's blue.",correct:false}]},
+      {line:"Nice to meet you! How are you?", options:[{text:"I am fine, thank you!",correct:true},{text:"It's a car.",correct:false},{text:"Two apples.",correct:false}]},
+      {line:"Great! See you later!", options:[{text:"Goodbye! See you!",correct:true},{text:"My name is a cat.",correct:false}]}
+    ]},
+  {id:"c2", levelReq:2, emoji:"🏫", titleFa:"در مدرسه", npc:"👩‍🏫",
+    steps:[
+      {line:"Hello, teacher!", options:[{text:"Can I ask a question?",correct:true},{text:"I like pizza.",correct:false},{text:"It is raining.",correct:false}]},
+      {line:"Of course! What is your question?", options:[{text:"I don't understand this word.",correct:true},{text:"My cat is orange.",correct:false}]},
+      {line:"No problem, let's practice together.", options:[{text:"Thank you very much!",correct:true},{text:"Goodbye forever.",correct:false}]}
+    ]},
+  {id:"c3", levelReq:3, emoji:"🛍️", titleFa:"در مغازه", npc:"🧑‍💼",
+    steps:[
+      {line:"Hello! How can I help you?", options:[{text:"How much is this?",correct:true},{text:"I am a dog.",correct:false}]},
+      {line:"It's five dollars.", options:[{text:"I would like this one, please.",correct:true},{text:"The sky is green.",correct:false}]},
+      {line:"Here you go!", options:[{text:"Thank you!",correct:true},{text:"Six elephants.",correct:false}]}
+    ]},
+  {id:"c4", levelReq:5, emoji:"🤝", titleFa:"پیدا کردن دوست جدید", npc:"🧒",
+    steps:[
+      {line:"Hi! What's your name?", options:[{text:"My name is Sara.",correct:true},{text:"It's blue.",correct:false}]},
+      {line:"How old are you?", options:[{text:"I am eight years old.",correct:true},{text:"I like the color red.",correct:false}]},
+      {line:"Do you like football?", options:[{text:"Yes, I love football!",correct:true},{text:"My house is big.",correct:false}]}
+    ]},
+  {id:"c5", levelReq:8, emoji:"🧑‍🍳", titleFa:"در رستوران", npc:"🧑‍🍳",
+    steps:[
+      {line:"Welcome! What would you like to eat?", options:[{text:"I would like a pizza, please.",correct:true},{text:"I am from Iran.",correct:false}]},
+      {line:"Would you like anything to drink?", options:[{text:"Yes, some water please.",correct:true},{text:"The bus is yellow.",correct:false}]},
+      {line:"Your order will be ready soon!", options:[{text:"Thank you so much!",correct:true},{text:"I can't swim.",correct:false}]}
+    ]}
+];
+
+/* ------- World builder plots ------- */
+const BUILDINGS = [
+  {id:"b1", em:"🏠", title:"خانه", levelReq:1, q:{prompt:"این چیه؟", em:"🏠", options:["House","Car","Tree"], correct:0}},
+  {id:"b2", em:"🌳", title:"درخت", levelReq:1, q:{prompt:"این چیه؟", em:"🌳", options:["Flower","Tree","Rock"], correct:1}},
+  {id:"b3", em:"🏫", title:"مدرسه", levelReq:2, q:{prompt:"این چیه؟", em:"🏫", options:["Hospital","Store","School"], correct:2}},
+  {id:"b4", em:"📚", title:"کتابخانه", levelReq:3, q:{prompt:"این چیه؟", em:"📚", options:["Library","Kitchen","Garden"], correct:0}},
+  {id:"b5", em:"🎮", title:"مرکز بازی", levelReq:3, q:{prompt:"این چیه؟", em:"🎮", options:["Phone","Game Center","Clock"], correct:1}},
+  {id:"b6", em:"🚀", title:"موشک", levelReq:5, q:{prompt:"این چیه؟", em:"🚀", options:["Boat","Rocket","Bike"], correct:1}},
+  {id:"b7", em:"🐶", title:"محوطه حیوانات", levelReq:4, q:{prompt:"این چیه؟", em:"🐶", options:["Animal Area","Kitchen","Bridge"], correct:0}},
+  {id:"b8", em:"🌲", title:"جنگل", levelReq:6, q:{prompt:"این چیه؟", em:"🌲", options:["Desert","Forest","Ocean"], correct:1}}
+];
+
+const WEEKLY_CHALLENGE = {
+  title:"چالش این هفته",
+  tasks:[
+    {key:"words", target:15, label:"یاد گرفتن ۱۵ کلمه", em:"📚"},
+    {key:"games", target:3, label:"تموم کردن ۳ بازی", em:"🎮"},
+    {key:"stories", target:2, label:"خوندن ۲ داستان", em:"📖"}
+  ],
+  reward:250
+};
+
+/* ======================= STATE / STORAGE ======================= */
+const STORE_KEY = "koodak_progress_v1";
+function loadState(){
+  let s;
+  try{ s = JSON.parse(localStorage.getItem(STORE_KEY)); }catch(e){ s=null; }
+  if(!s){
+    s = {xp:0, wordsLearned:[], gamesCompleted:0, badges:[], badgeDates:{}, streak:0, lastVisit:null, topicsOpened:[], soundOn:true,
+      missionDoneDate:null, wordsToday:0, examResults:{}, grammarLearned:[], conversationsDone:[], storiesRead:[],
+      weekKey:null, weeklyCounts:{words:0,games:0,stories:0}, weeklyChallengeDoneWeek:null, buildingsBuilt:[]};
+  }
+  // migrate old saves missing new fields
+  s.examResults = s.examResults || {};
+  s.grammarLearned = s.grammarLearned || [];
+  s.conversationsDone = s.conversationsDone || [];
+  s.storiesRead = s.storiesRead || [];
+  s.badgeDates = s.badgeDates || {};
+  s.weeklyCounts = s.weeklyCounts || {words:0,games:0,stories:0};
+  s.buildingsBuilt = s.buildingsBuilt || [];
+  const today = new Date().toDateString();
+  if(s.lastVisit !== today){
+    const y = new Date(); y.setDate(y.getDate()-1);
+    if(s.lastVisit === y.toDateString()){ s.streak = (s.streak||0)+1; }
+    else if(s.lastVisit !== today){ s.streak = s.lastVisit ? 1 : 1; }
+    s.lastVisit = today;
+    s.wordsToday = 0;
+  }
+  // weekly reset
+  const wk = getWeekKey();
+  if(s.weekKey !== wk){
+    s.weekKey = wk;
+    s.weeklyCounts = {words:0,games:0,stories:0};
+  }
+  return s;
+}
+function getWeekKey(){
+  const d = new Date();
+  const onejan = new Date(d.getFullYear(),0,1);
+  const week = Math.ceil((((d - onejan)/86400000) + onejan.getDay()+1)/7);
+  return d.getFullYear()+"-W"+week;
+}
+let state = loadState();
+function saveState(){ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+saveState();
+
+/* ------- Central level computation (respects XP + achievement gates) ------- */
+function computeLevel(){
+  let lvl = 1;
+  for(let i=0;i<LEVEL_DEFS.length;i++){
+    const L = LEVEL_DEFS[i];
+    const achOk = !L.reqAchievements || state.badges.length >= L.reqAchievements;
+    if(state.xp >= L.requiredXP && achOk){ lvl = L.id; } else break;
+  }
+  return lvl;
+}
+function levelFromXp(){ return computeLevel(); }
+function xpForNextLevel(){
+  const lvl = computeLevel();
+  if(lvl>=LEVEL_DEFS.length) return state.xp;
+  return LEVEL_DEFS[lvl].requiredXP;
+}
+function levelDef(id){ return LEVEL_DEFS.find(l=>l.id===id) || LEVEL_DEFS[0]; }
+function isUnlockedByLevel(req){ return computeLevel() >= (req||1); }
+
+/* ======================= SOUND (Web Audio, synthesized) ======================= */
+let audioCtx = null;
+function ctx(){ if(!audioCtx){ audioCtx = new (window.AudioContext||window.webkitAudioContext)(); } return audioCtx; }
+function playTone(freqs, dur=0.12, type="sine", gap=0.06){
+  if(!state.soundOn) return;
+  try{
+    const c = ctx();
+    freqs.forEach((f,i)=>{
+      const o = c.createOscillator(); const g = c.createGain();
+      o.type = type; o.frequency.value = f;
+      const start = c.currentTime + i*gap;
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.exponentialRampToValueAtTime(0.16, start+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, start+dur);
+      o.connect(g); g.connect(c.destination);
+      o.start(start); o.stop(start+dur+0.02);
+    });
+  }catch(e){}
+}
+const SND = {
+  click:()=>playTone([520],0.08,"sine"),
+  correct:()=>playTone([523,659,784],0.14,"sine",0.09),
+  wrong:()=>playTone([220,180],0.16,"sawtooth",0.09),
+  xp:()=>playTone([660,880],0.12,"triangle",0.07),
+  levelup:()=>playTone([523,659,784,1046],0.16,"sine",0.1),
+  open:()=>playTone([440,540],0.09,"sine",0.05)
+};
+
+function speak(text){
+  if(!state.soundOn) return;
+  if(!("speechSynthesis" in window)){ toast("مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند"); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; u.rate = 0.85; u.pitch = 1.05;
+  window.speechSynthesis.speak(u);
+}
+
+/* ======================= TOAST ======================= */
+let toastTimer;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> el.classList.remove("show"), 2600);
+}
+
+/* ======================= CONFETTI ======================= */
+function confettiBurst(x, y){
+  const colors = ["#FF8F6B","#FFD166","#8D7BF0","#5FCB8F","#4FB6E8","#FF9ECF"];
+  for(let i=0;i<18;i++){
+    const p = document.createElement("div");
+    p.className = "confetti-piece";
+    const size = 6 + Math.random()*6;
+    p.style.width = size+"px"; p.style.height = (size*0.6)+"px";
+    p.style.background = colors[i % colors.length];
+    p.style.left = (x || window.innerWidth/2) + (Math.random()*160-80) + "px";
+    p.style.top = (y || window.innerHeight/2) + "px";
+    document.body.appendChild(p);
+    const dx = (Math.random()*260-130);
+    const dur = 900 + Math.random()*600;
+    const rot = Math.random()*720-360;
+    p.animate([
+      {transform:`translate(0,0) rotate(0deg)`, opacity:1},
+      {transform:`translate(${dx}px, ${420+Math.random()*160}px) rotate(${rot}deg)`, opacity:0}
+    ], {duration:dur, easing:"cubic-bezier(.22,1,.36,1)"});
+    setTimeout(()=>p.remove(), dur+50);
+  }
+}
+
+/* ======================= XP / BADGES / LEVEL-UP ======================= */
+function addXp(amount, msg){
+  const prevLevel = computeLevel();
+  state.xp += amount;
+  saveState();
+  checkAllAchievements();
+  const newLevel = computeLevel();
+  renderProgress();
+  if(typeof renderNextCard==="function") renderNextCard();
+  if(typeof renderLevelMap==="function") renderLevelMap();
+  SND.xp();
+  if(msg) toast(msg + " (+"+amount+" XP)");
+  if(newLevel > prevLevel){
+    setTimeout(()=> triggerLevelUp(prevLevel, newLevel), 400);
+  }
+}
+function triggerLevelUp(prevLevel, newLevel){
+  SND.levelup(); confettiBurst();
+  const L = levelDef(newLevel);
+  document.getElementById("luName").textContent = "سطح "+newLevel+" — "+L.name;
+  // gather newly unlocked content across all data types
+  const unlocked = [];
+  TOPICS.filter(t=>t.levelReq===newLevel).forEach(t=> unlocked.push("🌎 موضوع «"+t.fa+"» باز شد"));
+  GAME_DEFS.filter(g=>g.levelReq===newLevel).forEach(g=> unlocked.push("🎮 بازی «"+g.title+"» باز شد"));
+  STORIES.filter(s=>s.levelReq===newLevel).forEach(s=> unlocked.push("📖 داستان «"+s.titleFa+"» باز شد"));
+  GRAMMAR.filter(g=>g.levelReq===newLevel).forEach(g=> unlocked.push("📚 درس گرامر «"+g.titleFa+"» باز شد"));
+  CONVERSATIONS.filter(c=>c.levelReq===newLevel).forEach(c=> unlocked.push("🗣️ مکالمه «"+c.titleFa+"» باز شد"));
+  if(MILESTONE_EXAMS.includes(newLevel)) unlocked.push("📝 آزمون سطح "+newLevel+" آماده‌ست");
+  const ul = document.getElementById("luUnlocks");
+  ul.innerHTML = unlocked.length? unlocked.map(u=>`<div>${u}</div>`).join("") : `<div>به کاوش ادامه بده تا محتوای بیشتری باز بشه! 🚀</div>`;
+  document.getElementById("levelUpOverlay").classList.add("open");
+  renderAllLockDependent();
+}
+function awardBadge(id){
+  if(state.badges.includes(id)) return;
+  state.badges.push(id);
+  state.badgeDates[id] = new Date().toISOString();
+  saveState();
+  const prevLevel = computeLevel();
+  renderProgress();
+  const b = BADGES.find(x=>x.id===id);
+  setTimeout(()=>{ toast("🏆 نشان جدید: "+(b?b.title:id)+"!"); confettiBurst(); }, 200);
+  if(b && b.xp) { state.xp += b.xp; saveState(); }
+  const newLevel = computeLevel();
+  if(newLevel > prevLevel){ setTimeout(()=> triggerLevelUp(prevLevel,newLevel), 700); }
+  renderAchievementsFull();
+}
+function checkTopicBadges(topicId){
+  const topic = TOPICS.find(t=>t.id===topicId);
+  if(!topic) return;
+  const allLearned = topic.words.every(w=> state.wordsLearned.includes(topicId+":"+w.word));
+  if(allLearned){
+    if(topicId==="colors") awardBadge("color-master");
+    if(topicId==="animals") awardBadge("animal-friend");
+    if(topicId==="numbers") awardBadge("number-champ");
+  }
+}
+function checkExplorerBadge(){
+  if(TOPICS.every(t=> state.topicsOpened.includes(t.id))) awardBadge("explorer");
+  if(state.topicsOpened.length>=5) awardBadge("explore-5");
+}
+function totalWordsAvailable(){ return TOPICS.reduce((n,t)=> n+t.words.length, 0); }
+/* Central achievement re-checker: call after any progress-affecting action */
+function checkAllAchievements(){
+  const w = state.wordsLearned.length;
+  if(w>=1) awardBadge("first-word");
+  if(w>=10) awardBadge("ten-words");
+  if(w>=50) awardBadge("fifty-words");
+  if(w>=100) awardBadge("hundred-words");
+  if(w>=totalWordsAvailable()) awardBadge("vocab-master");
+  const g = state.gamesCompleted||0;
+  if(g>=1) awardBadge("first-game");
+  if(g>=3) awardBadge("game-pro");
+  if(g>=10) awardBadge("game-master");
+  const lvl = computeLevel();
+  if(lvl>=3) awardBadge("level-3");
+  if(lvl>=5) awardBadge("level-5");
+  if(lvl>=10) awardBadge("level-10");
+  if(lvl>=15) awardBadge("level-15");
+  if(lvl>=10) awardBadge("night-owl");
+  const gl = state.grammarLearned.length;
+  if(gl>=1) awardBadge("grammar-first");
+  if(gl>=10) awardBadge("grammar-10");
+  if(gl>=GRAMMAR.length) awardBadge("grammar-explorer");
+  const sr = state.storiesRead.length;
+  if(sr>=1) awardBadge("story-first");
+  if(sr>=5) awardBadge("story-5");
+  if(sr>=10) awardBadge("story-10");
+  if(STORIES.some(s=> s.levelReq>=8 && state.storiesRead.includes(s.id))) awardBadge("story-explorer");
+  const st = state.streak||0;
+  if(st>=3) awardBadge("streak-3");
+  if(st>=7) awardBadge("streak-7");
+  if(st>=14) awardBadge("streak-14");
+  if(st>=30) awardBadge("streak-30");
+  const examVals = Object.values(state.examResults||{});
+  if(examVals.length>=1) awardBadge("first-exam");
+  if(examVals.some(e=>e.score>=70)) awardBadge("exam-pass");
+  if(examVals.some(e=>e.score>=80)) awardBadge("exam-80");
+  if(examVals.some(e=>e.score>=90)) awardBadge("exam-90");
+  if(examVals.some(e=>e.score>=100)) awardBadge("exam-perfect");
+}
+
+/* ======================= MARK WORD LEARNED ======================= */
+function markWordLearned(topicId, word){
+  const key = topicId+":"+word;
+  if(state.wordsLearned.includes(key)) return false;
+  state.wordsLearned.push(key);
+  state.wordsToday = (state.wordsToday||0)+1;
+  state.weeklyCounts.words = (state.weeklyCounts.words||0)+1;
+  saveState();
+  addXp(5, "کلمه یاد گرفتی");
+  checkTopicBadges(topicId);
+  checkMission();
+  checkWeeklyChallenge();
+  return true;
+}
+
+/* ======================= MISSION ======================= */
+const MISSIONS = [
+  {text:"۵ کلمه جدید یاد بگیر", emoji:"📚", check:()=> state.wordsToday>=5},
+  {text:"یک بازی انجام بده", emoji:"🎮", check:()=> state._gameToday===true},
+  {text:"یک داستان بخوان", emoji:"📖", check:()=> state._storyToday===true},
+  {text:"یک درس گرامر تموم کن", emoji:"📘", check:()=> state._grammarToday===true},
+  {text:"یک مکالمه رو کامل کن", emoji:"🗣️", check:()=> state._convoToday===true}
+];
+function todayMissionIndex(){
+  const d = new Date();
+  const dayNum = Math.floor(d.getTime()/86400000);
+  return dayNum % MISSIONS.length;
+}
+function renderMission(){
+  const idx = todayMissionIndex();
+  const m = MISSIONS[idx];
+  const done = state.missionDoneDate === new Date().toDateString();
+  const card = document.getElementById("missionCard");
+  card.innerHTML = `
+    <div class="mission-emoji">${m.emoji}</div>
+    <div class="mission-text">
+      <div class="mission-title">${m.text}</div>
+      <div class="mission-sub">مأموریت امروز رو کامل کن و ${!done? "۵۰ XP" : "امتیازت رو"} بگیر</div>
+    </div>
+    <div class="mission-check ${done?'done':''}">${done? '✅ انجام شد' : 'در انتظار'}</div>
+  `;
+}
+function checkMission(){
+  const idx = todayMissionIndex();
+  const m = MISSIONS[idx];
+  const todayStr = new Date().toDateString();
+  if(state.missionDoneDate === todayStr) { renderMission(); return; }
+  if(m.check()){
+    state.missionDoneDate = todayStr;
+    saveState();
+    addXp(50, "مأموریت امروز انجام شد");
+  }
+  renderMission();
+}
+
+/* ======================= WEEKLY CHALLENGE ======================= */
+function renderWeeklyCard(){
+  const done = state.weeklyChallengeDoneWeek === state.weekKey;
+  const card = document.getElementById("weeklyCard");
+  card.innerHTML = `
+    <div class="weekly-title">🎯 ${WEEKLY_CHALLENGE.title} ${done? '<span style="font-size:12px;">✅ کامل شد</span>':''}</div>
+    ${WEEKLY_CHALLENGE.tasks.map(t=>{
+      const cur = Math.min(t.target, state.weeklyCounts[t.key]||0);
+      const isDone = cur>=t.target;
+      return `<div class="weekly-task ${isDone?'done':''}"><span class="wt-check">${isDone?'✓':''}</span>${t.em} ${t.label} (${cur}/${t.target})</div>`;
+    }).join("")}
+    <div class="weekly-reward">🏆 جایزه: نشان کاوشگر هفته + ${WEEKLY_CHALLENGE.reward} XP</div>
+  `;
+}
+function checkWeeklyChallenge(){
+  if(state.weeklyChallengeDoneWeek === state.weekKey){ renderWeeklyCard(); return; }
+  const allDone = WEEKLY_CHALLENGE.tasks.every(t=> (state.weeklyCounts[t.key]||0) >= t.target);
+  if(allDone){
+    state.weeklyChallengeDoneWeek = state.weekKey;
+    saveState();
+    addXp(WEEKLY_CHALLENGE.reward, "چالش هفته کامل شد");
+  }
+  renderWeeklyCard();
+}
+
+/* ======================= LOCK / REQUIREMENT HELPERS ======================= */
+const reqModal = document.getElementById("reqModal");
+function showReqInfo(levelReq, itemName){
+  const need = Math.max(0, levelDef(levelReq).requiredXP - state.xp);
+  document.getElementById("reqBox").innerHTML = `
+    <div style="font-size:38px;">🔒</div>
+    <div style="font-weight:800; font-size:16px; margin:10px 0 6px;">${itemName} در سطح ${levelReq} باز می‌شه</div>
+    <div style="font-size:13px; color:var(--ink-soft); margin-bottom:16px;">${need>0? need+" XP دیگه لازم داری" : "به‌زودی باز می‌شه!"}</div>
+    <button class="btn btn-primary" id="reqOkBtn" style="width:100%; justify-content:center;">فهمیدم</button>
+  `;
+  reqModal.classList.add("open");
+  document.getElementById("reqOkBtn").addEventListener("click", ()=> reqModal.classList.remove("open"));
+  SND.wrong();
+}
+reqModal.addEventListener("click", (e)=>{ if(e.target===reqModal) reqModal.classList.remove("open"); });
+
+function lockOverlayHtml(levelReq){
+  return `<div class="lock-overlay"><span class="lock-icon">🔒</span><span class="lock-req">Level ${levelReq}</span></div>`;
+}
+
+/* ======================= RENDER: TOPICS ======================= */
+const topicGrid = document.getElementById("topicGrid");
+function topicLearnedCount(t){ return t.words.filter(w=> state.wordsLearned.includes(t.id+":"+w.word)).length; }
+function renderTopics(){
+  const lvl = computeLevel();
+  topicGrid.innerHTML = TOPICS.map(t=>{
+    const learned = topicLearnedCount(t);
+    const pct = Math.round((learned/t.words.length)*100);
+    const locked = t.levelReq > lvl;
+    return `<button class="topic-card lockable" style="background:${t.bg}" data-topic="${t.id}" data-locked="${locked}" aria-label="${t.fa}">
+      ${locked? lockOverlayHtml(t.levelReq) : ''}
+      <span class="topic-emoji">${t.emoji}</span>
+      <div class="topic-name-fa">${t.fa}</div>
+      <div class="topic-name-en en">${t.en}</div>
+      <div class="topic-progress"><div class="topic-progress-fill" style="width:${pct}%"></div></div>
+    </button>`;
+  }).join("");
+  topicGrid.querySelectorAll(".topic-card").forEach(card=>{
+    card.addEventListener("click", ()=>{
+      if(card.dataset.locked==="true"){ const t=TOPICS.find(x=>x.id===card.dataset.topic); showReqInfo(t.levelReq, t.fa); return; }
+      openVocabModal(card.dataset.topic);
+    });
+  });
+}
+
+/* ======================= RENDER: CONTINUE LEARNING ======================= */
+function renderContinue(){
+  const row = document.getElementById("continueRow");
+  const active = TOPICS.map(t=>({t, learned:topicLearnedCount(t)})).filter(x=>x.learned>0 && x.learned<x.t.words.length);
+  const list = active.length? active : TOPICS.slice(0,3).map(t=>({t, learned:0}));
+  row.innerHTML = list.map(({t,learned})=>{
+    const pct = Math.round((learned/t.words.length)*100);
+    return `<div class="continue-card">
+      <div class="cc-top"><div class="cc-icon" style="background:${t.bg}">${t.emoji}</div><div class="cc-title">${t.fa}</div></div>
+      <div class="cc-bar-track"><div class="cc-bar-fill" style="width:${pct}%"></div></div>
+      <button class="cc-btn" data-topic="${t.id}">${pct}% — ادامه یادگیری</button>
+    </div>`;
+  }).join("");
+  row.querySelectorAll(".cc-btn").forEach(b=> b.addEventListener("click", ()=> openVocabModal(b.dataset.topic)));
+}
+
+/* ======================= VOCAB MODAL ======================= */
+const vocabModal = document.getElementById("vocabModal");
+let currentTopic = null;
+function openVocabModal(topicId){
+  const t = TOPICS.find(x=>x.id===topicId);
+  if(!t) return;
+  if(t.levelReq > computeLevel()){ showReqInfo(t.levelReq, t.fa); return; }
+  currentTopic = t;
+  if(!state.topicsOpened.includes(topicId)){ state.topicsOpened.push(topicId); saveState(); checkExplorerBadge(); }
+  document.getElementById("modalEmoji").textContent = t.emoji;
+  document.getElementById("modalTitle").textContent = t.fa + " ";
+  document.getElementById("modalTitle").insertAdjacentHTML("beforeend", `<span class="en" style="font-size:13px;color:var(--ink-faint);font-weight:700;"> ${t.en}</span>`);
+  renderVocabList(t);
+  document.getElementById("wordStage").classList.remove("show");
+  vocabModal.classList.add("open");
+  SND.open();
+}
+function renderVocabList(t){
+  const list = document.getElementById("vocabList");
+  list.innerHTML = t.words.map(w=>{
+    const key = t.id+":"+w.word;
+    const learned = state.wordsLearned.includes(key);
+    return `<div class="vocab-item ${learned?'learned':''}" data-word="${w.word}" tabindex="0">
+      ${learned? '<span class="learned-badge">✅</span>':''}
+      <div class="em">${w.em}</div>
+      <div class="word en">${w.word}</div>
+      <div class="translation">${w.fa}</div>
+      <div class="speak">🔊 تلفظ</div>
+    </div>`;
+  }).join("");
+  list.querySelectorAll(".vocab-item").forEach(el=>{
+    el.addEventListener("click", ()=> showWordStage(t, t.words.find(w=>w.word===el.dataset.word)));
+  });
+}
+function showWordStage(t, w){
+  const stage = document.getElementById("wordStage");
+  document.getElementById("wsEm").textContent = w.em;
+  document.getElementById("wsWord").textContent = w.word.toUpperCase();
+  document.getElementById("wsIpa").textContent = w.ipa;
+  document.getElementById("wsFa").textContent = w.fa;
+  stage.classList.add("show");
+  const key = t.id+":"+w.word;
+  const already = state.wordsLearned.includes(key);
+  const learnBtn = document.getElementById("wsLearn");
+  learnBtn.disabled = already;
+  learnBtn.textContent = already? "یاد گرفته شد ✅" : "یاد گرفتم! ✅";
+  document.getElementById("wsSpeak").onclick = ()=>{
+    const btn = document.getElementById("wsSpeak");
+    btn.classList.add("playing");
+    speak(w.word);
+    setTimeout(()=> btn.classList.remove("playing"), 700);
+  };
+  learnBtn.onclick = ()=>{
+    if(markWordLearned(t.id, w.word)){
+      learnBtn.disabled = true; learnBtn.textContent = "یاد گرفته شد ✅";
+      renderVocabList(t); renderTopics(); renderContinue();
+      const rect = learnBtn.getBoundingClientRect();
+      confettiBurst(rect.left, rect.top);
+    }
+  };
+  stage.scrollIntoView({behavior:"smooth", block:"nearest"});
+  speak(w.word);
+}
+document.getElementById("closeVocabModal").addEventListener("click", ()=> vocabModal.classList.remove("open"));
+vocabModal.addEventListener("click", (e)=>{ if(e.target===vocabModal) vocabModal.classList.remove("open"); });
+
+/* ======================= VIDEOS ======================= */
+function renderVideos(){
+  const grid = document.getElementById("videoGrid");
+  const bgs = ["linear-gradient(135deg,#FFEFE8,#FFF7E0)","linear-gradient(135deg,#EAF7FF,#EEF0FF)","linear-gradient(135deg,#F0EEFF,#FFF0F5)"];
+  grid.innerHTML = VIDEOS.map((v,i)=>`
+    <div class="video-card" data-idx="${i}">
+      <div class="video-thumb" style="background:${bgs[i%bgs.length]}">
+        ${v.emoji}
+        <div class="video-play"><div class="play-btn">▶️</div></div>
+      </div>
+      <div class="video-info">
+        <span class="video-tag">${v.tag}</span>
+        <div class="video-title">${v.title}</div>
+        <div class="video-dur">⏱ ${v.dur}</div>
+      </div>
+    </div>`).join("");
+  grid.querySelectorAll(".video-card").forEach(c=> c.addEventListener("click", ()=>{ SND.click(); toast("🎬 این ویدیو به‌زودی اضافه می‌شه!"); }));
+}
+
+/* ======================= STORIES ======================= */
+function renderStories(){
+  const grid = document.getElementById("storyGrid");
+  const lvl = computeLevel();
+  const bgs = ["linear-gradient(135deg,#EAF7FF,#F0EEFF)","linear-gradient(135deg,#FFF3E8,#FFEFF6)","linear-gradient(135deg,#EAFBF0,#EAF7FF)"];
+  grid.innerHTML = STORIES.map((s,i)=>{
+    const locked = s.levelReq > lvl;
+    return `<div class="story-card lockable" data-idx="${i}" data-locked="${locked}">
+      <div class="story-cover" style="background:${bgs[i%bgs.length]}">${locked? lockOverlayHtml(s.levelReq) : ''}${s.emoji}</div>
+      <div class="story-info">
+        <div class="story-title-fa">${s.titleFa} ${state.storiesRead.includes(s.id)?'✅':''}</div>
+        <div class="story-meta"><span>📶 ${s.diff}</span><span>⏱ ${s.time}</span><span>${s.category}</span></div>
+      </div>
+    </div>`;
+  }).join("");
+  grid.querySelectorAll(".story-card").forEach(c=> c.addEventListener("click", ()=>{
+    if(c.dataset.locked==="true"){ const s=STORIES[parseInt(c.dataset.idx)]; showReqInfo(s.levelReq, s.titleFa); return; }
+    openStory(parseInt(c.dataset.idx));
+  }));
+}
+const storyModal = document.getElementById("storyModal");
+let storyIdx = 0, pageIdx = 0;
+function openStory(idx){
+  storyIdx = idx; pageIdx = 0;
+  renderStoryPage();
+  storyModal.classList.add("open");
+  SND.open();
+}
+function renderStoryPage(){
+  const s = STORIES[storyIdx];
+  const p = s.pages[pageIdx];
+  document.getElementById("readerEm").textContent = p.em;
+  document.getElementById("readerEn").textContent = p.en;
+  document.getElementById("readerFa").textContent = p.fa;
+  const dots = document.getElementById("readerDots");
+  dots.innerHTML = s.pages.map((_,i)=>`<div class="reader-dot ${i===pageIdx?'active':''}"></div>`).join("");
+  document.getElementById("readerPrev").style.visibility = pageIdx===0? "hidden":"visible";
+  const isLast = pageIdx === s.pages.length-1;
+  document.getElementById("readerNext").textContent = isLast? "پایان داستان ✅" : "بعدی ←";
+  speak(p.en);
+}
+document.getElementById("readerNext").addEventListener("click", ()=>{
+  const s = STORIES[storyIdx];
+  if(pageIdx < s.pages.length-1){ pageIdx++; renderStoryPage(); SND.click(); }
+  else{
+    storyModal.classList.remove("open");
+    state._storyToday = true;
+    if(!state.storiesRead.includes(s.id)){
+      state.storiesRead.push(s.id);
+      state.weeklyCounts.stories = (state.weeklyCounts.stories||0)+1;
+    }
+    saveState();
+    addXp(20, "داستان تموم شد");
+    checkMission();
+    checkWeeklyChallenge();
+    checkAllAchievements();
+    renderStories();
+    confettiBurst();
+  }
+});
+document.getElementById("readerPrev").addEventListener("click", ()=>{ if(pageIdx>0){ pageIdx--; renderStoryPage(); SND.click(); } });
+document.getElementById("readerSpeak").addEventListener("click", ()=> speak(STORIES[storyIdx].pages[pageIdx].en));
+document.getElementById("closeStoryModal").addEventListener("click", ()=> storyModal.classList.remove("open"));
+storyModal.addEventListener("click", (e)=>{ if(e.target===storyModal) storyModal.classList.remove("open"); });
+
+/* ======================= GAMES ======================= */
+const GAME_DEFS = [
+  {id:"find", icon:"🔍", bg:"linear-gradient(135deg,#FFE8D6,#FFD6D6)", title:"پیدا کن!", desc:"یه چیز رو با گوش دادن و دیدن پیدا کن.", levelReq:1},
+  {id:"color", icon:"🎨", bg:"linear-gradient(135deg,#E0F3FF,#E6E1FD)", title:"چالش رنگ‌ها", desc:"رنگ درست رو با شنیدن اسمش پیدا کن.", levelReq:1},
+  {id:"memory", icon:"🧠", bg:"linear-gradient(135deg,#E7FBEF,#FFF3D6)", title:"کارت حافظه", desc:"کارت‌ها رو برگردون و جفت‌هاشون رو پیدا کن.", levelReq:2},
+  {id:"sentence", icon:"🧩", bg:"linear-gradient(135deg,#F0EEFF,#E8FAFF)", title:"جمله‌ساز", desc:"کلمه‌ها رو به ترتیب درست بچین.", levelReq:4},
+  {id:"runner", icon:"🏃", bg:"linear-gradient(135deg,#E5F9EE,#E0F3FF)", title:"دونده انگلیسی", desc:"با انتخاب کلمه درست، سریع‌تر بدو!", levelReq:5},
+  {id:"builder", icon:"🏗️", bg:"linear-gradient(135deg,#FFF3D6,#FFE8D6)", title:"سازنده دنیا", desc:"با جواب درست، دنیای کوچیکت رو بساز.", levelReq:7}
+];
+function renderGameGrid(){
+  const grid = document.getElementById("gameGrid");
+  const lvl = computeLevel();
+  grid.innerHTML = GAME_DEFS.map(g=>{
+    const locked = g.levelReq > lvl;
+    return `<div class="game-card lockable" data-game="${g.id}" data-locked="${locked}">
+      ${locked? lockOverlayHtml(g.levelReq) : ''}
+      <div class="game-icon" style="background:${g.bg}">${g.icon}</div>
+      <div class="game-title">${g.title}</div>
+      <div class="game-desc">${g.desc}</div>
+      <div class="game-play">بازی کن ▶</div>
+    </div>`;
+  }).join("");
+  grid.querySelectorAll(".game-card").forEach(c=> c.addEventListener("click", ()=>{
+    if(c.dataset.locked==="true"){ const g=GAME_DEFS.find(x=>x.id===c.dataset.game); showReqInfo(g.levelReq, g.title); return; }
+    startGame(c.dataset.game);
+  }));
+}
+const COLOR_WORDS = [
+  {name:"Red", fa:"قرمز", hex:"#FF5C5C"},
+  {name:"Blue", fa:"آبی", hex:"#4FB6E8"},
+  {name:"Yellow", fa:"زرد", hex:"#FFD166"},
+  {name:"Green", fa:"سبز", hex:"#5FCB8F"},
+  {name:"Purple", fa:"بنفش", hex:"#8D7BF0"},
+  {name:"Orange", fa:"نارنجی", hex:"#FF8F6B"}
+];
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+function startGame(id){
+  const wrap = document.getElementById("gameStageWrap");
+  wrap.style.display = "block";
+  wrap.scrollIntoView({behavior:"smooth", block:"center"});
+  if(id==="find") renderFindGame();
+  else if(id==="color") renderColorGame();
+  else if(id==="memory") renderMemoryGame();
+  else if(id==="sentence") renderSentenceGame();
+  else if(id==="runner") renderRunnerGame();
+  else if(id==="builder") renderBuilderGame();
+}
+function gameCompleted(){
+  state.gamesCompleted = (state.gamesCompleted||0)+1;
+  state._gameToday = true;
+  state.weeklyCounts.games = (state.weeklyCounts.games||0)+1;
+  saveState();
+  renderProgress();
+  checkAllAchievements();
+  checkMission();
+  checkWeeklyChallenge();
+  renderGameGrid();
+}
+
+/* --- Game 1: Find the word --- */
+function renderFindGame(){
+  const pool = TOPICS.flatMap(t=> t.words.map(w=>({...w, topic:t.id})));
+  let round = 0, score = 0;
+  const totalRounds = 5;
+  function nextRound(){
+    if(round>=totalRounds){ finish(); return; }
+    round++;
+    const options = shuffle(pool).slice(0,4);
+    const target = options[Math.floor(Math.random()*options.length)];
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `
+      <div class="game-stage-head">
+        <div class="game-prompt">پیدا کن: <span class="en">${target.word}</span> (${target.fa})</div>
+        <div class="game-score">دور ${round} از ${totalRounds} • امتیاز ${score}</div>
+      </div>
+      <div class="game-board" style="grid-template-columns:repeat(${options.length>3?4:options.length},1fr)">
+        ${options.map(o=>`<div class="game-obj" data-word="${o.word}">${o.em}<div class="game-obj-label en">${o.word}</div></div>`).join("")}
+      </div>
+      <div class="game-feedback" id="gf"></div>
+    `;
+    speak("Find the "+target.word);
+    stage.querySelectorAll(".game-obj").forEach(el=>{
+      el.addEventListener("click", ()=>{
+        const gf = document.getElementById("gf");
+        if(el.dataset.word === target.word){
+          el.classList.add("correct"); SND.correct(); score++;
+          gf.textContent = "🎉 آفرین!"; gf.className = "game-feedback good";
+          setTimeout(nextRound, 850);
+        } else {
+          el.classList.add("wrong"); SND.wrong();
+          gf.textContent = "دوباره امتحان کن!"; gf.className = "game-feedback bad";
+          setTimeout(()=> el.classList.remove("wrong"), 400);
+        }
+      });
+    });
+  }
+  function finish(){
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `<div style="text-align:center; padding:20px;">
+      <div style="font-size:52px;">🏆</div>
+      <div style="font-weight:900; font-size:20px; margin-top:10px;">آفرین! ${score} از ${totalRounds} درست بود</div>
+      <button class="game-restart" id="finRestart">بازی دوباره 🔁</button>
+    </div>`;
+    document.getElementById("finRestart").addEventListener("click", renderFindGame);
+    addXp(20 + score*4, "بازی پیدا کن تموم شد");
+    gameCompleted();
+    confettiBurst();
+  }
+  nextRound();
+}
+
+/* --- Game 2: Color challenge --- */
+function renderColorGame(){
+  let round=0, score=0; const totalRounds=5;
+  function nextRound(){
+    if(round>=totalRounds){ finish(); return; }
+    round++;
+    const options = shuffle(COLOR_WORDS).slice(0,4);
+    const target = options[Math.floor(Math.random()*options.length)];
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `
+      <div class="game-stage-head">
+        <div class="game-prompt">رنگ <span class="en">${target.name}</span> (${target.fa}) رو پیدا کن</div>
+        <div class="game-score">دور ${round} از ${totalRounds} • امتیاز ${score}</div>
+      </div>
+      <div class="game-board" style="grid-template-columns:repeat(4,1fr)">
+        ${options.map(o=>`<div class="color-swatch" data-name="${o.name}" style="background:${o.hex}"></div>`).join("")}
+      </div>
+      <div class="game-feedback" id="gf"></div>
+    `;
+    speak("Click "+target.name);
+    stage.querySelectorAll(".color-swatch").forEach(el=>{
+      el.addEventListener("click", ()=>{
+        const gf = document.getElementById("gf");
+        if(el.dataset.name === target.name){
+          el.style.borderColor = "#5FCB8F"; SND.correct(); score++;
+          gf.textContent = "🎉 درسته!"; gf.className = "game-feedback good";
+          setTimeout(nextRound, 800);
+        } else {
+          SND.wrong(); gf.textContent = "یه بار دیگه امتحان کن!"; gf.className = "game-feedback bad";
+        }
+      });
+    });
+  }
+  function finish(){
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `<div style="text-align:center; padding:20px;">
+      <div style="font-size:52px;">🎨</div>
+      <div style="font-weight:900; font-size:20px; margin-top:10px;">عالی بود! ${score} از ${totalRounds}</div>
+      <button class="game-restart" id="finRestart">بازی دوباره 🔁</button>
+    </div>`;
+    document.getElementById("finRestart").addEventListener("click", renderColorGame);
+    addXp(20 + score*4, "چالش رنگ‌ها تموم شد");
+    gameCompleted();
+    confettiBurst();
+  }
+  nextRound();
+}
+
+/* --- Game 3: Memory match --- */
+function renderMemoryGame(){
+  const pairsPool = shuffle(TOPICS.flatMap(t=>t.words)).slice(0,6);
+  let cards = shuffle(pairsPool.flatMap(w=>[{...w, key:w.word+"-a"}, {...w, key:w.word+"-b"}]));
+  let flipped = [], matched = 0, lock=false;
+  const stage = document.getElementById("gameStage");
+  stage.innerHTML = `
+    <div class="game-stage-head">
+      <div class="game-prompt">کارت‌ها رو برگردون و جفت پیدا کن</div>
+      <div class="game-score" id="memScore">جفت ۰ از ${pairsPool.length}</div>
+    </div>
+    <div class="memory-grid" id="memGrid"></div>
+    <div class="game-feedback" id="gf"></div>
+  `;
+  const grid = document.getElementById("memGrid");
+  grid.innerHTML = cards.map((c,i)=>`
+    <div class="mem-card" data-idx="${i}" data-word="${c.word}">
+      <div class="mem-inner">
+        <div class="mem-face mem-front">?</div>
+        <div class="mem-face mem-back"><div>${c.em}</div><div class="lbl en">${c.word}</div></div>
+      </div>
+    </div>`).join("");
+  grid.querySelectorAll(".mem-card").forEach(el=>{
+    el.addEventListener("click", ()=>{
+      if(lock || el.classList.contains("flip") || el.classList.contains("matched")) return;
+      el.classList.add("flip"); SND.click();
+      flipped.push(el);
+      if(flipped.length===2){
+        lock = true;
+        const [a,b] = flipped;
+        if(a.dataset.word === b.dataset.word){
+          setTimeout(()=>{
+            a.classList.add("matched"); b.classList.add("matched");
+            matched++; SND.correct();
+            document.getElementById("memScore").textContent = `جفت ${matched} از ${pairsPool.length}`;
+            flipped = []; lock=false;
+            if(matched === pairsPool.length){
+              addXp(30, "کارت حافظه تموم شد");
+              gameCompleted();
+              const gf = document.getElementById("gf");
+              gf.textContent = "🎉 همه‌ی جفت‌ها پیدا شدن!"; gf.className="game-feedback good";
+              confettiBurst();
+            }
+          }, 450);
+        } else {
+          SND.wrong();
+          setTimeout(()=>{ a.classList.remove("flip"); b.classList.remove("flip"); flipped=[]; lock=false; }, 700);
+        }
+      }
+    });
+  });
+}
+
+/* --- Game 4: Sentence Builder --- */
+function renderSentenceGame(){
+  const lvl = computeLevel();
+  const pool = SENTENCES.filter(s=> s.levelReq<=lvl);
+  let round=0, score=0; const totalRounds = Math.min(4, pool.length);
+  const order = shuffle(pool).slice(0,totalRounds);
+  let placed = [], bank = [];
+  function nextRound(){
+    if(round>=totalRounds){ finish(); return; }
+    const s = order[round]; round++;
+    placed = [];
+    bank = shuffle(s.en.map((w,i)=>({w,i})));
+    renderBoard(s);
+  }
+  function renderBoard(s){
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `
+      <div class="game-stage-head">
+        <div class="game-prompt">این جمله رو بساز: <span style="color:var(--ink-faint); font-weight:600;">(${s.fa})</span></div>
+        <div class="game-score">دور ${round} از ${totalRounds} • امتیاز ${score}</div>
+      </div>
+      <div class="sentence-target-track" id="sentTrack"></div>
+      <div class="sentence-bank" id="sentBank"></div>
+      <div class="game-feedback" id="gf"></div>
+    `;
+    drawTrack(s); drawBank(s);
+  }
+  function drawTrack(s){
+    const track = document.getElementById("sentTrack");
+    track.innerHTML = placed.map(p=>`<div class="sentence-word-slot en">${p.w}</div>`).join("") || `<span style="color:var(--ink-faint); font-size:13px;">کلمه‌ها رو از پایین انتخاب کن</span>`;
+  }
+  function drawBank(s){
+    const bankEl = document.getElementById("sentBank");
+    bankEl.innerHTML = bank.map(b=>`<button class="word-chip en ${placed.some(p=>p.i===b.i)?'used':''}" data-i="${b.i}">${b.w}</button>`).join("");
+    bankEl.querySelectorAll(".word-chip").forEach(chip=>{
+      chip.addEventListener("click", ()=>{
+        const i = parseInt(chip.dataset.i);
+        const s = order[round-1];
+        const expectedIdx = placed.length;
+        const gf = document.getElementById("gf");
+        if(i === expectedIdx){
+          placed.push({w:s.en[i], i}); SND.correct();
+          drawTrack(s); drawBank(s);
+          if(placed.length === s.en.length){
+            score++; gf.textContent = "🎉 عالی بود!"; gf.className="game-feedback good";
+            speak(s.en.join(" "));
+            setTimeout(nextRound, 1000);
+          }
+        } else {
+          SND.wrong(); gf.textContent = "ترتیب درست نیست، دوباره امتحان کن!"; gf.className="game-feedback bad";
+        }
+      });
+    });
+  }
+  function finish(){
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `<div style="text-align:center; padding:20px;">
+      <div style="font-size:52px;">🧩</div>
+      <div style="font-weight:900; font-size:20px; margin-top:10px;">آفرین! ${score} از ${totalRounds} جمله درست</div>
+      <button class="game-restart" id="finRestart">بازی دوباره 🔁</button>
+    </div>`;
+    document.getElementById("finRestart").addEventListener("click", renderSentenceGame);
+    addXp(20 + score*5, "جمله‌ساز تموم شد");
+    gameCompleted();
+    confettiBurst();
+  }
+  if(pool.length===0){ document.getElementById("gameStage").innerHTML = `<div class="game-feedback">هنوز جمله‌ای برای سطح تو باز نشده!</div>`; return; }
+  nextRound();
+}
+
+/* --- Game 5: English Runner --- */
+function renderRunnerGame(){
+  const pool = TOPICS.flatMap(t=>t.words);
+  let score=0, combo=0, round=0; const totalRounds=8; let speedMs=2200;
+  function nextRound(){
+    if(round>=totalRounds){ finish(); return; }
+    round++;
+    const target = pool[Math.floor(Math.random()*pool.length)];
+    const wrongs = shuffle(pool.filter(w=>w.word!==target.word)).slice(0,2);
+    const lane = shuffle([target, ...wrongs]);
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `
+      <div class="runner-hud"><span>دور ${round} از ${totalRounds}</span><span class="runner-combo">🔥 کمبو ${combo}</span><span>امتیاز ${score}</span></div>
+      <div class="runner-track">
+        <div class="runner-road"></div>
+        <div class="runner-target">${target.em}</div>
+        <div class="runner-lanes" id="runnerLanes"></div>
+        <div class="runner-char">🏃</div>
+      </div>
+      <div class="game-feedback" id="gf">کلمه‌ی درست رو برای ${target.em} انتخاب کن!</div>
+    `;
+    const lanesEl = document.getElementById("runnerLanes");
+    lanesEl.innerHTML = lane.map(w=>`<div class="runner-lane-word en" data-word="${w.word}">${w.word}</div>`).join("");
+    speak("Choose the correct word");
+    let answered = false;
+    const timer = setTimeout(()=>{ if(!answered){ answered=true; combo=0; SND.wrong(); nextRound(); } }, speedMs);
+    lanesEl.querySelectorAll(".runner-lane-word").forEach(el=>{
+      el.addEventListener("click", ()=>{
+        if(answered) return; answered = true; clearTimeout(timer);
+        const gf = document.getElementById("gf");
+        if(el.dataset.word === target.word){
+          score += 10 + combo*2; combo++; SND.correct();
+          speedMs = Math.max(1100, speedMs - 80);
+          gf.textContent = "🎉 آفرین! سریع‌تر شدی!"; gf.className="game-feedback good";
+        } else {
+          combo = 0; SND.wrong();
+          gf.textContent = "اشکالی نداره، ادامه بده!"; gf.className="game-feedback bad";
+        }
+        setTimeout(nextRound, 550);
+      });
+    });
+  }
+  function finish(){
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `<div style="text-align:center; padding:20px;">
+      <div style="font-size:52px;">🏃</div>
+      <div style="font-weight:900; font-size:20px; margin-top:10px;">امتیاز نهایی: ${score}</div>
+      <button class="game-restart" id="finRestart">بازی دوباره 🔁</button>
+    </div>`;
+    document.getElementById("finRestart").addEventListener("click", renderRunnerGame);
+    addXp(20 + Math.round(score/4), "دونده انگلیسی تموم شد");
+    gameCompleted();
+    confettiBurst();
+  }
+  nextRound();
+}
+
+/* --- Game 6: English World Builder --- */
+function renderBuilderGame(){
+  const lvl = computeLevel();
+  function draw(){
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `
+      <div class="game-stage-head"><div class="game-prompt">🏗️ دنیای کوچیکت رو بساز</div></div>
+      <div class="builder-coins">🪙 ساخته‌شده: ${state.buildingsBuilt.length} از ${BUILDINGS.length}</div>
+      <div class="builder-grid" id="builderGrid"></div>
+      <div class="game-feedback" id="gf"></div>
+    `;
+    const grid = document.getElementById("builderGrid");
+    grid.innerHTML = BUILDINGS.map(b=>{
+      const built = state.buildingsBuilt.includes(b.id);
+      const locked = b.levelReq > lvl;
+      if(built) return `<div class="builder-plot built"><div class="bp-em">${b.em}</div>${b.title}</div>`;
+      if(locked) return `<div class="builder-plot" style="opacity:.5;" data-locked="1" data-id="${b.id}"><div class="bp-em">🔒</div>Level ${b.levelReq}</div>`;
+      return `<div class="builder-plot" data-id="${b.id}"><div class="bp-em">➕</div>ساخت ${b.title}</div>`;
+    }).join("");
+    grid.querySelectorAll(".builder-plot[data-id]").forEach(plot=>{
+      plot.addEventListener("click", ()=>{
+        if(plot.dataset.locked){ const b=BUILDINGS.find(x=>x.id===plot.dataset.id); showReqInfo(b.levelReq, b.title); return; }
+        askBuildQuestion(plot.dataset.id);
+      });
+    });
+  }
+  function askBuildQuestion(id){
+    const b = BUILDINGS.find(x=>x.id===id);
+    const stage = document.getElementById("gameStage");
+    stage.innerHTML = `
+      <div class="game-stage-head"><div class="game-prompt">${b.q.prompt} <span class="en" style="font-size:32px;">${b.q.em}</span></div></div>
+      <div class="game-board" style="grid-template-columns:repeat(${b.q.options.length},1fr)">
+        ${b.q.options.map((o,i)=>`<div class="game-obj en" data-i="${i}" style="font-size:16px;">${o}</div>`).join("")}
+      </div>
+      <div class="game-feedback" id="gf"></div>
+    `;
+    speak(b.q.prompt.includes("this")? "What is this?" : b.title);
+    stage.querySelectorAll(".game-obj").forEach(el=>{
+      el.addEventListener("click", ()=>{
+        const gf = document.getElementById("gf");
+        if(parseInt(el.dataset.i) === b.q.correct){
+          el.classList.add("correct"); SND.correct();
+          const firstBuild = state.buildingsBuilt.length===0;
+          state.buildingsBuilt.push(id); saveState();
+          gf.textContent = "🎉 ساخته شد!"; gf.className="game-feedback good";
+          addXp(15, b.title+" ساخته شد");
+          if(firstBuild) gameCompleted();
+          setTimeout(draw, 700);
+        } else {
+          el.classList.add("wrong"); SND.wrong();
+          gf.textContent = "دوباره امتحان کن!"; gf.className="game-feedback bad";
+          setTimeout(()=> el.classList.remove("wrong"), 400);
+        }
+      });
+    });
+  }
+  draw();
+}
+
+/* ======================= PROGRESS RENDER ======================= */
+function renderProgress(){
+  const xp = state.xp;
+  const level = computeLevel();
+  const nextXp = xpForNextLevel();
+  const prevThreshold = levelDef(level).requiredXP;
+  const pct = level>=LEVEL_DEFS.length? 100 : Math.round(((xp-prevThreshold)/(nextXp-prevThreshold))*100);
+  document.getElementById("levelBadge").textContent = `🚀 سطح ${level} — ${levelDef(level).name}`;
+  document.getElementById("xpLabel").textContent = `${xp} XP`;
+  document.getElementById("xpNext").textContent = level>=LEVEL_DEFS.length? "بیشترین سطح! 🏆" : `تا سطح بعد: ${nextXp-xp}`;
+  document.getElementById("xpFill").style.width = Math.max(4,pct)+"%";
+  document.getElementById("statWords").textContent = state.wordsLearned.length;
+  document.getElementById("statGames").textContent = state.gamesCompleted||0;
+  document.getElementById("statStreak").textContent = state.streak||0;
+  document.getElementById("statBadges").textContent = state.badges.length;
+  document.getElementById("pWords").textContent = state.wordsLearned.length;
+  document.getElementById("pGames").textContent = state.gamesCompleted||0;
+  document.getElementById("pStreak").textContent = state.streak||0;
+  document.getElementById("pLevel").textContent = level;
+  const examVals = Object.values(state.examResults||{});
+  const examAvg = examVals.length? Math.round(examVals.reduce((a,e)=>a+e.score,0)/examVals.length) : null;
+  document.getElementById("pExam").textContent = examAvg===null? "—" : examAvg+"%";
+  const bg = document.getElementById("badgeGrid");
+  bg.innerHTML = BADGES.slice(0,8).map(b=>{
+    const unlocked = state.badges.includes(b.id);
+    return `<div class="badge-chip ${unlocked?'':'locked'}"><span class="em">${unlocked||!b.secret? b.em : '🔒'}</span>${unlocked||!b.secret? b.title : '؟؟؟'}</div>`;
+  }).join("");
+  renderParentBreakdown();
+}
+
+/* ======================= PARENT BREAKDOWN ======================= */
+function renderParentBreakdown(){
+  const el = document.getElementById("parentBreakdown");
+  if(!el) return;
+  const vocabPct = Math.round((state.wordsLearned.length/totalWordsAvailable())*100);
+  const grammarPct = Math.round((state.grammarLearned.length/GRAMMAR.length)*100);
+  const convoPct = Math.round((state.conversationsDone.length/CONVERSATIONS.length)*100);
+  const examVals = Object.values(state.examResults||{});
+  const examPct = examVals.length? Math.round(examVals.reduce((a,e)=>a+e.score,0)/examVals.length) : 0;
+  const rows = [
+    {label:"واژگان", pct:vocabPct},
+    {label:"گرامر", pct:grammarPct},
+    {label:"مکالمه", pct:convoPct},
+    {label:"آزمون‌ها", pct:examPct}
+  ];
+  el.innerHTML = rows.map(r=>`
+    <div class="breakdown-row">
+      <div class="breakdown-label">${r.label}</div>
+      <div class="breakdown-track"><div class="breakdown-fill" style="width:${r.pct}%"></div></div>
+      <div class="breakdown-pct">${r.pct}%</div>
+    </div>`).join("");
+  const weakest = rows.slice().sort((a,b)=>a.pct-b.pct)[0];
+  const rec = document.getElementById("parentRecommend");
+  if(rec){
+    if(weakest.pct>=80){ rec.textContent = "🌟 پیشرفت عالیه! فرزندتون توی همه بخش‌ها خوب پیش می‌ره."; }
+    else{ rec.textContent = `💡 پیشنهاد: تمرین بیشتر روی «${weakest.label}» می‌تونه به پیشرفت سریع‌تر کمک کنه.`; }
+  }
+}
+
+/* ======================= LEVEL MAP ======================= */
+function renderLevelMap(){
+  const row = document.getElementById("levelMapRow");
+  if(!row) return;
+  const lvl = computeLevel();
+  row.innerHTML = LEVEL_DEFS.map(L=>{
+    const status = L.id < lvl ? "done" : (L.id===lvl? "current" : "locked");
+    const icon = status==="done"? "✅" : status==="current"? "🟢" : "🔒";
+    return `<div class="level-node ${status}" data-id="${L.id}">
+      <div class="ln-icon">${icon}</div>
+      <div class="ln-num">سطح ${L.id}</div>
+      <div class="ln-name">${L.name}</div>
+    </div>`;
+  }).join("");
+  row.querySelectorAll(".level-node").forEach(node=>{
+    node.addEventListener("click", ()=>{
+      const L = levelDef(parseInt(node.dataset.id));
+      const need = Math.max(0, L.requiredXP - state.xp);
+      const achNeed = L.reqAchievements? Math.max(0, L.reqAchievements - state.badges.length) : 0;
+      let msg = node.classList.contains("locked")
+        ? (need>0? need+" XP دیگه لازم داری" : "") + (achNeed>0? (need>0?" و ":"")+achNeed+" دستاورد دیگه لازم داری" : "")
+        : "این سطح رو باز کردی! 🎉";
+      toast(`سطح ${L.id} — ${L.name}: ${msg||"آماده‌ست!"}`);
+    });
+  });
+}
+
+/* ======================= NEXT RECOMMENDATION ======================= */
+function computeNextRecommendation(){
+  const lvl = computeLevel();
+  if(MILESTONE_EXAMS.includes(lvl) && !(state.examResults[lvl] && state.examResults[lvl].score>=70)){
+    return {em:"📝", label:"آزمون آماده‌ست", title:`آزمون سطح ${lvl} رو امتحان کن!`, target:"exams"};
+  }
+  const remaining = xpForNextLevel() - state.xp;
+  if(lvl < LEVEL_DEFS.length && remaining <= 40){
+    return {em:"⭐", label:"نزدیکی به سطح بعد", title:`فقط ${remaining} XP تا سطح ${lvl+1} مونده — یه کلمه یاد بگیر!`, target:"learning-world"};
+  }
+  if(!state._gameToday){
+    return {em:"🎮", label:"وقت بازیه", title:"یه بازی انجام بده و XP بگیر!", target:"games"};
+  }
+  if(state.storiesRead.length < STORIES.length){
+    return {em:"📖", label:"داستان جدید", title:"یه داستان تازه رو بخون!", target:"stories"};
+  }
+  return {em:"🌎", label:"ادامه بده", title:"یه موضوع جدید رو کشف کن!", target:"learning-world"};
+}
+function renderNextCard(){
+  const el = document.getElementById("nextCard");
+  if(!el) return;
+  const r = computeNextRecommendation();
+  el.innerHTML = `
+    <div class="next-emoji">${r.em}</div>
+    <div class="next-text"><div class="next-label">${r.label}</div><div class="next-title">${r.title}</div></div>
+    <a class="btn btn-primary" href="#${r.target}">شروع →</a>
+  `;
+}
+
+/* ======================= ACHIEVEMENTS FULL PAGE ======================= */
+let achFilter = "all";
+const ACH_CATS = [{id:"all",label:"همه"},{id:"learning",label:"یادگیری"},{id:"game",label:"بازی"},{id:"level",label:"سطح"},{id:"exam",label:"آزمون"},{id:"grammar",label:"گرامر"},{id:"story",label:"داستان"},{id:"streak",label:"استریک"},{id:"explore",label:"کاوش"}];
+function renderAchTabs(){
+  const el = document.getElementById("achTabs");
+  if(!el) return;
+  el.innerHTML = ACH_CATS.map(c=>`<button class="ach-tab ${achFilter===c.id?'active':''}" data-cat="${c.id}">${c.label}</button>`).join("");
+  el.querySelectorAll(".ach-tab").forEach(t=> t.addEventListener("click", ()=>{ achFilter=t.dataset.cat; renderAchTabs(); renderAchievementsFull(); }));
+}
+function renderAchievementsFull(){
+  const el = document.getElementById("achGrid");
+  if(!el) return;
+  const list = BADGES.filter(b=> achFilter==="all" || b.cat===achFilter);
+  el.innerHTML = list.map(b=>{
+    const unlocked = state.badges.includes(b.id);
+    const showSecret = b.secret && !unlocked;
+    const date = state.badgeDates[b.id]? new Date(state.badgeDates[b.id]).toLocaleDateString("fa-IR") : null;
+    return `<div class="ach-card ${unlocked?'':'locked'}">
+      <div class="ach-em">${showSecret? '🔒' : b.em}</div>
+      <div class="ach-title">${showSecret? 'دستاورد مخفی' : b.title}</div>
+      <div class="ach-desc">${showSecret? '🔒 یک دستاورد مخفی...' : b.desc}</div>
+      <div class="ach-xp">+${b.xp} XP ${date? ' • '+date : ''}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ======================= GRAMMAR ======================= */
+const grammarModal = document.getElementById("grammarModal");
+function renderGrammar(){
+  const wrap = document.getElementById("grammarWrap");
+  if(!wrap) return;
+  const lvl = computeLevel();
+  const tiers = [{id:"beginner", label:"🌱 مبتدی"},{id:"intermediate", label:"🚀 متوسط"},{id:"advanced", label:"🔥 پیشرفته"}];
+  wrap.innerHTML = tiers.map(tier=>{
+    const lessons = GRAMMAR.filter(g=>g.tier===tier.id);
+    if(!lessons.length) return "";
+    return `<div class="grammar-tier">
+      <div class="grammar-tier-title">${tier.label}</div>
+      <div class="grammar-grid">
+        ${lessons.map(g=>{
+          const locked = g.levelReq>lvl;
+          const learned = state.grammarLearned.includes(g.id);
+          return `<div class="grammar-card lockable" data-id="${g.id}" data-locked="${locked}" style="cursor:pointer;">
+            ${locked? lockOverlayHtml(g.levelReq): ''}
+            <div class="gc-title">${g.titleFa}</div>
+            <div class="gc-en en">${g.titleEn}</div>
+            ${learned? '<div class="gc-status">✅ یاد گرفته شد</div>' : ''}
+          </div>`;
+        }).join("")}
+      </div>
+    </div>`;
+  }).join("");
+  wrap.querySelectorAll(".grammar-card").forEach(card=>{
+    card.addEventListener("click", ()=>{
+      if(card.dataset.locked==="true"){ const g=GRAMMAR.find(x=>x.id===card.dataset.id); showReqInfo(g.levelReq, g.titleFa); return; }
+      openGrammarLesson(card.dataset.id);
+    });
+  });
+}
+function openGrammarLesson(id){
+  const g = GRAMMAR.find(x=>x.id===id);
+  document.getElementById("gmEmoji").textContent = "📘";
+  document.getElementById("gmTitle").innerHTML = g.titleFa+` <span class="en" style="font-size:13px;color:var(--ink-faint);"> ${g.titleEn}</span>`;
+  const already = state.grammarLearned.includes(id);
+  document.getElementById("gmBody").innerHTML = `
+    <p style="color:var(--ink-soft); font-size:14px; line-height:2;">${g.explain}</p>
+    <div class="wordstage show" style="margin-top:10px;">
+      <div class="word en" style="font-size:20px;">${g.example.en}</div>
+      <div class="fa">${g.example.fa}</div>
+      <button class="speaker-btn" id="gmSpeak">🔊</button>
+    </div>
+    <div style="margin-top:20px;">
+      <div style="font-weight:800; margin-bottom:10px;">${g.practice.q}</div>
+      <div class="exam-options" id="gmOptions">
+        ${g.practice.options.map((o,i)=>`<button class="exam-opt en" data-i="${i}">${o}</button>`).join("")}
+      </div>
+      <div class="game-feedback" id="gmFeedback">${already? '✅ قبلاً این درس رو یاد گرفتی' : ''}</div>
+    </div>
+  `;
+  document.getElementById("gmSpeak").addEventListener("click", ()=> speak(g.example.en));
+  document.getElementById("gmOptions").querySelectorAll(".exam-opt").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const i = parseInt(btn.dataset.i);
+      const fb = document.getElementById("gmFeedback");
+      if(i===g.practice.correct){
+        btn.classList.add("correct"); SND.correct();
+        fb.textContent = "🎉 درست بود!"; fb.className="game-feedback good";
+        if(!state.grammarLearned.includes(id)){
+          state.grammarLearned.push(id); saveState();
+          addXp(15, "درس گرامر تموم شد");
+          state._grammarToday = true;
+          checkMission(); checkAllAchievements();
+          renderGrammar();
+        }
+      } else {
+        btn.classList.add("wrong"); SND.wrong();
+        fb.textContent = "دوباره امتحان کن!"; fb.className="game-feedback bad";
+      }
+    });
+  });
+  grammarModal.classList.add("open");
+  SND.open();
+}
+document.getElementById("closeGrammarModal").addEventListener("click", ()=> grammarModal.classList.remove("open"));
+grammarModal.addEventListener("click",(e)=>{ if(e.target===grammarModal) grammarModal.classList.remove("open"); });
+
+/* ======================= CONVERSATION ======================= */
+function renderConversationGrid(){
+  const grid = document.getElementById("convoGrid");
+  if(!grid) return;
+  const lvl = computeLevel();
+  grid.innerHTML = CONVERSATIONS.map(c=>{
+    const locked = c.levelReq>lvl;
+    const done = state.conversationsDone.includes(c.id);
+    return `<div class="convo-card lockable" data-id="${c.id}" data-locked="${locked}">
+      ${locked? lockOverlayHtml(c.levelReq): ''}
+      <div class="convo-em">${c.emoji}</div>
+      <div class="gc-title">${c.titleFa} ${done? '✅':''}</div>
+    </div>`;
+  }).join("");
+  grid.querySelectorAll(".convo-card").forEach(card=>{
+    card.addEventListener("click", ()=>{
+      if(card.dataset.locked==="true"){ const c=CONVERSATIONS.find(x=>x.id===card.dataset.id); showReqInfo(c.levelReq, c.titleFa); return; }
+      openConversation(card.dataset.id);
+    });
+  });
+}
+let convoState = null;
+function openConversation(id){
+  const c = CONVERSATIONS.find(x=>x.id===id);
+  convoState = {c, step:0};
+  document.getElementById("convoStageWrap").style.display = "block";
+  document.getElementById("convoStageWrap").scrollIntoView({behavior:"smooth", block:"center"});
+  renderConvoStep();
+}
+function renderConvoStep(){
+  const {c, step} = convoState;
+  const s = c.steps[step];
+  const stage = document.getElementById("convoStage");
+  stage.innerHTML = `
+    <div class="dialogue-npc"><div class="dialogue-npc-em">${c.npc}</div><div class="dialogue-bubble en">${s.line}</div></div>
+    <div class="dialogue-options" id="dialogueOpts">
+      ${s.options.map((o,i)=>`<button class="dialogue-opt en" data-i="${i}">${o.text}</button>`).join("")}
+    </div>
+    <div class="dialogue-progress">${c.steps.map((_,i)=>`<div class="dialogue-dot ${i===step?'active':''}"></div>`).join("")}</div>
+  `;
+  speak(s.line);
+  stage.querySelectorAll(".dialogue-opt").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const i = parseInt(btn.dataset.i);
+      if(s.options[i].correct){
+        btn.classList.add("correct"); SND.correct();
+        addXp(5, "پاسخ درست");
+        setTimeout(()=>{
+          if(step < c.steps.length-1){ convoState.step++; renderConvoStep(); }
+          else finishConversation();
+        }, 700);
+      } else {
+        btn.classList.add("wrong"); SND.wrong();
+        setTimeout(()=> btn.classList.remove("wrong"), 500);
+      }
+    });
+  });
+}
+function finishConversation(){
+  const {c} = convoState;
+  document.getElementById("convoStage").innerHTML = `<div style="text-align:center; padding:10px;">
+    <div style="font-size:44px;">🎉</div>
+    <div style="font-weight:900; font-size:18px; margin-top:8px;">مکالمه تموم شد!</div>
+  </div>`;
+  if(!state.conversationsDone.includes(c.id)){
+    state.conversationsDone.push(c.id); saveState();
+    addXp(20, "مکالمه کامل شد");
+  }
+  state._convoToday = true;
+  checkMission(); checkAllAchievements();
+  renderConversationGrid();
+  confettiBurst();
+  setTimeout(()=>{ document.getElementById("convoStageWrap").style.display = "none"; }, 1600);
+}
+
+/* ======================= EXAMS ======================= */
+function examCategoryPool(levelReq){
+  const vocabQs = TOPICS.filter(t=>t.levelReq<=levelReq).flatMap(t=>t.words.map(w=>({type:"vocab", topic:t, word:w})));
+  const grammarQs = GRAMMAR.filter(g=>g.levelReq<=levelReq);
+  const sentenceQs = SENTENCES.filter(s=>s.levelReq<=levelReq);
+  return {vocabQs, grammarQs, sentenceQs};
+}
+function buildExamQuestions(levelReq){
+  const {vocabQs, grammarQs, sentenceQs} = examCategoryPool(levelReq);
+  const qs = [];
+  shuffle(vocabQs).slice(0,5).forEach(v=>{
+    const wrongs = shuffle(vocabQs.filter(x=>x.word.word!==v.word.word)).slice(0,2).map(x=>x.word.fa);
+    const options = shuffle([v.word.fa, ...wrongs]);
+    qs.push({type:"vocab", prompt:`معنی «${v.word.word}» چیه؟`, promptEn:v.word.word, options, correct: options.indexOf(v.word.fa)});
+  });
+  shuffle(grammarQs).slice(0,3).forEach(g=>{
+    qs.push({type:"grammar", prompt:g.practice.q, options:g.practice.options, correct:g.practice.correct});
+  });
+  shuffle(sentenceQs).slice(0,2).forEach(s=>{
+    const correctStr = s.en.join(" ");
+    const scrambled = shuffle(s.en).join(" ");
+    const wrong1 = shuffle(s.en).join(" ");
+    const options = shuffle([...new Set([correctStr, scrambled===correctStr? wrong1: scrambled, wrong1===correctStr? shuffle(s.en).join(" "):wrong1])]).slice(0,3);
+    const finalOptions = options.includes(correctStr)? options : [...options.slice(0,2), correctStr];
+    qs.push({type:"sentence", prompt:"کدوم ترتیب درسته؟ ("+s.fa+")", options:finalOptions, correct:finalOptions.indexOf(correctStr)});
+  });
+  return shuffle(qs);
+}
+function renderExamList(){
+  const el = document.getElementById("examList");
+  if(!el) return;
+  const lvl = computeLevel();
+  el.innerHTML = LEVEL_DEFS.map(L=>{
+    const locked = L.id > lvl;
+    const result = state.examResults[L.id];
+    let pillClass = "", pillText = "";
+    if(result){ pillClass = result.score>=80?"high":result.score>=60?"mid":"low"; pillText = result.score+"%"; }
+    return `<div class="exam-card ${result&&result.score>=70?'passed':''} lockable" data-id="${L.id}" data-locked="${locked}">
+      ${locked? lockOverlayHtml(L.id): ''}
+      <div class="exam-em">📝</div>
+      <div class="gc-title">سطح ${L.id}</div>
+      <div class="gc-en" style="font-size:12px;">${L.name}</div>
+      ${result? `<div class="exam-score-pill ${pillClass}">${pillText}</div>` : ''}
+    </div>`;
+  }).join("");
+  el.querySelectorAll(".exam-card").forEach(card=>{
+    card.addEventListener("click", ()=>{
+      if(card.dataset.locked==="true"){ showReqInfo(parseInt(card.dataset.id), "این آزمون"); return; }
+      openExamPreview(parseInt(card.dataset.id));
+    });
+  });
+}
+function openExamPreview(levelId){
+  const wrap = document.getElementById("examStageWrap");
+  wrap.style.display = "block";
+  wrap.scrollIntoView({behavior:"smooth", block:"center"});
+  const stage = document.getElementById("examStage");
+  const L = levelDef(levelId);
+  stage.innerHTML = `
+    <div style="text-align:center;">
+      <div style="font-size:14px; font-weight:800; color:var(--purple-deep);">پیش‌نمایش آزمون</div>
+      <h3 style="font-size:20px; font-weight:900; margin:8px 0;">آزمون سطح ${levelId} — ${L.name}</h3>
+      <p style="color:var(--ink-soft); font-size:13px; line-height:1.9;">۱۰ سوال • حدود ۵ دقیقه<br>موضوعات: واژگان، گرامر، جمله‌سازی</p>
+      <p style="color:var(--ink-faint); font-size:12px;">🎁 جایزه: ۵۰ تا ۱۰۰ XP بسته به نمره</p>
+      <button class="btn btn-primary" id="startExamBtn" style="margin-top:16px;">شروع آزمون 🚀</button>
+    </div>
+  `;
+  document.getElementById("startExamBtn").addEventListener("click", ()=> startExam(levelId));
+}
+let examState = null;
+function startExam(levelId){
+  const questions = buildExamQuestions(levelId);
+  examState = {levelId, questions, idx:0, correct:0, byType:{vocab:{c:0,t:0}, grammar:{c:0,t:0}, sentence:{c:0,t:0}}};
+  renderExamQuestion();
+}
+function renderExamQuestion(){
+  const {questions, idx} = examState;
+  if(idx >= questions.length){ finishExam(); return; }
+  const q = questions[idx];
+  examState.byType[q.type].t++;
+  const stage = document.getElementById("examStage");
+  stage.innerHTML = `
+    <div class="exam-progress-track"><div class="exam-progress-fill" style="width:${Math.round((idx/questions.length)*100)}%"></div></div>
+    <div class="exam-q">${q.prompt} ${q.promptEn? `<span class="en">${q.promptEn}</span>`:''}</div>
+    <div class="exam-options">
+      ${q.options.map((o,i)=>`<button class="exam-opt en" data-i="${i}">${o}</button>`).join("")}
+    </div>
+    <div class="game-feedback" id="gf"></div>
+  `;
+  stage.querySelectorAll(".exam-opt").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      if(examState.answered) return; examState.answered = true;
+      const i = parseInt(btn.dataset.i);
+      const gf = document.getElementById("gf");
+      if(i===q.correct){
+        btn.classList.add("correct"); SND.correct(); examState.correct++; examState.byType[q.type].c++;
+        gf.textContent = "🎉 درست بود!"; gf.className="game-feedback good";
+      } else {
+        btn.classList.add("wrong"); SND.wrong();
+        stage.querySelectorAll(".exam-opt")[q.correct].classList.add("correct");
+        gf.textContent = "جواب درست رو دیدی، ادامه بده!"; gf.className="game-feedback bad";
+      }
+      setTimeout(()=>{ examState.idx++; examState.answered=false; renderExamQuestion(); }, 900);
+    });
+  });
+}
+function finishExam(){
+  const {levelId, questions, correct, byType} = examState;
+  const score = Math.round((correct/questions.length)*100);
+  state.examResults[levelId] = {score, date:new Date().toISOString()};
+  saveState();
+  let grade, msg;
+  if(score>=90){ grade="🏆 عالی"; msg="عالی! تو کاملاً آماده‌ای!"; }
+  else if(score>=80){ grade="🌟 خیلی خوب"; msg="خیلی خوب! تقریباً آماده سطح بعدی هستی."; }
+  else if(score>=70){ grade="👍 خوب"; msg="خوبه! با کمی تمرین بهتر هم می‌شی."; }
+  else if(score>=50){ grade="📚 نیاز به تمرین"; msg="چند بخش رو دوباره تمرین کن."; }
+  else{ grade="💪 ادامه بده"; msg="اشکالی نداره! دوباره تمرین کن و برگرد."; }
+  const xpReward = 40 + Math.round(score/2);
+  const stage = document.getElementById("examStage");
+  const rows = ["vocab","grammar","sentence"].filter(t=>byType[t].t>0).map(t=>{
+    const label = t==="vocab"?"واژگان":t==="grammar"?"گرامر":"جمله‌سازی";
+    const pct = Math.round((byType[t].c/byType[t].t)*100);
+    return `<div class="breakdown-row"><div class="breakdown-label">${label}</div><div class="breakdown-track"><div class="breakdown-fill" style="width:${pct}%"></div></div><div class="breakdown-pct">${pct}%</div></div>`;
+  }).join("");
+  stage.innerHTML = `
+    <div class="grade-hero">
+      <div class="grade-pct">${score}%</div>
+      <div class="grade-label">${grade}</div>
+      <div class="grade-msg">${msg}</div>
+    </div>
+    ${rows}
+    <div style="text-align:center; margin-top:18px;">
+      <button class="btn btn-secondary" id="examDoneBtn">باشه، متوجه شدم</button>
+    </div>
+  `;
+  document.getElementById("examDoneBtn").addEventListener("click", ()=>{ document.getElementById("examStageWrap").style.display="none"; renderExamList(); });
+  addXp(xpReward, "آزمون تموم شد");
+  checkAllAchievements();
+  confettiBurst();
+  renderExamList();
+}
+
+/* ======================= SEARCH ======================= */
+function buildSearchIndex(){
+  const idx = [];
+  TOPICS.forEach(t=> t.words.forEach(w=> idx.push({tag:"واژه", label:`${w.em} ${w.word} — ${w.fa}`, action:()=>{ closeSearch(); document.getElementById("learning-world").scrollIntoView({behavior:"smooth"}); if(computeLevel()>=t.levelReq) openVocabModal(t.id); }})));
+  STORIES.forEach(s=> idx.push({tag:"داستان", label:`${s.emoji} ${s.titleFa}`, action:()=>{ closeSearch(); document.getElementById("stories").scrollIntoView({behavior:"smooth"}); }}));
+  GAME_DEFS.forEach(g=> idx.push({tag:"بازی", label:`${g.icon} ${g.title}`, action:()=>{ closeSearch(); document.getElementById("games").scrollIntoView({behavior:"smooth"}); }}));
+  GRAMMAR.forEach(g=> idx.push({tag:"گرامر", label:`📘 ${g.titleFa} (${g.titleEn})`, action:()=>{ closeSearch(); document.getElementById("grammar").scrollIntoView({behavior:"smooth"}); }}));
+  CONVERSATIONS.forEach(c=> idx.push({tag:"مکالمه", label:`${c.emoji} ${c.titleFa}`, action:()=>{ closeSearch(); document.getElementById("conversation").scrollIntoView({behavior:"smooth"}); }}));
+  TOPICS.forEach(t=> idx.push({tag:"موضوع", label:`${t.emoji} ${t.fa} (${t.en})`, action:()=>{ closeSearch(); document.getElementById("learning-world").scrollIntoView({behavior:"smooth"}); }}));
+  return idx;
+}
+let searchIndex = [];
+const searchOverlay = document.getElementById("searchOverlay");
+const searchInput = document.getElementById("searchInput");
+function openSearch(){ searchIndex = buildSearchIndex(); searchOverlay.classList.add("open"); setTimeout(()=> searchInput.focus(), 200); }
+function closeSearch(){ searchOverlay.classList.remove("open"); searchInput.value=""; renderSearchResults(""); }
+function renderSearchResults(q){
+  const el = document.getElementById("searchResults");
+  if(!q.trim()){ el.innerHTML = `<div class="search-empty">اسم یه کلمه، بازی، داستان یا موضوع رو تایپ کن 🔎</div>`; return; }
+  const ql = q.trim().toLowerCase();
+  const results = searchIndex.filter(item=> item.label.toLowerCase().includes(ql)).slice(0,20);
+  if(!results.length){ el.innerHTML = `<div class="search-empty">چیزی پیدا نشد 😅</div>`; return; }
+  el.innerHTML = results.map((r,i)=>`<div class="search-result-item" data-i="${i}">${r.label}<span class="search-result-tag">${r.tag}</span></div>`).join("");
+  el.querySelectorAll(".search-result-item").forEach((item,i)=> item.addEventListener("click", ()=> results[i].action()));
+}
+document.getElementById("searchToggle").addEventListener("click", openSearch);
+document.getElementById("searchClose").addEventListener("click", closeSearch);
+searchOverlay.addEventListener("click",(e)=>{ if(e.target===searchOverlay) closeSearch(); });
+searchInput.addEventListener("input", (e)=> renderSearchResults(e.target.value));
+
+/* ======================= RE-RENDER EVERYTHING LOCK-DEPENDENT ======================= */
+function renderAllLockDependent(){
+  renderTopics(); renderContinue(); renderGameGrid(); renderStories();
+  renderGrammar(); renderConversationGrid(); renderExamList(); renderLevelMap(); renderNextCard();
+}
+
+/* ======================= LEVEL UP OVERLAY CLOSE ======================= */
+document.getElementById("luClose").addEventListener("click", ()=> document.getElementById("levelUpOverlay").classList.remove("open"));
+
+/* ======================= RESET PROGRESS (parent-guarded) ======================= */
+const resetBtn = document.getElementById("resetProgressBtn");
+if(resetBtn){
+  resetBtn.addEventListener("click", ()=>{
+    if(confirm("مطمئنی می‌خوای همه پیشرفتت رو پاک کنی؟ این کار قابل بازگشت نیست.")){
+      localStorage.removeItem(STORE_KEY);
+      location.reload();
+    }
+  });
+}
+
+/* ======================= PARALLAX ======================= */
+const parallaxLayer = document.getElementById("parallaxLayer");
+let reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduceMotion && window.matchMedia("(pointer:fine)").matches){
+  document.querySelector(".hero").addEventListener("mousemove", (e)=>{
+    const rect = e.currentTarget.getBoundingClientRect();
+    const cx = (e.clientX - rect.left - rect.width/2);
+    const cy = (e.clientY - rect.top - rect.height/2);
+    parallaxLayer.querySelectorAll("[data-depth]").forEach(el=>{
+      const depth = parseFloat(el.dataset.depth);
+      el.style.transform = `translate(${cx*depth}px, ${cy*depth}px)`;
+    });
+  });
+}
+
+/* ======================= SOUND TOGGLE ======================= */
+const soundToggle = document.getElementById("soundToggle");
+function refreshSoundBtn(){ soundToggle.textContent = state.soundOn? "🔊" : "🔇"; }
+refreshSoundBtn();
+soundToggle.addEventListener("click", ()=>{
+  state.soundOn = !state.soundOn;
+  saveState(); refreshSoundBtn();
+  if(state.soundOn) SND.click();
+  toast(state.soundOn? "صدا روشن شد 🔊" : "صدا خاموش شد 🔇");
+});
+
+/* ======================= MASCOT / HERO CTA ======================= */
+document.getElementById("mascotHero").addEventListener("click", ()=>{ SND.click(); speak("Hello! Let's learn English!"); });
+document.getElementById("startLearningBtn").addEventListener("click", ()=>{
+  SND.click();
+  document.getElementById("learning-world").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("aboutLink").addEventListener("click", (e)=>{ e.preventDefault(); toast("کودک‌انگلیش، دنیای بازی‌محور یادگیری انگلیسی 🦊"); });
+document.getElementById("contactLink").addEventListener("click", (e)=>{ e.preventDefault(); toast("به‌زودی فرم تماس اضافه می‌شه ✉️"); });
+
+/* ======================= BOTTOM NAV ACTIVE STATE ======================= */
+const bottomLinks = document.querySelectorAll(".bottomnav a");
+const navSections = ["home","learning-world","games","exams","progress"];
+function updateBottomNav(){
+  let current = navSections[0];
+  navSections.forEach(id=>{
+    const el = document.getElementById(id);
+    if(el && el.getBoundingClientRect().top < window.innerHeight*0.5) current = id;
+  });
+  bottomLinks.forEach(a=> a.classList.toggle("active", a.getAttribute("href")==="#"+current));
+}
+window.addEventListener("scroll", updateBottomNav, {passive:true});
+
+/* ======================= REVEAL ON SCROLL ======================= */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+}, {threshold:0.15});
+document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
+
+/* ======================= INIT ======================= */
+function init(){
+  checkAllAchievements();
+  renderTopics();
+  renderContinue();
+  renderMission();
+  renderWeeklyCard();
+  renderNextCard();
+  renderLevelMap();
+  renderGameGrid();
+  renderVideos();
+  renderStories();
+  renderGrammar();
+  renderConversationGrid();
+  renderExamList();
+  renderAchTabs();
+  renderAchievementsFull();
+  renderProgress();
+  updateBottomNav();
+}
+init();
+
+/* ======================= LOADING SCREEN ======================= */
+let loadPct = 0;
+const loadFill = document.getElementById("loadFill");
+const loadInterval = setInterval(()=>{
+  loadPct += Math.random()*22;
+  if(loadPct>=100){
+    loadPct = 100; clearInterval(loadInterval);
+    loadFill.style.width = "100%";
+    setTimeout(()=> document.getElementById("loading").classList.add("hide"), 350);
+  } else {
+    loadFill.style.width = loadPct+"%";
+  }
+}, 180);
+
+})();
+</script>
+</body>
+</html>
