@@ -595,6 +595,37 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
 @media (max-width:880px){
   .progress-panel{grid-template-columns:1fr;}
 }
+
+/* ================= GIFTS (MY COLLECTION + PROMO) ================= */
+.gift-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:16px; margin-bottom:10px;}
+.gift-card{
+  background:#fff; border-radius:var(--r-lg); padding:18px; text-align:center; cursor:pointer;
+  border:2px solid #F1EEFE; transition:transform .25s var(--ease), box-shadow .25s var(--ease); position:relative;
+}
+.gift-card:hover{transform:translateY(-5px);}
+.gift-card[data-rarity="uncommon"]{border-color:#B7ECD0;}
+.gift-card[data-rarity="rare"]{border-color:#A9D4FF; box-shadow:0 0 0 1px #A9D4FF, var(--shadow-soft);}
+.gift-card[data-rarity="epic"]{border-color:#D8B8FF; box-shadow:0 0 18px rgba(216,184,255,.55);}
+.gift-card[data-rarity="legendary"]{border-color:#FFD166; box-shadow:0 0 22px rgba(255,209,102,.6); background:linear-gradient(160deg,#fff,#FFF8E5);}
+.gift-em{font-size:38px; margin-bottom:6px;}
+.gift-name{font-weight:800; font-size:14px;}
+.gift-rarity-pill{display:inline-block; font-size:10px; font-weight:800; padding:2px 10px; border-radius:99px; margin-top:6px;}
+.gift-rarity-pill.common{background:#EFEFF4; color:#7A7F94;}
+.gift-rarity-pill.uncommon{background:#E4FBEE; color:#2E9E63;}
+.gift-rarity-pill.rare{background:#E8F3FF; color:#2E7CD1;}
+.gift-rarity-pill.epic{background:#F4EBFF; color:#8A4FE0;}
+.gift-rarity-pill.legendary{background:#FFF6DE; color:#C9971E;}
+.gift-owned{font-size:11px; color:var(--ink-faint); margin-top:6px; font-weight:700;}
+.gift-price-row{display:flex; justify-content:center; gap:10px; margin-top:10px; font-size:12px; font-weight:800;}
+.gift-price-row .buy{color:var(--coral-deep);}
+.gift-price-row .sell{color:var(--green);}
+.gift-empty{grid-column:1/-1; text-align:center; padding:30px 20px; color:var(--ink-faint); font-weight:700; font-size:14px;}
+
+.promo-box{max-width:420px; margin:0 auto 34px; text-align:center;}
+.promo-title{font-weight:800; font-size:14px; margin-bottom:10px;}
+.promo-row{display:flex; gap:8px;}
+.promo-row input{flex:1; border:2px solid #F1EEFE; border-radius:99px; padding:12px 18px; font-family:inherit; font-size:14px; outline:none;}
+.promo-row input:focus{border-color:var(--purple);}
 </style>
 </head>
 <body>
@@ -638,6 +669,7 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
       <a href="#games">بازی‌ها</a>
       <a href="#exams">آزمون‌ها</a>
       <a href="#stories">داستان‌ها</a>
+      <a href="#gifts">🎁 هدایا</a>
       <a href="#achievements">دستاوردها</a>
       <a href="#progress">پیشرفت من</a>
     </div>
@@ -858,6 +890,8 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
           <div class="stat-box"><div class="stat-num" id="statGames">0</div><div class="stat-lbl">🎮 بازی تمام‌شده</div></div>
           <div class="stat-box"><div class="stat-num" id="statStreak">0</div><div class="stat-lbl">🔥 روز پشت سر هم</div></div>
           <div class="stat-box"><div class="stat-num" id="statBadges">0</div><div class="stat-lbl">🏆 نشان‌ها</div></div>
+          <div class="stat-box"><div class="stat-num" id="statStars">0</div><div class="stat-lbl">⭐ استارز</div></div>
+          <div class="stat-box"><div class="stat-num" id="statRarity">0</div><div class="stat-lbl">💎 رتبه کمیابی</div></div>
         </div>
       </div>
       <div>
@@ -867,6 +901,43 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
     </div>
   </div>
 </section>
+
+<!-- ================= GIFTS (PROMO CODE + MY COLLECTION) ================= -->
+<section class="section section-lav" id="gifts">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">هدایای من 🎁</div>
+      <h2 class="section-title">کد تخفیف بزن، هدیه بگیر</h2>
+      <p class="section-desc">هدیه‌هایی که داری رو اینجا می‌بینی. هر وقت خواستی، می‌تونی بفروشیشون و ⭐ استارز بگیری.</p>
+    </div>
+
+    <div class="promo-box reveal">
+      <div class="promo-title">🔑 کد تخفیف داری؟</div>
+      <div class="promo-row">
+        <input type="text" id="promoInput" placeholder="کد رو اینجا بنویس..." autocomplete="off">
+        <button class="btn btn-primary" id="promoBtn">اعمال کن</button>
+      </div>
+    </div>
+
+    <div class="gift-grid reveal" id="giftGrid"></div>
+  </div>
+</section>
+
+<!-- Gift detail modal -->
+<div class="modal-overlay" id="giftModal">
+  <div class="modal-box" style="max-width:400px;">
+    <button class="modal-close" id="closeGiftModal" aria-label="بستن">✕</button>
+    <div id="giftModalBody"></div>
+  </div>
+</div>
+
+<!-- Reward reveal modal (promo code grant) -->
+<div class="modal-overlay" id="rewardModal">
+  <div class="modal-box" style="max-width:360px; text-align:center;">
+    <div id="rewardModalBody"></div>
+    <button class="btn btn-primary" id="rewardModalClose" style="width:100%; justify-content:center; margin-top:16px;">عالیه! 🎉</button>
+  </div>
+</div>
 
 <!-- ================= ACHIEVEMENTS FULL ================= -->
 <section class="section section-cream" id="achievements">
@@ -1288,7 +1359,14 @@ const BADGES = [
   // Exploration
   {id:"explore-5", em:"🌎", title:"کاوش ۵ موضوع", desc:"۵ تا موضوع رو باز کردی", xp:30, cat:"explore"},
   {id:"explorer", em:"🧭", title:"English Explorer", desc:"همه موضوعات یادگیری رو باز کردی", xp:80, cat:"explore"},
-  {id:"night-owl", em:"🦉", title:"کاوشگر شبانه", desc:"🔒 یک دستاورد مخفی...", xp:50, cat:"explore", secret:true}
+  {id:"night-owl", em:"🦉", title:"کاوشگر شبانه", desc:"🔒 یک دستاورد مخفی...", xp:50, cat:"explore", secret:true},
+  // Gifts / rarity
+  {id:"first-rare", em:"💎", title:"اولین هدیه کمیاب", desc:"اولین هدیه‌ی Rare خودت رو گرفتی", xp:30, cat:"gifts"},
+  {id:"first-epic", em:"✨", title:"جمع‌کننده حماسی", desc:"اولین هدیه‌ی Epic خودت رو گرفتی", xp:50, cat:"gifts"},
+  {id:"first-legendary", em:"👑", title:"جمع‌کننده افسانه‌ای", desc:"اولین هدیه‌ی Legendary خودت رو گرفتی", xp:100, cat:"gifts"},
+  {id:"rarity-hunter", em:"💎", title:"شکارچی کمیابی", desc:"به ۲۵ رتبه کمیابی رسیدی", xp:60, cat:"gifts"},
+  {id:"rarity-master", em:"💎", title:"استاد کمیابی", desc:"به ۵۰ رتبه کمیابی رسیدی", xp:100, cat:"gifts"},
+  {id:"gift-collector", em:"🎁", title:"جمع‌کننده هدایا", desc:"همه‌ی انواع هدیه رو داری", xp:80, cat:"gifts", secret:true}
 ];
 
 /* ------- Levels ------- */
@@ -1420,6 +1498,57 @@ const WEEKLY_CHALLENGE = {
   reward:250
 };
 
+/* ------- Gifts (central configuration) ------- */
+const GIFTS = [
+  {id:"flower", name:"گل", en:"Flower", icon:"🌷", rarity:"common", buyPrice:8, sellPrice:4, xp:5, rarityBoost:1, requiredLevel:10, desc:"یه گل ساده و قشنگ برای شروع مجموعه‌ات."},
+  {id:"heart", name:"قلب", en:"Heart", icon:"❤️", rarity:"common", buyPrice:10, sellPrice:5, xp:8, rarityBoost:2, requiredLevel:10, desc:"یه نشونه‌ی کوچیک از محبت."},
+  {id:"teddy", name:"خرس عروسکی", en:"Teddy Bear", icon:"🧸", rarity:"uncommon", buyPrice:20, sellPrice:12, xp:12, rarityBoost:3, requiredLevel:10, desc:"یه دوست نرم و بامزه."},
+  {id:"rose", name:"رز", en:"Rose", icon:"🌹", rarity:"rare", buyPrice:25, sellPrice:15, xp:20, rarityBoost:5, requiredLevel:11, desc:"یه گل کمیاب و زیبا."},
+  {id:"butterfly", name:"پروانه", en:"Butterfly", icon:"🦋", rarity:"rare", buyPrice:30, sellPrice:18, xp:25, rarityBoost:6, requiredLevel:12, desc:"سبک و رنگارنگ، یه هدیه کمیاب."},
+  {id:"rainbow", name:"رنگین‌کمان", en:"Rainbow", icon:"🌈", rarity:"epic", buyPrice:40, sellPrice:25, xp:40, rarityBoost:8, requiredLevel:13, desc:"یه هدیه‌ی حماسی و رنگارنگ."},
+  {id:"superstar", name:"ستاره فوق‌العاده", en:"Super Star", icon:"🌟", rarity:"epic", buyPrice:50, sellPrice:32, xp:50, rarityBoost:10, requiredLevel:14, desc:"یه ستاره‌ی خیلی خاص."},
+  {id:"unicorn", name:"تک‌شاخ جادویی", en:"Magic Unicorn", icon:"🦄", rarity:"legendary", buyPrice:100, sellPrice:65, xp:100, rarityBoost:12, requiredLevel:15, desc:"افسانه‌ای و کمیاب‌ترین هدیه‌ی KoodakEnglish."},
+  {id:"clover", name:"شبدر شانس", en:"Lucky Clover", icon:"🍀", rarity:"common", buyPrice:9, sellPrice:4, xp:6, rarityBoost:1, requiredLevel:10, desc:"یه شبدر چهاربرگ برای شانس بیشتر."},
+  {id:"balloon", name:"بادکنک", en:"Balloon", icon:"🎈", rarity:"common", buyPrice:8, sellPrice:4, xp:5, rarityBoost:1, requiredLevel:10, desc:"یه بادکنک رنگی و شاد."},
+  {id:"panda", name:"پاندای عروسکی", en:"Panda Plush", icon:"🐼", rarity:"uncommon", buyPrice:18, sellPrice:11, xp:10, rarityBoost:3, requiredLevel:10, desc:"یه پاندای عروسکی نرم و بامزه."},
+  {id:"ribbon", name:"روبان", en:"Ribbon", icon:"🎀", rarity:"uncommon", buyPrice:20, sellPrice:12, xp:11, rarityBoost:3, requiredLevel:11, desc:"یه روبان تزئینی قشنگ."},
+  {id:"bouquet", name:"دسته گل", en:"Bouquet", icon:"💐", rarity:"rare", buyPrice:28, sellPrice:17, xp:22, rarityBoost:5, requiredLevel:12, desc:"یه دسته گل رنگارنگ و کمیاب."},
+  {id:"fireworks", name:"آتش‌بازی", en:"Fireworks", icon:"🎆", rarity:"epic", buyPrice:45, sellPrice:28, xp:42, rarityBoost:9, requiredLevel:13, desc:"یه نمایش آتش‌بازی خیره‌کننده."},
+  {id:"dragon", name:"اژدهای کوچولو", en:"Baby Dragon", icon:"🐉", rarity:"legendary", buyPrice:90, sellPrice:58, xp:85, rarityBoost:13, requiredLevel:14, desc:"یه اژدهای افسانه‌ای و کمیاب."},
+  {id:"crown", name:"تاج طلایی", en:"Golden Crown", icon:"👑", rarity:"legendary", buyPrice:110, sellPrice:70, xp:95, rarityBoost:14, requiredLevel:15, desc:"یه تاج طلایی برای قهرمان‌های واقعی KoodakEnglish."}
+];
+const RARITY_LABELS = {common:"معمولی", uncommon:"غیرمعمول", rare:"کمیاب", epic:"حماسی", legendary:"افسانه‌ای"};
+const RARITY_ORDER = ["common","uncommon","rare","epic","legendary"];
+/* weighted mystery table (used by the "koodakgift" promo code): type "stars" gives a star amount, type "gift" pulls uniformly from that rarity tier */
+const MYSTERY_TABLE = [
+  {weight:20, type:"stars", min:5, max:15},
+  {weight:35, type:"gift", rarity:"common"},
+  {weight:22, type:"gift", rarity:"uncommon"},
+  {weight:13, type:"gift", rarity:"rare"},
+  {weight:7, type:"gift", rarity:"epic"},
+  {weight:3, type:"gift", rarity:"legendary"}
+];
+const PROMO_CODES = {
+  "koodakgift": {type:"mystery"},
+  "luckydraw": {type:"mystery"},
+  "littleheart": {type:"gift", giftId:"heart"},
+  "flowerfun": {type:"gift", giftId:"flower"},
+  "teddytime": {type:"gift", giftId:"teddy"},
+  "rainbow15": {type:"gift", giftId:"rainbow"},
+  "magicgift": {type:"gift", giftId:"unicorn"},
+  "butterflywings": {type:"gift", giftId:"butterfly"},
+  "superstarshine": {type:"gift", giftId:"superstar"},
+  "cloverluck": {type:"gift", giftId:"clover"},
+  "balloonparty": {type:"gift", giftId:"balloon"},
+  "pandahug": {type:"gift", giftId:"panda"},
+  "ribbonbow": {type:"gift", giftId:"ribbon"},
+  "bouquetlove": {type:"gift", giftId:"bouquet"},
+  "fireworksshow": {type:"gift", giftId:"fireworks"},
+  "dragonpower": {type:"gift", giftId:"dragon"},
+  "crownking": {type:"gift", giftId:"crown"},
+  "ownership14": {type:"dev"}
+};
+
 /* ======================= STATE / STORAGE ======================= */
 const STORE_KEY = "koodak_progress_v1";
 function loadState(){
@@ -1438,6 +1567,11 @@ function loadState(){
   s.badgeDates = s.badgeDates || {};
   s.weeklyCounts = s.weeklyCounts || {words:0,games:0,stories:0};
   s.buildingsBuilt = s.buildingsBuilt || [];
+  s.stars = s.stars || 0;
+  s.gifts = s.gifts || {};
+  s.uniqueGiftBonusGiven = s.uniqueGiftBonusGiven || [];
+  s.redeemedCodes = s.redeemedCodes || [];
+  s.devAllUnlocked = s.devAllUnlocked || false;
   const today = new Date().toDateString();
   if(s.lastVisit !== today){
     const y = new Date(); y.setDate(y.getDate()-1);
@@ -1466,6 +1600,7 @@ saveState();
 
 /* ------- Central level computation (respects XP + achievement gates) ------- */
 function computeLevel(){
+  if(state.devAllUnlocked) return LEVEL_DEFS[LEVEL_DEFS.length-1].id;
   let lvl = 1;
   for(let i=0;i<LEVEL_DEFS.length;i++){
     const L = LEVEL_DEFS[i];
@@ -1581,10 +1716,12 @@ function triggerLevelUp(prevLevel, newLevel){
   GRAMMAR.filter(g=>g.levelReq===newLevel).forEach(g=> unlocked.push("📚 درس گرامر «"+g.titleFa+"» باز شد"));
   CONVERSATIONS.filter(c=>c.levelReq===newLevel).forEach(c=> unlocked.push("🗣️ مکالمه «"+c.titleFa+"» باز شد"));
   if(MILESTONE_EXAMS.includes(newLevel)) unlocked.push("📝 آزمون سطح "+newLevel+" آماده‌ست");
+  if(newLevel>=15) unlocked.push("🏆 به بالاترین سطح KoodakEnglish رسیدی!");
   const ul = document.getElementById("luUnlocks");
   ul.innerHTML = unlocked.length? unlocked.map(u=>`<div>${u}</div>`).join("") : `<div>به کاوش ادامه بده تا محتوای بیشتری باز بشه! 🚀</div>`;
   document.getElementById("levelUpOverlay").classList.add("open");
   renderAllLockDependent();
+  renderMyGifts();
 }
 function awardBadge(id){
   if(state.badges.includes(id)) return;
@@ -1653,6 +1790,15 @@ function checkAllAchievements(){
   if(examVals.some(e=>e.score>=80)) awardBadge("exam-80");
   if(examVals.some(e=>e.score>=90)) awardBadge("exam-90");
   if(examVals.some(e=>e.score>=100)) awardBadge("exam-perfect");
+  // Gift / rarity achievements
+  const ownedRarities = Object.keys(state.gifts||{}).filter(id=>state.gifts[id]>0).map(id=> GIFTS.find(g=>g.id===id)).filter(Boolean).map(g=>g.rarity);
+  if(ownedRarities.includes("rare")) awardBadge("first-rare");
+  if(ownedRarities.includes("epic")) awardBadge("first-epic");
+  if(ownedRarities.includes("legendary")) awardBadge("first-legendary");
+  const boost = computeRarityBoost();
+  if(boost>=25) awardBadge("rarity-hunter");
+  if(boost>=50) awardBadge("rarity-master");
+  if(GIFTS.every(g=> (state.gifts[g.id]||0)>0)) awardBadge("gift-collector");
 }
 
 /* ======================= MARK WORD LEARNED ======================= */
@@ -1754,6 +1900,160 @@ reqModal.addEventListener("click", (e)=>{ if(e.target===reqModal) reqModal.class
 function lockOverlayHtml(levelReq){
   return `<div class="lock-overlay"><span class="lock-icon">🔒</span><span class="lock-req">Level ${levelReq}</span></div>`;
 }
+
+/* ======================= STARS ======================= */
+function addStars(amount, msg){
+  state.stars = (state.stars||0) + amount;
+  if(state.stars < 0) state.stars = 0;
+  saveState();
+  renderProgress();
+  SND.xp();
+  if(msg) toast(msg + " (+"+amount+" ⭐)");
+}
+
+/* ======================= GIFTS / RARITY BOOST (derived, not stored) ======================= */
+function computeRarityBoost(){
+  return Object.keys(state.gifts||{}).reduce((sum,id)=>{
+    const g = GIFTS.find(x=>x.id===id);
+    if(!g) return sum;
+    return sum + (state.gifts[id]||0) * g.rarityBoost;
+  }, 0);
+}
+function uniqueGiftsOwnedCount(){
+  return Object.keys(state.gifts||{}).filter(id=> (state.gifts[id]||0)>0).length;
+}
+function checkGiftCollectionBonus(){
+  const uniq = uniqueGiftsOwnedCount();
+  const thresholds = [{n:3,reward:5},{n:5,reward:10},{n:8,reward:20}];
+  thresholds.forEach(t=>{
+    if(uniq>=t.n && !state.uniqueGiftBonusGiven.includes(t.n)){
+      state.uniqueGiftBonusGiven.push(t.n);
+      saveState();
+      addStars(t.reward, `🎁 مجموعه ${t.n} نوع هدیه`);
+    }
+  });
+}
+/* Central grant function — used by Promo codes (the only way to obtain gifts now) */
+function grantGift(giftId, sourceMsg){
+  const g = GIFTS.find(x=>x.id===giftId);
+  if(!g) return;
+  state.gifts[giftId] = (state.gifts[giftId]||0) + 1;
+  saveState();
+  addXp(g.xp, sourceMsg || (g.name+" گرفتی"));
+  checkGiftCollectionBonus();
+  checkAllAchievements();
+  renderMyGifts();
+}
+function sellGift(giftId){
+  const g = GIFTS.find(x=>x.id===giftId);
+  if(!g) return;
+  const owned = state.gifts[giftId]||0;
+  if(owned<=0) return;
+  if(!confirm(`${g.name} رو به ${g.sellPrice} ⭐ بفروشی؟`)) return;
+  state.gifts[giftId] = owned-1;
+  state.stars = (state.stars||0) + g.sellPrice;
+  saveState();
+  toast(`${g.icon} ${g.name} فروخته شد (+${g.sellPrice} ⭐)`);
+  renderProgress();
+  renderMyGifts();
+}
+function showRewardModal(em, title, sub){
+  document.getElementById("rewardModalBody").innerHTML = `
+    <div style="font-size:56px;">${em}</div>
+    <div style="font-weight:900; font-size:19px; margin-top:10px;">${title}</div>
+    <div style="font-size:13px; color:var(--ink-soft); margin-top:6px;">${sub}</div>
+  `;
+  document.getElementById("rewardModal").classList.add("open");
+  SND.levelup();
+}
+document.getElementById("rewardModalClose").addEventListener("click", ()=> document.getElementById("rewardModal").classList.remove("open"));
+document.getElementById("rewardModal").addEventListener("click",(e)=>{ if(e.target===document.getElementById("rewardModal")) document.getElementById("rewardModal").classList.remove("open"); });
+
+/* ------- Promo codes (the only way to get gifts) ------- */
+function redeemPromoCode(raw){
+  const code = (raw||"").trim().toLowerCase();
+  if(!code) return;
+  if(state.redeemedCodes.includes(code)){ toast("این کد قبلاً استفاده شده!"); return; }
+  const entry = PROMO_CODES[code];
+  if(!entry){ toast("کد معتبر نیست 😅"); SND.wrong(); return; }
+  state.redeemedCodes.push(code);
+  saveState();
+  if(entry.type==="dev"){
+    state.devAllUnlocked = true;
+    saveState();
+    toast("🔓 حالت توسعه‌دهنده فعال شد — همه‌چیز باز شد!");
+    renderAllLockDependent(); renderProgress();
+    return;
+  }
+  if(entry.type==="mystery"){
+    // mystery-type promo: rolls a weighted reward table (stars or a gift of random rarity)
+    const totalWeight = MYSTERY_TABLE.reduce((a,x)=>a+x.weight,0);
+    let r = Math.random()*totalWeight, picked = MYSTERY_TABLE[0];
+    for(const row of MYSTERY_TABLE){ if(r<row.weight){ picked=row; break; } r -= row.weight; }
+    if(picked.type==="stars"){ const amount = Math.floor(Math.random()*(picked.max-picked.min+1))+picked.min; addStars(amount); showRewardModal("🎁","کد تخفیف",`⭐ ${amount} استارز گرفتی!`); }
+    else{ const pool = GIFTS.filter(g=>g.rarity===picked.rarity); const g = pool[Math.floor(Math.random()*pool.length)]; grantGift(g.id,null); showRewardModal(g.icon,g.name,`${RARITY_LABELS[g.rarity]} • +${g.xp} XP`); }
+  } else if(entry.type==="gift"){
+    const g = GIFTS.find(x=>x.id===entry.giftId);
+    grantGift(g.id, null);
+    showRewardModal(g.icon, g.name, `${RARITY_LABELS[g.rarity]} • +${g.xp} XP • +${g.rarityBoost} 💎`);
+  }
+  renderMyGifts();
+  confettiBurst();
+}
+
+/* ------- My Gifts (owned collection + sell) ------- */
+function renderMyGifts(){
+  const grid = document.getElementById("giftGrid");
+  if(!grid) return;
+  const owned = GIFTS.filter(g=> (state.gifts[g.id]||0) > 0);
+  if(!owned.length){
+    grid.innerHTML = `<div class="gift-empty">هنوز هدیه‌ای نداری! یه کد تخفیف بالا وارد کن تا اولین هدیه‌ات رو بگیری 🎁</div>`;
+    return;
+  }
+  grid.innerHTML = owned.map(g=>{
+    const count = state.gifts[g.id]||0;
+    return `<div class="gift-card" data-id="${g.id}" data-rarity="${g.rarity}">
+      <div class="gift-em">${g.icon}</div>
+      <div class="gift-name">${g.name}</div>
+      <div class="gift-rarity-pill ${g.rarity}">${RARITY_LABELS[g.rarity]}</div>
+      <div class="gift-owned">تعداد: ${count}</div>
+      <div class="gift-price-row"><span class="sell">فروش به ${g.sellPrice}⭐</span></div>
+    </div>`;
+  }).join("");
+  grid.querySelectorAll(".gift-card").forEach(card=>{
+    card.addEventListener("click", ()=> openGiftDetail(card.dataset.id));
+  });
+}
+const giftModal = document.getElementById("giftModal");
+function openGiftDetail(giftId){
+  const g = GIFTS.find(x=>x.id===giftId);
+  const owned = state.gifts[giftId]||0;
+  document.getElementById("giftModalBody").innerHTML = `
+    <div style="text-align:center;">
+      <div style="font-size:56px;">${g.icon}</div>
+      <div style="font-weight:900; font-size:19px; margin-top:6px;">${g.name} <span class="en" style="font-size:12px; color:var(--ink-faint);">${g.en}</span></div>
+      <div class="gift-rarity-pill ${g.rarity}" style="margin-top:8px;">${RARITY_LABELS[g.rarity]}</div>
+      <p style="font-size:13px; color:var(--ink-soft); margin-top:12px; line-height:1.8;">${g.desc}</p>
+    </div>
+    <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:13px; font-weight:700;">
+      <div class="stat-box" style="background:var(--cream);"><div class="stat-num" style="font-size:16px;">${g.sellPrice}⭐</div><div class="stat-lbl">قیمت فروش</div></div>
+      <div class="stat-box" style="background:var(--cream);"><div class="stat-num" style="font-size:16px;">${g.xp}</div><div class="stat-lbl">🧠 XP</div></div>
+      <div class="stat-box" style="background:var(--cream);"><div class="stat-num" style="font-size:16px;">+${g.rarityBoost}</div><div class="stat-lbl">💎 رتبه کمیابی</div></div>
+      <div class="stat-box" style="background:var(--cream);"><div class="stat-num" style="font-size:16px;">${owned}</div><div class="stat-lbl">تعداد موجود</div></div>
+    </div>
+    <button class="btn btn-secondary" id="giftSellBtn" style="width:100%; justify-content:center; margin-top:18px;" ${owned<=0?'disabled':''}>فروش 💰</button>
+  `;
+  document.getElementById("giftSellBtn").addEventListener("click", ()=>{ sellGift(g.id); if((state.gifts[g.id]||0)>0) openGiftDetail(g.id); else giftModal.classList.remove("open"); });
+  giftModal.classList.add("open");
+  SND.open();
+}
+document.getElementById("closeGiftModal").addEventListener("click", ()=> giftModal.classList.remove("open"));
+giftModal.addEventListener("click",(e)=>{ if(e.target===giftModal) giftModal.classList.remove("open"); });
+document.getElementById("promoBtn").addEventListener("click", ()=>{
+  redeemPromoCode(document.getElementById("promoInput").value);
+  document.getElementById("promoInput").value = "";
+});
+document.getElementById("promoInput").addEventListener("keydown",(e)=>{ if(e.key==="Enter"){ document.getElementById("promoBtn").click(); } });
 
 /* ======================= RENDER: TOPICS ======================= */
 const topicGrid = document.getElementById("topicGrid");
@@ -2360,6 +2660,8 @@ function renderProgress(){
   document.getElementById("statGames").textContent = state.gamesCompleted||0;
   document.getElementById("statStreak").textContent = state.streak||0;
   document.getElementById("statBadges").textContent = state.badges.length;
+  document.getElementById("statStars").textContent = state.stars||0;
+  document.getElementById("statRarity").textContent = computeRarityBoost();
   document.getElementById("pWords").textContent = state.wordsLearned.length;
   document.getElementById("pGames").textContent = state.gamesCompleted||0;
   document.getElementById("pStreak").textContent = state.streak||0;
@@ -2462,7 +2764,7 @@ function renderNextCard(){
 
 /* ======================= ACHIEVEMENTS FULL PAGE ======================= */
 let achFilter = "all";
-const ACH_CATS = [{id:"all",label:"همه"},{id:"learning",label:"یادگیری"},{id:"game",label:"بازی"},{id:"level",label:"سطح"},{id:"exam",label:"آزمون"},{id:"grammar",label:"گرامر"},{id:"story",label:"داستان"},{id:"streak",label:"استریک"},{id:"explore",label:"کاوش"}];
+const ACH_CATS = [{id:"all",label:"همه"},{id:"learning",label:"یادگیری"},{id:"game",label:"بازی"},{id:"level",label:"سطح"},{id:"exam",label:"آزمون"},{id:"grammar",label:"گرامر"},{id:"story",label:"داستان"},{id:"streak",label:"استریک"},{id:"explore",label:"کاوش"},{id:"gifts",label:"هدایا"}];
 function renderAchTabs(){
   const el = document.getElementById("achTabs");
   if(!el) return;
@@ -2817,9 +3119,8 @@ searchInput.addEventListener("input", (e)=> renderSearchResults(e.target.value))
 function renderAllLockDependent(){
   renderTopics(); renderContinue(); renderGameGrid(); renderStories();
   renderGrammar(); renderConversationGrid(); renderExamList(); renderLevelMap(); renderNextCard();
+  renderMyGifts();
 }
-
-/* ======================= LEVEL UP OVERLAY CLOSE ======================= */
 document.getElementById("luClose").addEventListener("click", ()=> document.getElementById("levelUpOverlay").classList.remove("open"));
 
 /* ======================= RESET PROGRESS (parent-guarded) ======================= */
@@ -2904,6 +3205,7 @@ function init(){
   renderExamList();
   renderAchTabs();
   renderAchievementsFull();
+  renderMyGifts();
   renderProgress();
   updateBottomNav();
 }
