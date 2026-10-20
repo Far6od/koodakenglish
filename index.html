@@ -596,36 +596,89 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
   .progress-panel{grid-template-columns:1fr;}
 }
 
-/* ================= GIFTS (MY COLLECTION + PROMO) ================= */
-.gift-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:16px; margin-bottom:10px;}
-.gift-card{
-  background:#fff; border-radius:var(--r-lg); padding:18px; text-align:center; cursor:pointer;
-  border:2px solid #F1EEFE; transition:transform .25s var(--ease), box-shadow .25s var(--ease); position:relative;
-}
-.gift-card:hover{transform:translateY(-5px);}
-.gift-card[data-rarity="uncommon"]{border-color:#B7ECD0;}
-.gift-card[data-rarity="rare"]{border-color:#A9D4FF; box-shadow:0 0 0 1px #A9D4FF, var(--shadow-soft);}
-.gift-card[data-rarity="epic"]{border-color:#D8B8FF; box-shadow:0 0 18px rgba(216,184,255,.55);}
-.gift-card[data-rarity="legendary"]{border-color:#FFD166; box-shadow:0 0 22px rgba(255,209,102,.6); background:linear-gradient(160deg,#fff,#FFF8E5);}
-.gift-em{font-size:38px; margin-bottom:6px;}
-.gift-name{font-weight:800; font-size:14px;}
-.gift-rarity-pill{display:inline-block; font-size:10px; font-weight:800; padding:2px 10px; border-radius:99px; margin-top:6px;}
-.gift-rarity-pill.common{background:#EFEFF4; color:#7A7F94;}
-.gift-rarity-pill.uncommon{background:#E4FBEE; color:#2E9E63;}
-.gift-rarity-pill.rare{background:#E8F3FF; color:#2E7CD1;}
-.gift-rarity-pill.epic{background:#F4EBFF; color:#8A4FE0;}
-.gift-rarity-pill.legendary{background:#FFF6DE; color:#C9971E;}
-.gift-owned{font-size:11px; color:var(--ink-faint); margin-top:6px; font-weight:700;}
-.gift-price-row{display:flex; justify-content:center; gap:10px; margin-top:10px; font-size:12px; font-weight:800;}
-.gift-price-row .buy{color:var(--coral-deep);}
-.gift-price-row .sell{color:var(--green);}
-.gift-empty{grid-column:1/-1; text-align:center; padding:30px 20px; color:var(--ink-faint); font-weight:700; font-size:14px;}
 
-.promo-box{max-width:420px; margin:0 auto 34px; text-align:center;}
-.promo-title{font-weight:800; font-size:14px; margin-bottom:10px;}
-.promo-row{display:flex; gap:8px;}
-.promo-row input{flex:1; border:2px solid #F1EEFE; border-radius:99px; padding:12px 18px; font-family:inherit; font-size:14px; outline:none;}
-.promo-row input:focus{border-color:var(--purple);}
+/* ================= SUBSCRIPTIONS / PREMIUM LESSONS ================= */
+.sub-status{max-width:640px; margin:0 auto 22px; text-align:center; font-weight:700; font-size:14px; color:var(--ink-soft); min-height:22px;}
+.sub-status .tier-chip{margin-inline:4px;}
+.tier-chip{display:inline-block; padding:3px 12px; border-radius:99px; font-weight:900; font-size:12px; letter-spacing:.5px; background:#EFEFF4; color:#6B7390;}
+.tier-chip.BRONZE{background:#FFE6CF; color:#B5651D;}
+.tier-chip.SILVER{background:#E7ECF6; color:#5E6C8C;}
+.tier-chip.GOLD{background:#FFF1BF; color:#A8780A;}
+.tier-chip.DIAMOND{background:#D9F4FF; color:#1E86B5;}
+.link-btn{background:none; border:none; color:var(--purple-deep); font:inherit; font-weight:800; cursor:pointer; text-decoration:underline; padding:4px;}
+.prem-group{margin-bottom:26px;}
+.prem-group-title{font-weight:900; font-size:15px; margin:0 0 12px; display:flex; align-items:center; gap:8px;}
+.prem-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:16px;}
+.prem-card{position:relative; text-align:center; background:#fff; border:2px solid #F1EEFE; border-radius:var(--r-lg); padding:18px 14px; cursor:pointer; font:inherit; color:inherit; transition:transform .25s var(--ease), box-shadow .25s var(--ease);}
+.prem-card:hover{transform:translateY(-5px); box-shadow:var(--shadow-soft);}
+.prem-card:focus-visible{outline:3px solid var(--purple-deep); outline-offset:3px;}
+.prem-card.BRONZE{border-color:#F3C9A0;} .prem-card.SILVER{border-color:#CBD3E4;} .prem-card.GOLD{border-color:#F6D872;} .prem-card.DIAMOND{border-color:#9ADCF5;}
+.prem-card .pc-em{font-size:40px;}
+.prem-card .pc-title{font-weight:900; font-size:15px; margin-top:6px;}
+.prem-card .pc-en{font-size:12px; color:var(--ink-faint); font-weight:700;}
+.prem-card .pc-desc{font-size:12px; color:var(--ink-soft); margin-top:8px; line-height:1.8;}
+.prem-card .pc-cat{display:inline-block; font-size:11px; font-weight:800; background:var(--purple-light); color:var(--purple-deep); border-radius:99px; padding:2px 10px; margin-top:8px;}
+.prem-card .pc-done{position:absolute; top:8px; left:10px; font-size:16px;}
+.prem-card .pc-lock{position:absolute; top:8px; right:10px; font-size:12px; font-weight:900; background:rgba(255,255,255,.9); border-radius:99px; padding:2px 8px;}
+.prem-card.locked .pc-em{filter:grayscale(.6); opacity:.7;}
+.prem-empty{grid-column:1/-1; text-align:center; padding:26px 16px; color:var(--ink-faint); font-weight:700; font-size:14px; line-height:2;}
+
+.redeem-box{max-width:520px; margin:0 auto 38px; background:#fff; border:2px solid #F1EEFE; border-radius:var(--r-lg); padding:22px; box-shadow:var(--shadow-soft); text-align:center;}
+.redeem-box h3{margin:0 0 4px; font-size:19px; font-weight:900;}
+.redeem-box .redeem-sub{font-size:13px; color:var(--ink-soft); margin-bottom:14px;}
+.redeem-box label{display:block; font-weight:800; font-size:13px; text-align:start; margin-bottom:6px;}
+.redeem-row{display:flex; gap:8px;}
+.redeem-row input{flex:1; min-width:0; border:2px solid #E6E1FD; border-radius:99px; padding:12px 18px; font-family:inherit; font-weight:700; font-size:16px; letter-spacing:1px; text-align:center; outline:none;}
+.redeem-row input:focus{border-color:var(--purple);}
+.redeem-row input.bad{border-color:#E5484D;}
+.redeem-env{font-size:12px; font-weight:800; margin-top:10px;} .redeem-env.ok{color:#1F8F5B;} .redeem-env.bad{color:#C93A3F; line-height:1.9;}
+.redeem-msg{min-height:22px; margin-top:12px; font-size:13px; font-weight:800;}
+.redeem-msg.err{color:#C93A3F;} .redeem-msg.ok{color:#1F8F5B;}
+.restore-box{margin-top:14px; font-size:12px; color:var(--ink-soft); text-align:start;}
+.restore-box summary{cursor:pointer; font-weight:800;}
+.restore-box .redeem-row{margin-top:8px;}
+.restore-box input{font-size:12px; letter-spacing:0;}
+
+.tier-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; margin-bottom:18px;}
+.tier-card{background:#fff; border-radius:var(--r-lg); border:2px solid #eee; overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow-soft); transition:transform .25s var(--ease);}
+.tier-card:hover{transform:translateY(-6px);}
+.tier-card .tc-head{padding:18px 16px 14px; text-align:center;}
+.tier-card .tc-em{font-size:42px;}
+.tier-card .tc-name{font-weight:900; font-size:20px; letter-spacing:1px; margin-top:4px;}
+.tier-card .tc-desc{font-size:12px; margin-top:4px; opacity:.85; line-height:1.8;}
+.tier-card .tc-body{padding:14px 16px 18px; display:flex; flex-direction:column; gap:10px; flex:1;}
+.tier-card ul{list-style:none; margin:0; padding:0; font-size:13px; line-height:1.9; flex:1;}
+.tier-card li::before{content:"✓"; color:var(--green); font-weight:900; margin-inline-end:6px;}
+.tier-card .tc-cats{font-size:11px; color:var(--ink-faint); font-weight:700;}
+.tier-card .tc-price{font-size:13px; font-weight:800; text-align:center; background:var(--cream); border-radius:12px; padding:8px;}
+.tier-card.BRONZE{border-color:#F3C9A0;} .tier-card.BRONZE .tc-head{background:linear-gradient(135deg,#FFE6CF,#FFF4E8); color:#8A4B12;}
+.tier-card.SILVER{border-color:#CBD3E4;} .tier-card.SILVER .tc-head{background:linear-gradient(135deg,#E3E9F5,#F6F8FC); color:#4B5878;}
+.tier-card.GOLD{border-color:#F6D872;} .tier-card.GOLD .tc-head{background:linear-gradient(135deg,#FFEDA8,#FFF8DC); color:#85600A;}
+.tier-card.DIAMOND{border-color:#9ADCF5;} .tier-card.DIAMOND .tc-head{background:linear-gradient(135deg,#C9EFFF,#EEF9FF); color:#17759F;}
+.sub-note{max-width:640px; margin:0 auto; text-align:center; font-size:13px; color:var(--ink-soft); line-height:2; font-weight:700;}
+
+.lesson-obj{text-align:start; background:var(--cream); border-radius:16px; padding:12px 16px; font-size:13px; line-height:2; margin:10px 0;}
+.lesson-items{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0;}
+.lesson-item{background:#fff; border:2px solid #F1EEFE; border-radius:16px; padding:10px 4px; text-align:center; cursor:pointer; font:inherit; color:inherit;}
+.lesson-item:hover,.lesson-item:focus-visible{border-color:var(--purple); outline:none;}
+.lesson-item .em{font-size:32px; display:block;} .lesson-item .w{font-weight:800; font-size:14px; display:block;} .lesson-item .fa{font-size:12px; color:var(--ink-soft); display:block;} .lesson-item .ipa{font-size:11px; color:var(--ink-faint); display:block;}
+.lesson-sent{display:flex; align-items:center; gap:10px; text-align:start; background:#fff; border:2px solid #F1EEFE; border-radius:14px; padding:10px 12px; margin:8px 0; cursor:pointer; width:100%; font:inherit; color:inherit;}
+.lesson-sent .en{font-weight:800; font-size:14px; direction:ltr; text-align:left; flex:1;} .lesson-sent .fa{font-size:12px; color:var(--ink-soft);}
+.ex-wrap{text-align:center;} .ex-big{font-size:64px; line-height:1.2;} .ex-q{font-weight:800; margin:6px 0 12px;}
+.ex-opts{display:grid; gap:10px; margin:10px 0;} .ex-opts.grid3{grid-template-columns:repeat(3,1fr);}
+.ex-opt{background:#fff; border:2px solid #E6E1FD; border-radius:16px; padding:12px; font-family:inherit; font-weight:800; font-size:16px; cursor:pointer; color:var(--ink);}
+.ex-opt.emoji{font-size:34px;} .ex-opt:hover:not(:disabled){border-color:var(--purple);}
+.ex-opt.right{border-color:var(--green); background:#F3FBF6;} .ex-opt.wrong{border-color:#E5484D; background:#FFF1F1;}
+.ex-tiles{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:8px 0; direction:ltr;}
+.ex-tile{min-width:42px; background:#fff; border:2px solid #E6E1FD; border-radius:12px; padding:8px 10px; font-family:inherit; font-weight:900; font-size:20px; cursor:pointer;}
+.ex-tile:disabled{opacity:.3;}
+.ex-slots{min-height:48px; direction:ltr; font-family:inherit; font-weight:900; font-size:26px; line-height:1.6; letter-spacing:6px;}
+.ex-fb{min-height:24px; font-weight:800; margin:8px 0;} .ex-fb.ok{color:#1F8F5B;} .ex-fb.no{color:#C93A3F;}
+.ex-prog{height:8px; background:#EFEAFF; border-radius:99px; overflow:hidden; margin-bottom:12px;} .ex-prog>div{height:100%; background:linear-gradient(90deg,var(--purple),var(--coral)); width:0;}
+.tg-msg{width:100%; min-height:96px; border:2px solid #E6E1FD; border-radius:14px; padding:10px; font-family:inherit; font-size:14px; line-height:1.7; direction:ltr; text-align:left; resize:none; background:var(--cream);}
+.modal-actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
+@media (max-width:520px){ .lesson-items{grid-template-columns:repeat(2,1fr);} .redeem-row{flex-direction:column;} .redeem-row .btn{justify-content:center;} }
+@media (prefers-reduced-motion: reduce){ .prem-card,.tier-card{transition:none;} .prem-card:hover,.tier-card:hover{transform:none;} }
 </style>
 </head>
 <body>
@@ -669,7 +722,7 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
       <a href="#games">بازی‌ها</a>
       <a href="#exams">آزمون‌ها</a>
       <a href="#stories">داستان‌ها</a>
-      <a href="#gifts">🎁 هدایا</a>
+      <a href="#subscription">اشتراک</a>
       <a href="#achievements">دستاوردها</a>
       <a href="#progress">پیشرفت من</a>
     </div>
@@ -890,8 +943,6 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
           <div class="stat-box"><div class="stat-num" id="statGames">0</div><div class="stat-lbl">🎮 بازی تمام‌شده</div></div>
           <div class="stat-box"><div class="stat-num" id="statStreak">0</div><div class="stat-lbl">🔥 روز پشت سر هم</div></div>
           <div class="stat-box"><div class="stat-num" id="statBadges">0</div><div class="stat-lbl">🏆 نشان‌ها</div></div>
-          <div class="stat-box"><div class="stat-num" id="statStars">0</div><div class="stat-lbl">⭐ استارز</div></div>
-          <div class="stat-box"><div class="stat-num" id="statRarity">0</div><div class="stat-lbl">💎 رتبه کمیابی</div></div>
         </div>
       </div>
       <div>
@@ -902,44 +953,74 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
   </div>
 </section>
 
-<!-- ================= GIFTS (PROMO CODE + MY COLLECTION) ================= -->
-<section class="section section-lav" id="gifts">
+<!-- ================= ACHIEVEMENTS FULL ================= -->
+<!-- ================= PREMIUM LESSONS ================= -->
+<section class="section section-sky" id="premium">
   <div class="container">
     <div class="section-head reveal">
-      <div class="section-kicker">هدایای من 🎁</div>
-      <h2 class="section-title">کد تخفیف بزن، هدیه بگیر</h2>
-      <p class="section-desc">هدیه‌هایی که داری رو اینجا می‌بینی. هر وقت خواستی، می‌تونی بفروشیشون و ⭐ استارز بگیری.</p>
+      <div class="section-kicker">درس‌های ویژه ✨</div>
+      <h2 class="section-title">درس‌های جدید برای هر اشتراک</h2>
+      <p class="section-desc">بقیه‌ی درس‌ها، بازی‌ها، داستان‌ها و آزمون‌های کودک‌انگلیش همیشه رایگان می‌مونن. این بخش درس‌های اضافه‌ی اشتراکیه.</p>
     </div>
-
-    <div class="promo-box reveal">
-      <div class="promo-title">🔑 کد تخفیف داری؟</div>
-      <div class="promo-row">
-        <input type="text" id="promoInput" placeholder="کد رو اینجا بنویس..." autocomplete="off">
-        <button class="btn btn-primary" id="promoBtn">اعمال کن</button>
-      </div>
-    </div>
-
-    <div class="gift-grid reveal" id="giftGrid"></div>
+    <div class="sub-status" id="subStatus" role="status" aria-live="polite"></div>
+    <div id="premGroups"></div>
   </div>
 </section>
 
-<!-- Gift detail modal -->
-<div class="modal-overlay" id="giftModal">
-  <div class="modal-box" style="max-width:400px;">
-    <button class="modal-close" id="closeGiftModal" aria-label="بستن">✕</button>
-    <div id="giftModalBody"></div>
+<!-- ================= SUBSCRIPTION (REDEEM + REQUEST) ================= -->
+<section class="section section-lav" id="subscription">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">اشتراک ⭐</div>
+      <h2 class="section-title">اشتراک بگیر، درس‌های بیشتری باز کن</h2>
+      <p class="section-desc">اشتراک‌ها به‌صورت دستی و از طریق تلگرام فروخته می‌شن. بعد از خرید یه کد اشتراک می‌گیری و همین‌جا فعالش می‌کنی.</p>
+    </div>
+
+    <form class="redeem-box reveal" id="redeemForm" novalidate>
+      <h3>Redeem Your Subscription Code</h3>
+      <div class="redeem-sub">کد اشتراکت رو اینجا وارد کن</div>
+      <label for="redeemInput">کد اشتراک (Subscription code)</label>
+      <div class="redeem-row">
+        <input type="text" id="redeemInput" dir="ltr" inputmode="numeric" autocomplete="off" spellcheck="false" maxlength="24" placeholder="1111-1111-1111-1111" aria-describedby="redeemMsg">
+        <button class="btn btn-primary" id="redeemBtn" type="submit">Redeem</button>
+      </div>
+      <div class="redeem-env" id="redeemEnv" role="status"></div>
+      <div class="redeem-msg" id="redeemMsg" role="status" aria-live="polite"></div>
+      <details class="restore-box">
+        <summary>قبلاً اشتراک گرفتی؟ (بازیابی روی این دستگاه)</summary>
+        <div>کلید بازیابی رو که موقع فعال‌سازی ذخیره کردی اینجا بذار.</div>
+        <div class="redeem-row">
+          <input type="text" id="restoreInput" dir="ltr" autocomplete="off" spellcheck="false" aria-label="کلید بازیابی اشتراک" placeholder="restore key">
+          <button class="btn btn-secondary" id="restoreBtn" type="button">بازیابی</button>
+        </div>
+      </details>
+    </form>
+
+    <div class="tier-grid reveal" id="tierGrid"></div>
+    <p class="sub-note reveal">⚠️ «درخواست اشتراک» فقط یه پیام آماده برای تلگرامه، نه پرداخت و نه فعال‌سازی. خودت پیام رو توی تلگرام می‌فرستی، قیمت و روش خرید رو می‌گیری و بعد از خرید، کد اشتراک بهت داده می‌شه.</p>
+  </div>
+</section>
+
+<!-- Premium lesson / locked screen / subscription modals -->
+<div class="modal-overlay" id="premModal" role="dialog" aria-modal="true" aria-labelledby="premModalTitle">
+  <div class="modal-box" style="max-width:520px;">
+    <button class="modal-close" id="closePremModal" aria-label="بستن">✕</button>
+    <div id="premModalBody"></div>
+  </div>
+</div>
+<div class="modal-overlay" id="tgModal" role="dialog" aria-modal="true" aria-labelledby="tgTitle">
+  <div class="modal-box" style="max-width:460px;">
+    <button class="modal-close" id="closeTgModal" aria-label="بستن">✕</button>
+    <div id="tgBody"></div>
+  </div>
+</div>
+<div class="modal-overlay" id="subOkModal" role="dialog" aria-modal="true" aria-labelledby="subOkTitle">
+  <div class="modal-box" style="max-width:420px; text-align:center;">
+    <button class="modal-close" id="closeSubOk" aria-label="بستن">✕</button>
+    <div id="subOkBody"></div>
   </div>
 </div>
 
-<!-- Reward reveal modal (promo code grant) -->
-<div class="modal-overlay" id="rewardModal">
-  <div class="modal-box" style="max-width:360px; text-align:center;">
-    <div id="rewardModalBody"></div>
-    <button class="btn btn-primary" id="rewardModalClose" style="width:100%; justify-content:center; margin-top:16px;">عالیه! 🎉</button>
-  </div>
-</div>
-
-<!-- ================= ACHIEVEMENTS FULL ================= -->
 <section class="section section-cream" id="achievements">
   <div class="container">
     <div class="section-head reveal">
@@ -1036,6 +1117,7 @@ footer{background:var(--ink); color:#D8DEF5; padding:50px 0 26px;}
           <div class="footer-col-title">محتوا</div>
           <a href="#videos">ویدیوها</a>
           <a href="#stories">داستان‌ها</a>
+          <a href="#subscription">اشتراک</a>
           <a href="#progress">پیشرفت من</a>
         </div>
         <div class="footer-col">
@@ -1359,14 +1441,7 @@ const BADGES = [
   // Exploration
   {id:"explore-5", em:"🌎", title:"کاوش ۵ موضوع", desc:"۵ تا موضوع رو باز کردی", xp:30, cat:"explore"},
   {id:"explorer", em:"🧭", title:"English Explorer", desc:"همه موضوعات یادگیری رو باز کردی", xp:80, cat:"explore"},
-  {id:"night-owl", em:"🦉", title:"کاوشگر شبانه", desc:"🔒 یک دستاورد مخفی...", xp:50, cat:"explore", secret:true},
-  // Gifts / rarity
-  {id:"first-rare", em:"💎", title:"اولین هدیه کمیاب", desc:"اولین هدیه‌ی Rare خودت رو گرفتی", xp:30, cat:"gifts"},
-  {id:"first-epic", em:"✨", title:"جمع‌کننده حماسی", desc:"اولین هدیه‌ی Epic خودت رو گرفتی", xp:50, cat:"gifts"},
-  {id:"first-legendary", em:"👑", title:"جمع‌کننده افسانه‌ای", desc:"اولین هدیه‌ی Legendary خودت رو گرفتی", xp:100, cat:"gifts"},
-  {id:"rarity-hunter", em:"💎", title:"شکارچی کمیابی", desc:"به ۲۵ رتبه کمیابی رسیدی", xp:60, cat:"gifts"},
-  {id:"rarity-master", em:"💎", title:"استاد کمیابی", desc:"به ۵۰ رتبه کمیابی رسیدی", xp:100, cat:"gifts"},
-  {id:"gift-collector", em:"🎁", title:"جمع‌کننده هدایا", desc:"همه‌ی انواع هدیه رو داری", xp:80, cat:"gifts", secret:true}
+  {id:"night-owl", em:"🦉", title:"کاوشگر شبانه", desc:"🔒 یک دستاورد مخفی...", xp:50, cat:"explore", secret:true}
 ];
 
 /* ------- Levels ------- */
@@ -1498,57 +1573,6 @@ const WEEKLY_CHALLENGE = {
   reward:250
 };
 
-/* ------- Gifts (central configuration) ------- */
-const GIFTS = [
-  {id:"flower", name:"گل", en:"Flower", icon:"🌷", rarity:"common", buyPrice:8, sellPrice:4, xp:5, rarityBoost:1, requiredLevel:10, desc:"یه گل ساده و قشنگ برای شروع مجموعه‌ات."},
-  {id:"heart", name:"قلب", en:"Heart", icon:"❤️", rarity:"common", buyPrice:10, sellPrice:5, xp:8, rarityBoost:2, requiredLevel:10, desc:"یه نشونه‌ی کوچیک از محبت."},
-  {id:"teddy", name:"خرس عروسکی", en:"Teddy Bear", icon:"🧸", rarity:"uncommon", buyPrice:20, sellPrice:12, xp:12, rarityBoost:3, requiredLevel:10, desc:"یه دوست نرم و بامزه."},
-  {id:"rose", name:"رز", en:"Rose", icon:"🌹", rarity:"rare", buyPrice:25, sellPrice:15, xp:20, rarityBoost:5, requiredLevel:11, desc:"یه گل کمیاب و زیبا."},
-  {id:"butterfly", name:"پروانه", en:"Butterfly", icon:"🦋", rarity:"rare", buyPrice:30, sellPrice:18, xp:25, rarityBoost:6, requiredLevel:12, desc:"سبک و رنگارنگ، یه هدیه کمیاب."},
-  {id:"rainbow", name:"رنگین‌کمان", en:"Rainbow", icon:"🌈", rarity:"epic", buyPrice:40, sellPrice:25, xp:40, rarityBoost:8, requiredLevel:13, desc:"یه هدیه‌ی حماسی و رنگارنگ."},
-  {id:"superstar", name:"ستاره فوق‌العاده", en:"Super Star", icon:"🌟", rarity:"epic", buyPrice:50, sellPrice:32, xp:50, rarityBoost:10, requiredLevel:14, desc:"یه ستاره‌ی خیلی خاص."},
-  {id:"unicorn", name:"تک‌شاخ جادویی", en:"Magic Unicorn", icon:"🦄", rarity:"legendary", buyPrice:100, sellPrice:65, xp:100, rarityBoost:12, requiredLevel:15, desc:"افسانه‌ای و کمیاب‌ترین هدیه‌ی KoodakEnglish."},
-  {id:"clover", name:"شبدر شانس", en:"Lucky Clover", icon:"🍀", rarity:"common", buyPrice:9, sellPrice:4, xp:6, rarityBoost:1, requiredLevel:10, desc:"یه شبدر چهاربرگ برای شانس بیشتر."},
-  {id:"balloon", name:"بادکنک", en:"Balloon", icon:"🎈", rarity:"common", buyPrice:8, sellPrice:4, xp:5, rarityBoost:1, requiredLevel:10, desc:"یه بادکنک رنگی و شاد."},
-  {id:"panda", name:"پاندای عروسکی", en:"Panda Plush", icon:"🐼", rarity:"uncommon", buyPrice:18, sellPrice:11, xp:10, rarityBoost:3, requiredLevel:10, desc:"یه پاندای عروسکی نرم و بامزه."},
-  {id:"ribbon", name:"روبان", en:"Ribbon", icon:"🎀", rarity:"uncommon", buyPrice:20, sellPrice:12, xp:11, rarityBoost:3, requiredLevel:11, desc:"یه روبان تزئینی قشنگ."},
-  {id:"bouquet", name:"دسته گل", en:"Bouquet", icon:"💐", rarity:"rare", buyPrice:28, sellPrice:17, xp:22, rarityBoost:5, requiredLevel:12, desc:"یه دسته گل رنگارنگ و کمیاب."},
-  {id:"fireworks", name:"آتش‌بازی", en:"Fireworks", icon:"🎆", rarity:"epic", buyPrice:45, sellPrice:28, xp:42, rarityBoost:9, requiredLevel:13, desc:"یه نمایش آتش‌بازی خیره‌کننده."},
-  {id:"dragon", name:"اژدهای کوچولو", en:"Baby Dragon", icon:"🐉", rarity:"legendary", buyPrice:90, sellPrice:58, xp:85, rarityBoost:13, requiredLevel:14, desc:"یه اژدهای افسانه‌ای و کمیاب."},
-  {id:"crown", name:"تاج طلایی", en:"Golden Crown", icon:"👑", rarity:"legendary", buyPrice:110, sellPrice:70, xp:95, rarityBoost:14, requiredLevel:15, desc:"یه تاج طلایی برای قهرمان‌های واقعی KoodakEnglish."}
-];
-const RARITY_LABELS = {common:"معمولی", uncommon:"غیرمعمول", rare:"کمیاب", epic:"حماسی", legendary:"افسانه‌ای"};
-const RARITY_ORDER = ["common","uncommon","rare","epic","legendary"];
-/* weighted mystery table (used by the "koodakgift" promo code): type "stars" gives a star amount, type "gift" pulls uniformly from that rarity tier */
-const MYSTERY_TABLE = [
-  {weight:20, type:"stars", min:5, max:15},
-  {weight:35, type:"gift", rarity:"common"},
-  {weight:22, type:"gift", rarity:"uncommon"},
-  {weight:13, type:"gift", rarity:"rare"},
-  {weight:7, type:"gift", rarity:"epic"},
-  {weight:3, type:"gift", rarity:"legendary"}
-];
-const PROMO_CODES = {
-  "koodakgift": {type:"mystery"},
-  "luckydraw": {type:"mystery"},
-  "littleheart": {type:"gift", giftId:"heart"},
-  "flowerfun": {type:"gift", giftId:"flower"},
-  "teddytime": {type:"gift", giftId:"teddy"},
-  "rainbow15": {type:"gift", giftId:"rainbow"},
-  "magicgift": {type:"gift", giftId:"unicorn"},
-  "butterflywings": {type:"gift", giftId:"butterfly"},
-  "superstarshine": {type:"gift", giftId:"superstar"},
-  "cloverluck": {type:"gift", giftId:"clover"},
-  "balloonparty": {type:"gift", giftId:"balloon"},
-  "pandahug": {type:"gift", giftId:"panda"},
-  "ribbonbow": {type:"gift", giftId:"ribbon"},
-  "bouquetlove": {type:"gift", giftId:"bouquet"},
-  "fireworksshow": {type:"gift", giftId:"fireworks"},
-  "dragonpower": {type:"gift", giftId:"dragon"},
-  "crownking": {type:"gift", giftId:"crown"},
-  "ownership14": {type:"dev"}
-};
-
 /* ======================= STATE / STORAGE ======================= */
 const STORE_KEY = "koodak_progress_v1";
 function loadState(){
@@ -1567,11 +1591,7 @@ function loadState(){
   s.badgeDates = s.badgeDates || {};
   s.weeklyCounts = s.weeklyCounts || {words:0,games:0,stories:0};
   s.buildingsBuilt = s.buildingsBuilt || [];
-  s.stars = s.stars || 0;
-  s.gifts = s.gifts || {};
-  s.uniqueGiftBonusGiven = s.uniqueGiftBonusGiven || [];
-  s.redeemedCodes = s.redeemedCodes || [];
-  s.devAllUnlocked = s.devAllUnlocked || false;
+  s.premiumDone = s.premiumDone || [];
   const today = new Date().toDateString();
   if(s.lastVisit !== today){
     const y = new Date(); y.setDate(y.getDate()-1);
@@ -1600,7 +1620,6 @@ saveState();
 
 /* ------- Central level computation (respects XP + achievement gates) ------- */
 function computeLevel(){
-  if(state.devAllUnlocked) return LEVEL_DEFS[LEVEL_DEFS.length-1].id;
   let lvl = 1;
   for(let i=0;i<LEVEL_DEFS.length;i++){
     const L = LEVEL_DEFS[i];
@@ -1721,7 +1740,6 @@ function triggerLevelUp(prevLevel, newLevel){
   ul.innerHTML = unlocked.length? unlocked.map(u=>`<div>${u}</div>`).join("") : `<div>به کاوش ادامه بده تا محتوای بیشتری باز بشه! 🚀</div>`;
   document.getElementById("levelUpOverlay").classList.add("open");
   renderAllLockDependent();
-  renderMyGifts();
 }
 function awardBadge(id){
   if(state.badges.includes(id)) return;
@@ -1790,15 +1808,6 @@ function checkAllAchievements(){
   if(examVals.some(e=>e.score>=80)) awardBadge("exam-80");
   if(examVals.some(e=>e.score>=90)) awardBadge("exam-90");
   if(examVals.some(e=>e.score>=100)) awardBadge("exam-perfect");
-  // Gift / rarity achievements
-  const ownedRarities = Object.keys(state.gifts||{}).filter(id=>state.gifts[id]>0).map(id=> GIFTS.find(g=>g.id===id)).filter(Boolean).map(g=>g.rarity);
-  if(ownedRarities.includes("rare")) awardBadge("first-rare");
-  if(ownedRarities.includes("epic")) awardBadge("first-epic");
-  if(ownedRarities.includes("legendary")) awardBadge("first-legendary");
-  const boost = computeRarityBoost();
-  if(boost>=25) awardBadge("rarity-hunter");
-  if(boost>=50) awardBadge("rarity-master");
-  if(GIFTS.every(g=> (state.gifts[g.id]||0)>0)) awardBadge("gift-collector");
 }
 
 /* ======================= MARK WORD LEARNED ======================= */
@@ -1900,160 +1909,6 @@ reqModal.addEventListener("click", (e)=>{ if(e.target===reqModal) reqModal.class
 function lockOverlayHtml(levelReq){
   return `<div class="lock-overlay"><span class="lock-icon">🔒</span><span class="lock-req">Level ${levelReq}</span></div>`;
 }
-
-/* ======================= STARS ======================= */
-function addStars(amount, msg){
-  state.stars = (state.stars||0) + amount;
-  if(state.stars < 0) state.stars = 0;
-  saveState();
-  renderProgress();
-  SND.xp();
-  if(msg) toast(msg + " (+"+amount+" ⭐)");
-}
-
-/* ======================= GIFTS / RARITY BOOST (derived, not stored) ======================= */
-function computeRarityBoost(){
-  return Object.keys(state.gifts||{}).reduce((sum,id)=>{
-    const g = GIFTS.find(x=>x.id===id);
-    if(!g) return sum;
-    return sum + (state.gifts[id]||0) * g.rarityBoost;
-  }, 0);
-}
-function uniqueGiftsOwnedCount(){
-  return Object.keys(state.gifts||{}).filter(id=> (state.gifts[id]||0)>0).length;
-}
-function checkGiftCollectionBonus(){
-  const uniq = uniqueGiftsOwnedCount();
-  const thresholds = [{n:3,reward:5},{n:5,reward:10},{n:8,reward:20}];
-  thresholds.forEach(t=>{
-    if(uniq>=t.n && !state.uniqueGiftBonusGiven.includes(t.n)){
-      state.uniqueGiftBonusGiven.push(t.n);
-      saveState();
-      addStars(t.reward, `🎁 مجموعه ${t.n} نوع هدیه`);
-    }
-  });
-}
-/* Central grant function — used by Promo codes (the only way to obtain gifts now) */
-function grantGift(giftId, sourceMsg){
-  const g = GIFTS.find(x=>x.id===giftId);
-  if(!g) return;
-  state.gifts[giftId] = (state.gifts[giftId]||0) + 1;
-  saveState();
-  addXp(g.xp, sourceMsg || (g.name+" گرفتی"));
-  checkGiftCollectionBonus();
-  checkAllAchievements();
-  renderMyGifts();
-}
-function sellGift(giftId){
-  const g = GIFTS.find(x=>x.id===giftId);
-  if(!g) return;
-  const owned = state.gifts[giftId]||0;
-  if(owned<=0) return;
-  if(!confirm(`${g.name} رو به ${g.sellPrice} ⭐ بفروشی؟`)) return;
-  state.gifts[giftId] = owned-1;
-  state.stars = (state.stars||0) + g.sellPrice;
-  saveState();
-  toast(`${g.icon} ${g.name} فروخته شد (+${g.sellPrice} ⭐)`);
-  renderProgress();
-  renderMyGifts();
-}
-function showRewardModal(em, title, sub){
-  document.getElementById("rewardModalBody").innerHTML = `
-    <div style="font-size:56px;">${em}</div>
-    <div style="font-weight:900; font-size:19px; margin-top:10px;">${title}</div>
-    <div style="font-size:13px; color:var(--ink-soft); margin-top:6px;">${sub}</div>
-  `;
-  document.getElementById("rewardModal").classList.add("open");
-  SND.levelup();
-}
-document.getElementById("rewardModalClose").addEventListener("click", ()=> document.getElementById("rewardModal").classList.remove("open"));
-document.getElementById("rewardModal").addEventListener("click",(e)=>{ if(e.target===document.getElementById("rewardModal")) document.getElementById("rewardModal").classList.remove("open"); });
-
-/* ------- Promo codes (the only way to get gifts) ------- */
-function redeemPromoCode(raw){
-  const code = (raw||"").trim().toLowerCase();
-  if(!code) return;
-  if(state.redeemedCodes.includes(code)){ toast("این کد قبلاً استفاده شده!"); return; }
-  const entry = PROMO_CODES[code];
-  if(!entry){ toast("کد معتبر نیست 😅"); SND.wrong(); return; }
-  state.redeemedCodes.push(code);
-  saveState();
-  if(entry.type==="dev"){
-    state.devAllUnlocked = true;
-    saveState();
-    toast("🔓 حالت توسعه‌دهنده فعال شد — همه‌چیز باز شد!");
-    renderAllLockDependent(); renderProgress();
-    return;
-  }
-  if(entry.type==="mystery"){
-    // mystery-type promo: rolls a weighted reward table (stars or a gift of random rarity)
-    const totalWeight = MYSTERY_TABLE.reduce((a,x)=>a+x.weight,0);
-    let r = Math.random()*totalWeight, picked = MYSTERY_TABLE[0];
-    for(const row of MYSTERY_TABLE){ if(r<row.weight){ picked=row; break; } r -= row.weight; }
-    if(picked.type==="stars"){ const amount = Math.floor(Math.random()*(picked.max-picked.min+1))+picked.min; addStars(amount); showRewardModal("🎁","کد تخفیف",`⭐ ${amount} استارز گرفتی!`); }
-    else{ const pool = GIFTS.filter(g=>g.rarity===picked.rarity); const g = pool[Math.floor(Math.random()*pool.length)]; grantGift(g.id,null); showRewardModal(g.icon,g.name,`${RARITY_LABELS[g.rarity]} • +${g.xp} XP`); }
-  } else if(entry.type==="gift"){
-    const g = GIFTS.find(x=>x.id===entry.giftId);
-    grantGift(g.id, null);
-    showRewardModal(g.icon, g.name, `${RARITY_LABELS[g.rarity]} • +${g.xp} XP • +${g.rarityBoost} 💎`);
-  }
-  renderMyGifts();
-  confettiBurst();
-}
-
-/* ------- My Gifts (owned collection + sell) ------- */
-function renderMyGifts(){
-  const grid = document.getElementById("giftGrid");
-  if(!grid) return;
-  const owned = GIFTS.filter(g=> (state.gifts[g.id]||0) > 0);
-  if(!owned.length){
-    grid.innerHTML = `<div class="gift-empty">هنوز هدیه‌ای نداری! یه کد تخفیف بالا وارد کن تا اولین هدیه‌ات رو بگیری 🎁</div>`;
-    return;
-  }
-  grid.innerHTML = owned.map(g=>{
-    const count = state.gifts[g.id]||0;
-    return `<div class="gift-card" data-id="${g.id}" data-rarity="${g.rarity}">
-      <div class="gift-em">${g.icon}</div>
-      <div class="gift-name">${g.name}</div>
-      <div class="gift-rarity-pill ${g.rarity}">${RARITY_LABELS[g.rarity]}</div>
-      <div class="gift-owned">تعداد: ${count}</div>
-      <div class="gift-price-row"><span class="sell">فروش به ${g.sellPrice}⭐</span></div>
-    </div>`;
-  }).join("");
-  grid.querySelectorAll(".gift-card").forEach(card=>{
-    card.addEventListener("click", ()=> openGiftDetail(card.dataset.id));
-  });
-}
-const giftModal = document.getElementById("giftModal");
-function openGiftDetail(giftId){
-  const g = GIFTS.find(x=>x.id===giftId);
-  const owned = state.gifts[giftId]||0;
-  document.getElementById("giftModalBody").innerHTML = `
-    <div style="text-align:center;">
-      <div style="font-size:56px;">${g.icon}</div>
-      <div style="font-weight:900; font-size:19px; margin-top:6px;">${g.name} <span class="en" style="font-size:12px; color:var(--ink-faint);">${g.en}</span></div>
-      <div class="gift-rarity-pill ${g.rarity}" style="margin-top:8px;">${RARITY_LABELS[g.rarity]}</div>
-      <p style="font-size:13px; color:var(--ink-soft); margin-top:12px; line-height:1.8;">${g.desc}</p>
-    </div>
-    <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:13px; font-weight:700;">
-      <div class="stat-box" style="background:var(--cream);"><div class="stat-num" style="font-size:16px;">${g.sellPrice}⭐</div><div class="stat-lbl">قیمت فروش</div></div>
-      <div class="stat-box" style="background:var(--cream);"><div class="stat-num" style="font-size:16px;">${g.xp}</div><div class="stat-lbl">🧠 XP</div></div>
-      <div class="stat-box" style="background:var(--cream);"><div class="stat-num" style="font-size:16px;">+${g.rarityBoost}</div><div class="stat-lbl">💎 رتبه کمیابی</div></div>
-      <div class="stat-box" style="background:var(--cream);"><div class="stat-num" style="font-size:16px;">${owned}</div><div class="stat-lbl">تعداد موجود</div></div>
-    </div>
-    <button class="btn btn-secondary" id="giftSellBtn" style="width:100%; justify-content:center; margin-top:18px;" ${owned<=0?'disabled':''}>فروش 💰</button>
-  `;
-  document.getElementById("giftSellBtn").addEventListener("click", ()=>{ sellGift(g.id); if((state.gifts[g.id]||0)>0) openGiftDetail(g.id); else giftModal.classList.remove("open"); });
-  giftModal.classList.add("open");
-  SND.open();
-}
-document.getElementById("closeGiftModal").addEventListener("click", ()=> giftModal.classList.remove("open"));
-giftModal.addEventListener("click",(e)=>{ if(e.target===giftModal) giftModal.classList.remove("open"); });
-document.getElementById("promoBtn").addEventListener("click", ()=>{
-  redeemPromoCode(document.getElementById("promoInput").value);
-  document.getElementById("promoInput").value = "";
-});
-document.getElementById("promoInput").addEventListener("keydown",(e)=>{ if(e.key==="Enter"){ document.getElementById("promoBtn").click(); } });
 
 /* ======================= RENDER: TOPICS ======================= */
 const topicGrid = document.getElementById("topicGrid");
@@ -2660,8 +2515,6 @@ function renderProgress(){
   document.getElementById("statGames").textContent = state.gamesCompleted||0;
   document.getElementById("statStreak").textContent = state.streak||0;
   document.getElementById("statBadges").textContent = state.badges.length;
-  document.getElementById("statStars").textContent = state.stars||0;
-  document.getElementById("statRarity").textContent = computeRarityBoost();
   document.getElementById("pWords").textContent = state.wordsLearned.length;
   document.getElementById("pGames").textContent = state.gamesCompleted||0;
   document.getElementById("pStreak").textContent = state.streak||0;
@@ -2764,7 +2617,7 @@ function renderNextCard(){
 
 /* ======================= ACHIEVEMENTS FULL PAGE ======================= */
 let achFilter = "all";
-const ACH_CATS = [{id:"all",label:"همه"},{id:"learning",label:"یادگیری"},{id:"game",label:"بازی"},{id:"level",label:"سطح"},{id:"exam",label:"آزمون"},{id:"grammar",label:"گرامر"},{id:"story",label:"داستان"},{id:"streak",label:"استریک"},{id:"explore",label:"کاوش"},{id:"gifts",label:"هدایا"}];
+const ACH_CATS = [{id:"all",label:"همه"},{id:"learning",label:"یادگیری"},{id:"game",label:"بازی"},{id:"level",label:"سطح"},{id:"exam",label:"آزمون"},{id:"grammar",label:"گرامر"},{id:"story",label:"داستان"},{id:"streak",label:"استریک"},{id:"explore",label:"کاوش"}];
 function renderAchTabs(){
   const el = document.getElementById("achTabs");
   if(!el) return;
@@ -3115,11 +2968,406 @@ document.getElementById("searchClose").addEventListener("click", closeSearch);
 searchOverlay.addEventListener("click",(e)=>{ if(e.target===searchOverlay) closeSearch(); });
 searchInput.addEventListener("input", (e)=> renderSearchResults(e.target.value));
 
+/* ======================= SUBSCRIPTION / PREMIUM LESSONS =======================
+   Security model: the tier is decided ONLY by the Worker (see /worker). This page never trusts
+   localStorage for the tier. Premium lesson content is NOT in this file; it is fetched from the
+   Worker, which returns it only for a valid, unexpired subscription of a high enough tier. */
+const API_BASE = "";                 // OPTIONAL server mode: your deployed Worker URL. Leave "" for the no-server (encrypted) mode.
+const OFFLINE_BUNDLE = {"v":1,"iter":600000,"salt":"tvjaKQhQ4l7QCNAbQzT6Yw==","catalog":[{"id":"br-body","tier":"BRONZE","category":"واژگان","level":1,"emoji":"🧍","titleFa":"اعضای بدن","titleEn":"Body Parts","descFa":"اسم اعضای بدن رو به انگلیسی یاد بگیر و تمرینشون کن.","objectives":["اسم ۶ عضو بدن رو بشناسی","تلفظ درست هر کلمه رو بشنوی و تکرار کنی"],"itemCount":6},{"id":"br-shapes","tier":"BRONZE","category":"واژگان","level":1,"emoji":"🔷","titleFa":"شکل‌ها","titleEn":"Shapes","descFa":"دایره، مربع، مثلث و بقیه شکل‌ها رو بشناس.","objectives":["اسم ۶ شکل رو بدونی","شکل‌ها رو توی اطرافت پیدا کنی"],"itemCount":6},{"id":"br-fruitveg","tier":"BRONZE","category":"واژگان","level":1,"emoji":"🥕","titleFa":"میوه و سبزی","titleEn":"Fruits & Vegetables","descFa":"اسم میوه‌ها و سبزی‌های خوشمزه رو یاد بگیر.","objectives":["اسم ۶ میوه و سبزی رو بدونی","جمله‌ی ساده درباره‌ی غذای مورد علاقه‌ات بگی"],"itemCount":6},{"id":"si-jobs","tier":"SILVER","category":"واژگان","level":2,"emoji":"👩‍⚕️","titleFa":"شغل‌ها","titleEn":"Jobs","descFa":"با شغل‌های مختلف آشنا شو و بگو دوست داری چی بشی.","objectives":["اسم ۶ شغل رو بدونی","جمله‌ی «I want to be…» بسازی"],"itemCount":6},{"id":"si-routine","tier":"SILVER","category":"جمله‌سازی","level":2,"emoji":"⏰","titleFa":"برنامه‌ی روزانه","titleEn":"Daily Routine","descFa":"کارهایی که هر روز انجام می‌دی رو به انگلیسی بگو.","objectives":["۶ کار روزانه رو بشناسی","درباره‌ی روزت جمله بسازی"],"itemCount":6},{"id":"si-toys","tier":"SILVER","category":"گفت‌وگو","level":2,"emoji":"🧸","titleFa":"اسباب‌بازی و زمین بازی","titleEn":"Toys & Playground","descFa":"اسم اسباب‌بازی‌ها رو یاد بگیر و بگو کجان.","objectives":["اسم ۶ اسباب‌بازی رو بدونی","با in / under / on مکان بگی"],"itemCount":6},{"id":"go-sports","tier":"GOLD","category":"واژگان","level":3,"emoji":"🏀","titleFa":"ورزش‌ها","titleEn":"Sports","descFa":"ورزش‌های مورد علاقه‌ات رو به انگلیسی بگو.","objectives":["اسم ۶ ورزش رو بدونی","با «I play / I can» درباره‌ی ورزش بگی"],"itemCount":6},{"id":"go-sea","tier":"GOLD","category":"خواندن","level":3,"emoji":"🐬","titleFa":"دنیای دریا","titleEn":"Sea Life","descFa":"با حیوانات دریایی آشنا شو و درباره‌شون جمله بخون.","objectives":["اسم ۶ جانور دریایی رو بدونی","جمله‌ی توصیفی ساده بخونی"],"itemCount":6},{"id":"go-nature","tier":"GOLD","category":"خواندن","level":3,"emoji":"🏔️","titleFa":"طبیعت","titleEn":"Nature","descFa":"کوه، جزیره، بیابون و جنگل رو به انگلیسی بشناس.","objectives":["اسم ۶ جای طبیعی رو بدونی","درباره‌ی طبیعت جمله بخونی"],"itemCount":6},{"id":"di-space","tier":"DIAMOND","category":"خواندن","level":4,"emoji":"🚀","titleFa":"سفر به فضا","titleEn":"Space","descFa":"با فضا و ستاره‌ها آشنا شو و جمله‌های بلندتر بخون.","objectives":["اسم ۶ چیز فضایی رو بدونی","دو جمله‌ی بلندتر رو بخونی و بفهمی"],"itemCount":6},{"id":"di-opposites","tier":"DIAMOND","category":"گرامر","level":4,"emoji":"↔️","titleFa":"متضادها","titleEn":"Opposites","descFa":"صفت‌های متضاد رو یاد بگیر و جمله‌ی مقایسه‌ای بساز.","objectives":["۶ صفت پرکاربرد رو بدونی","با «but» دو جمله‌ی متضاد رو وصل کنی"],"itemCount":6},{"id":"di-seasons","tier":"DIAMOND","category":"گفت‌وگو","level":4,"emoji":"🍂","titleFa":"فصل‌ها و تولد","titleEn":"Seasons & Birthday","descFa":"فصل‌ها رو یاد بگیر و بگو تولدت کی‌ه.","objectives":["اسم ۴ فصل رو بدونی","بگی «My birthday is in…»"],"itemCount":6}],"tiers":{"BRONZE":{"iv":"vwSf7WxlxIQYhX9Z","ct":"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"},"SILVER":{"iv":"r9oSPQ1x6DQH4zTh","ct":"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"},"GOLD":{"iv":"phAAwUkzmTQNdooA","ct":"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"},"DIAMOND":{"iv":"TjlyYiUXLObuOoDw","ct":"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"}},"entries":[{"i":"dd7270e01d1cdfd3","iv":"A0I04bub991QUVaJ","ct":"7soBjbuhdhwUPCirRreF+c2hPtUQodkxuSqeB0gKS+Oc0eX9shFPSGU+CLcjvmWoA6Z3NFTUa8jaidfsqS5x7L0kmR9nc1XstpnkRb9HUagDtbqOfaASqROd/q6hnuEuSf9FDD5b1++NHctrZrEa7U8jMlU0cHf/Q9SCYaggKszvsK4K57jgHkxiOF0UNEQc+kbN6LBV5LAf/BCKDL1AE+ZRKGQEkSX0/bgbk+4j1AXhYvXcog10HBS+tAAmlSAuln2QJ80xTwFgtcttAAo="},{"i":"dfce197d46f74487","iv":"XWJMNFOuKwfX7U2G","ct":"giUEKqaJf6iEJao5+u9AJ0tM6H+vcDDEEsUgoPLidXY9KlE8VIljtL0klI1i7GWzteAgmYZ69WMlUS3xcLHQryc/fqjV2SPfDQPpNg/UjenTasqQs2ezEqpnOdGTq8q4iwJKAW7P915vfHXYavru1i4khdAkzNIKspNt1NuW1SntxaEmgYh5dxXPLSUwnV9OUaBX4G9sQIHTm4qr9G0RekCsH5ICoQOO+p8K680g74yaVaQ3TibjAmlTN3yuktKzXzsI5ysrKATRTmQx7Qo="},{"i":"402c713256ddf186","iv":"dRp46BTykbEQfebs","ct":"un1NAzyeTB4Ys8ajaVzT2tmmTqCOPubVKkfFOLkRTb9Zaq4SQwiQjgAqrQTR9Tux3CQkb9bhho7Gl4ZzBAx2sjGvXe7u3ZFTu2oeKbF+KCmA4ve7KD3umIdxcYVU1ixPGKZjZQnQtJcdYBSx88s+TcVYC40uMlidYNpT7PQoYa8xcoeb7mmv619kYZDeBT+cwbCubBnCWy6RcK0NGfzrCAkzA5bCyb2oDWYTsL7ci/c6mklBlc6GQqffoO4Pew5iHdNg0MbUG9SbYW6dLmfkUMo96oNqX9yy990zq8fCD5jOW4QgmEWpadD9ZT1n/jSuMqfFIK+LB4pdiIgEK/4FX91NCjjLJ6y/qQ8="},{"i":"fb4327f1b8113c2d","iv":"rW+YG1BXJg8AKRkL","ct":"T6U6XzbZnw2hl858cM+GAn15BCVFVCQ1kkfaKha7M47igFhRH8Lwd+MeQCoSUDK58Sq95RLaRZKINLOFEBzDFkKUdRAtCkT565bBSO+kXZu5WKrfM/8N0DcbLGmq7lLTVD0="},{"i":"48c31d3adff55633","iv":"W9TtHUiSN1R91sOv","ct":"2eeGcdwfKCH1cbcpQIHffQM7qYu4Gt8jo1R051REDMG+tdjudDUnbbJf/lNuBWugrK8Yf+FtnDJiWjCX3H6CjXLr5pLzzniGRWRR3zHi9ZOUYNcxRwC9uG+4gEUPIp/2OpkeLOo5EmZFzhBNvUiwX1i4S+kAwo7Kq4YzPVbq9iFcrK2I9ttEqU5uzoeVivOLJ3ahBPAO9jRO2diJ54cwbosAPP5f5cSJlxgot3p1SMfh8GxmsUDkkBK/J2QcrpdMcBGxUlEslDXbm7xNahdkG12tR9zyY/pSbqnR26egMyJnghkRG/kjuwlSN499Y+hk3X0jRk9ySRN410JA9CdA3USWuz6fl+GeGVI="},{"i":"911e68adc6bc2da1","iv":"mIlGl/i0gYZx/LMu","ct":"ZP+oEVdp0dMk/ODGA8uf0XcNDL2EZod6T4xg1Rcq31KKnQYCqjun08bGrb+aH/P8TpFm5Hp9bRj5K/5E96dyXBnqgN5lzVGPPCRVguiUP9yzXf1kNsl59IAa195PVemu6q3OntRXbSeUfZjPt/9j1KrDWCQfkWHfSsHUuZUWKZWoDaAidOzC6odeyxMYbDxcvVrN8gKyExSoiQ8xI1+3wWZ9/7a630Bku990oZ+tjAj1rRizaEbsrA0TYk2yfc2IokV4Ve0ayxE8VJ2W6YXY3OBzNvRPVMDgIbZZHPplKjHW227H83xwt/NXDtX8YLLUceKzRpjzrl6FQgxiNgQgJRNmfIiwWWH1m0o="},{"i":"ef9822b475c46d05","iv":"15xScB2Ktwekimls","ct":"J7Hl7xr6HFFIQl5D++yAvwW2hALsVzhADnn4Pub6u7EL25Am/FQm6Q38SpfGExklIxvlvnHjAbKKs3oXPpikqh+qFPbvE1BgWe5pCd5QHngASeW2DVdNTRmPfUHqxEG9qs0="},{"i":"fd30154441c5f983","iv":"G0kRO+621e6pExOa","ct":"wIvXBsrWPavO3gNgB3r1prEstPHQOmzsWfeW4mPQ98sBnFZhIUsq9pKYKp/nxD87wvgVoFS9mYKl2uMcSBhsjJ9ImyeKly3295A9Nii21Cm9EXfzgE3ZupSX9A7zBypGJf1pBlsi6rFgvi3wY4//NLUEY/WNYNf+VoHvwTW84QICN+xucdx7IxK4JFkTZ9e0bvgh+N54NyJZOLMJ19Y7/eC8zEsv6ytl9PjVstO1XbrbXN3A0t97/vgXWHGU+Geq6tgsvPZ7R85To80LQUg="},{"i":"b64a4620fb7fe699","iv":"yUcGnr1QhD81gAh9","ct":"268y6/d7ZsXR0A9T2GgPX7N4D39J76KeTJqL7dcfemfyNtNonI6BcTidv1lRGFxyW2HIVB7PIb+HAvaLUpXz5zzG3CsMeMqK4R9IQ8ih8jgzVsCEqHiRhopiY8eOJjVSV71v5/x09tU7O0+xIEEj2d1XZFzDr9r4DrFNuxF+lofHQQ8cydiH0z9QTNHU2hECsbCSSo5GJ7qTQvlMstYq5gWbrfnFy7AA15UXA2MDzbBdetnmFSmsGteydFjygr3oo3y6v4mjPwixVo4fzBY="},{"i":"be8a112b29031803","iv":"77EkjdSrYoOlrhGB","ct":"AQuXA/QsubmiT69ncWzWYDAUgaW4fTGijZXp+j+pf4gDcywEgVTtWKkfxtC2lENcqu6T5Aes9IFUil0w7TYM7FChAIQ1EzwkXFqTuHSFTHdSQZ2HO+fm/ym/uA6nNOqhhAAz9wdCjyFduJOP8Tjw1WswX6XvyO0d89wERpLXayhxunjnDdSRHGMGuUqmTja1EA4A6SvQMUNZwg=="},{"i":"74eb14455074c1af","iv":"l/5GgdMNS3Llirtv","ct":"kOH2l4T4eelXs13l6HCFmAO/Qrsr+TWtJsLRnWE3Qm4Cn01Rx3UbtxzaRIwpjngfUkwsp6nSmzaVKCOqefJjwO1NCmbe43iuVvi3+Rf1+o16rT6TkC58pxv5bTbfAn+Ue1juvihKUaWk8qNNDkmWgLorCPDPhU0yIBhT2BFturftq9P2+s4ycspHx5GB+qxoVboAStRLcnQlq7OALqSovIYQKx5yvgcNzeUFuN/vlZrkKW1PrG+i8oA7sidkLOnRJDgKYsjte8YWDgq6FbQ="},{"i":"f4f57624f976f55c","iv":"UnDcchvYgUBQ4uG1","ct":"C+XA+Gql3RUTfRehueNPAZpMXuxYONmyOuo2LYeGkjlZ0ymdo5yPl3iVszQp9SYHg/FUKfPsFUXNVdWaaJIYZQAWgjnZ26PI/SgqL0p134PsywF/A/gSE2X9toto4kKulOMWFuRBHL3RW4urGenWDKcvTC/lzRnptjuWR6VwFcZjHbySxMIWJ9wjwlVg8AjFR3FYuIOVpz8F0A=="},{"i":"b75f839ef71397dc","iv":"ZRGCoJ9bwDsU7Y8Y","ct":"dL3IzyEs+WdGHO5yp1cxQ+Ct13Ex4qrtyacJrNik/6pfRptB4f2kPzfwvK8kcdMC22DNJj+PmYiXEUYaUEtlO2dQUAm3qULAQ4nxC4c69dwbcVxORlrAuxz0i3DtgXgJIATYLvJUfcc8ZpS2paYUcsuMZh+Kh5iRGKKZCq5OwLv44h2nFOSyhrr/2oLXIavL30EK9NpzWGGOUQ=="},{"i":"0021fee0e0931dbb","iv":"biDy9+38foId0fdG","ct":"+T3oZSoQPwvf87/fj9y2hypGIGuGpJQ3blG0M4lL711iU2ob/WuOPmQOjc9HPuf+CjUgz2LfctigcMy5O/ik+/mNUSsjK0N1CHkfibn9ZrrZ0rhkpyKo2bvw29tIZwNY3W4="},{"i":"2a30a3a34f6ce8c6","iv":"RsnUu6ZsflODpVcH","ct":"R3XwAZ2C+YMtvUOqn9ZY78+/VMGAy3ELh3FdM49jRD86A+kRki826RK3yn5AcP4RNcOMDrRkjiOPK4bqESwCG/O7BZue8uYNFSPygKBNjZtP1DruNXTZxAw4v2HlD5Ic5STnxGEFHprK7BPyBX7gz3Jz7sdnoobBgcuIhQqxKjzaeb8rrd820Yfj9KNik1VkkgFqcInJ4Wy401LLljqG6BkBbKkBl+z5dNhS1bdEGBg9Uf2CGJUR/kKZuH+fP/HZgg5/wnhgqAdXCkOCH3Jkaf0mQ3Cm7bUSLnXKLRlkqXx7IzYCGbQYb9/DI8XWdc8AdP1NeKM2x5n/p6jZmdGbUPs7tVWBhj+iMCc="},{"i":"5b6f477a39b8e946","iv":"chdCmlQgSDpuhwnv","ct":"cX+J3aqADZnG/BRdDpHJAsCIWvPsD5erzXII62gpv4buWacMrKzVeT1DoAcNn5FyizdOgESHTMbCkI1i290rxI0G8YCdrParGRiz04r628itbGChtPKSi7rDuhMKIiHBbFc="},{"i":"d58941f943baf199","iv":"bFl4dnNWCLs0bMup","ct":"FAwcerL0oehw2w3e+tY8+SBp1XPFT/s1ypbVFtk8V2l+y6pG8zNED1A/0dLSSbrGEbPDsUfrvt6u2QDzdgP53owAV93t67uXDW0/zbvuQBHT6MLKnNWULY5zTNU3RKFXsm0Z3M3oPew9rHV+8ws602gejEct7J6R8Ymvi+rHNPwGByQ1g8apExv28xp0qf18ScfppJ1d6KdsiQ=="},{"i":"9bc1374776902c6c","iv":"Ktge81TM1bWw0sJY","ct":"ZXS58E0k3K3/rslPtH2Il7LMWEYiysJJtkEbtzrQLaRtRP2bI7P72PpWeWCQOlqpNM65k8qc6CTPxldusWII8wbtVsl9pY4t0XzJxiI0tsYFT2KqY4lUWhys/rciwmuJQppRBsi0fA+b7kAuCnRPy33B10E0maoMtDN4d97w7IWC6vRSGhSuiD3m8qnm3IyblOYNr1A8XbgjrQ=="},{"i":"fc1b0aa605d058dd","iv":"I7a7J/vUR/JNkDHy","ct":"3T/O1s9VwRMmQfr4txOURSQKHQaElB5BIDnJ0pNSh2Rcen0JcVlE7im8AthsNqL12HgIQ058z2eREj1JMmmSAOVr34f4u6WraUkr+McXJ6bw5LNjNLEGBO6nLrZahlHhuw5ouKxfm3sJ8Hk9TAEojByK2lOtT5pVe5cgkM62sUR1S06oFQ5seSdRlCIpih95MkYKOZfp7Sa2qnlQNMSvtbZaZgiHGmUfNaw/0548tNEDBZxM7mXwGETnYSby1K0QAk/lAk0uk0viv2oEipA="},{"i":"9f44658fdd09b691","iv":"++Ivh4rk/Xk8uiTW","ct":"GxVdqvFqmIa4ymlVgdcxS/tpEmeLpxyk2s9IrVdINUL7qE5eFdFmknE1OR64dUJ/uMtdodnUPtdLOMVgUAVWYCT0UXD5ZXhBNGtHT8G3N0C8gYF0ZJ7uptp3tril5GDVWray9VL3HoNZ1otYI+DX1w382sBNgEQlJ2onyP8nfVpdhPOcoe8PTuS0subMmFKVJKYaVXPo7Vl7/1aCrOgjZhtFBH2wUcuNQsldUXaDjcJ//i0BHUyPa2WTMRzmql4SRnt30txGjzgfBfbJD479LWvX+Hw+1B97vvsFUD2iysiMDdVNPjibvDz1Q4+xhdze7oxDfQR1k3HOhicZ+pNkCd9Y6meuA76HeCc="},{"i":"8801cc25a118c9d6","iv":"VHrMWEVCiKpfhgay","ct":"PcC6CW0qmJAS8DMwC6do15otCfT2nbqtXC8tS4jWaAn/wnhh0Nqk8AP4EI8yDRSjAIdoeftOIhWRRwS06tN/ZTLYLWpbFqZim9vG3lGOzQlXpyoZOL46UrIVqUxnfriAuxKcjdz+n/6sEgSVHxBEj4d43DfHILn1+ENnTlENjFSLJoxu+8VIcV38GxYgYujdxybxjfHosHQCM3U4n3MCoRCO8GpV8n8gUmzuGORTX93QrThFVvPtY4Bs1zsTPou7hSgtGsy4GHEQ74NytJ1wikWTkadRaBsih4ignbj1f1PwyBxSlVtesJNX3bd7+9ARLBD8Ua8zKDELsx9aop27+z/iAQmAA0U9ifs="},{"i":"37a27610abbde9da","iv":"JtflL11OQI1lKrhQ","ct":"OKTWo1WSUsTwWGb4MPYnyDVtawaPIZMCaqfyPvwtd5KHUuviEm8XksrnBHTj33RBXnDO8wZj4iIqrt6Fh1wRg8wQEKP7DxxCEINk7E8WsilFqxgdhESpvl5Er7FZMyBEm3kiqv1s31WVg1OIuft3jZH/0pctAv9DIc9OUzWsMFbF3LUTy3AiuaDU+gygSoJ3mbJyIMgLzeNyySWTdwJHRfod9BjFmRJTPwRvrl1gp81v0ppwtWSEZQb5E8KjjX6sdNYg303mBdHAcWk6hBw="},{"i":"7a1201d7d0b53275","iv":"0JRvWAzo5EXFIyEo","ct":"nY3sTBCeMdFxVIo2ROxCV+O8Jld4ACdVSxu/R2fAoxCnY1PMtUZkZtgZ3b1TgRE3cTgkZ6xJTTfSoDLioY11YxjVbv8u8gOwoHjBVLNZMzdrKZZae7EobPxKK6qpHAWco40="},{"i":"ef381841c0c20afb","iv":"7AVDQ+AIIKk0xXYo","ct":"+JiGlhVrUBLlnl6LJaJFv+Ar3j/MOMBV2U8e6feWP2EULM7t1xkIcOc3FGlC64bfLJHfPj6rgLIisKAYQ9eLA4y3HUml8qhwxaGnIlAincs6k/sv5RkXtIgxXDUtBUhWGRU8zY/p4K4Mi7MqvIzom53f91RpXkxIK0zvsQbCNzyUH9ZWsEK8gvLmefZhbPEa8cNCN6PewtXoMthgzU+m4DBDHJOQ1wAl0gt9NXqc8HrhG3oBizstuxmmQaznF9rPw5Odpp7J15jTSxCBuwIQ5zgZErrvpPpFhuI9OK+yFy4+9fVkhvtHSqBUUwgrDKne9amDNDCsXkQM3XF911ywHTVToHBGQswcAlI="},{"i":"ac4b2563c2711e5a","iv":"7TeTueT6CDR6lvWe","ct":"4GUwZVI7BcTbhevgNn7Rs7SUe9n+Z7X6+7XdkfCJkNe3LQeVT5YG2uN9pxwOmk2+onRkVtvz8Hgxq38zqiKjUKbanZ19FMxBBb9DeNHw1NDJq6+k06wGN4p1KTjrhX/I/Vg="},{"i":"9c5c27e474e6be28","iv":"W8gvpC5n5yRgK3Tq","ct":"0sKiKczDVL0LkH0FzOhXZuDBxYZpzIz7WuxVRnKkDBshILKpF0SCngm5JBJi+IgwiU6anImnrg/yhv4m/YvYUQQkOdcExGDdvmgfRyiInwViWuKXBOCzFMcsy2YhNbq7TnLPxvjFUCoEv7zx+XeC9/Zpk15ePEJ9TvRjc1hS0Bk9scckmXJ167bVp0B/M3VSB2uSdu90+VIsvg=="},{"i":"dad36c4119247111","iv":"BB9Rg8L2hLEK3hSM","ct":"BFBy7EADpXO37WCiVrXJOWad97U5tvQozHYxi+HXKRlxT7W6wIIySDRB6kV671h2GOuTamtdcZvx6il15FAuzUYdjeP1I9PKaLyp4S/ahl2U1uY3N5LXdxjf9T6QYL21FgRooc/ApJFM28mLu/6tODS0/MoQfW4B0nbsgjPS+l6EDAOERmqqvyytkRyAIC5PuejSj1XXAtYNZKWlno6krnzmN8slRFfm6RDF1HTA0tiFiLU3TJq5Qe9QN1VqRa8TuFtLoJr9ztrJBjFugrA="},{"i":"291027423b4406af","iv":"WnLLubQu5L/Yi71V","ct":"iBOd009oWY8hcmbLZFqX3mjOYnQLhI0HNCL6LyatiFny59XruViqn9xkCsKw0U5yCH1XgtkPyKIgfS3Afo5ItdEzoz6lQSsSeB0D31tKiyY7+rFrIHQ8Lm6BsXRBfV5z614obx2iLBVgESAK+473gHhu+A17dnAeMvPmB5OOFfSYSCHOwuo7oykhqcuErJ8IHVIA4FpUpYm3jiYiLrr+8F1hUmISkRVIBUYdCKYXIOIeXWM/qV7V5ckGbJfCF5cOnNBQyGvNCJMLDySTW+x6mFhYGrdAOJuo85lxs+pN36DCHf6/af1eYMbyghOA0JLnxJCTLrjmg2UsLO59TD7EmanO7og2JDgEosw="},{"i":"e6d39384e9e6429c","iv":"BV/m7b51ut4rTpmV","ct":"mFpKo/am3APhpIATNUrM6RAa5sUSuuoWnj3l08GXwFp2U+3dfkDfLPE0fWnGYK5UAhRANu5ZS0Bwy/2/jVONR55GaVUYjTH2bbQca00RFM6Az7xXbLc5NLFcEuzqo9zGi4AhN6WDOPB1py9rAgwOFedUlVyCkbiSEulhe++7gXKd8d0ro74fb8eMnAGZmYhiJrFuUgNwiYDHU3xr9wo8mT8SkwBLV4e3NZw+5eOvAsggEpvOhO5PTTV60mgrqDW/BrZJg1QUJnFTluec0QIAMDMzzS5Gtpl33Ggo5+gEhGI95xmEI5LpUhD3CrnGkyhinrYWCPF1htAZVQjO4et2PBMPCx92HBSWR+k="},{"i":"3999846baa06cb61","iv":"lGukpagFgbU3oFkP","ct":"o/226fPfMiOhv4yanATXFPePo4my/P6BUI5RL9U0gGiW6+ToL8/rZOn0Zq8TdzIRcPTw8I8RwWQM++0rlyX84VEQeSbNTUQGVRI8wo+dpHxmq0hZRhFgje70THc8TOXQhBA="},{"i":"481d0d601cefac6e","iv":"lq2F9dBgQBuDVVSy","ct":"dHCQ3LfvnOrJVy0rIGjgDaWGELHHRkI1W9oSP0tD4hLzwREVAZt7kUbxnAfLy7QQUpLU+KkuxbUQS1u4KS5OEfQS37G1yE+UdqY+gxefByO4EtmEYmVDYrbVZ8D2D9dKvnhyHHsnetc+HLvknzodnQZb0GE0r7VlLmwhb4ND7cvxwKzOkvf890WqXGC6ZgA0Gnra2E7JZuOjHA=="},{"i":"f8b538b0a94dae71","iv":"JkTmV4dXvsCJJq32","ct":"ImuejUGDJw4l2zcX8pWazu00f5B8wSh1WDRsMo1b0h67JQkF4rWTDA0UJYPAwajfBWGmDyVnj5013Rb1yjK2n7E27V0SAknPjzETqpyVQcKUGSs/6T6YbP2gBJlHnYa8V9UFwGktMJkkqmnViCIkwkgxn7m9bOpsOWBw9HvAlvFJjT0TSmIqIrZQyaqRdDDfrrKQuldT+VMCPmWaClUl5B6oU7KOdnQJbZaLd3hMFxvIZtD1z6R2RSO+WqOxf+QT+My2fXYoHRuKhxuyKc0="},{"i":"57005a3a0a5eb431","iv":"Eo5JCYfS0ys+eKye","ct":"bw2uTMZy4oF84+Fk/M00aDtlGtV8tEm78PtCKI4mXBhYwVNKPXAxEGHpKy0zXQxWcecTUW6eY1wovTqfKpn2AleGgKfhpYS5IMq0pHgxzRvYveaOvi+7obIqt8m59JjTKPuVzUmSUuTf6VmGLHBEFfqEJHIWhkRBFQps9vVlfA8FljrdoxchByzG3IGw+9Hzx15k6fIy1RF00A=="},{"i":"81c9ae247dd7d71d","iv":"oONEAwqK+eHZwX3/","ct":"BcCnIc9nHnuckp7fcoRADPmT8G1qQb6h0XEDT+vZ5lNZeP1z++MfXAOFw9evvpg5x1w1EKonmU3tPYKdM743+A0kH4FIyW2cSpMJ3cOKoOQhUrF1A0zU9v87oBoi5R49O3OzPb88cL7bnyLKqCLVZC46mjYX9S97AbR9umnwU5+K/a1LgX6XVmvhBQemkzbxbC1QPBYYMwOXyw=="},{"i":"3de6baf4066d5f3b","iv":"NMqo6yV1VciF9zKf","ct":"EXVY3JQeN6hoM6DkCFLs3lvGBPDdrzEAYmTliLXbWRVjZoBjbEcHTsVbusgXvBpi0CgVstkT9nYHXCbO3g6F2JSOmrz3bAPrVfIcRBoELGzQhwV30gvznhKNsLKjr+da2Cs="},{"i":"943b521410a9742e","iv":"0Q196Ys1pIkCggQV","ct":"6fuSySTG/PyA199nHUPyXF0I7Izo+MbUxCAGWpPKo6E2biK3/LDVLqmRdI7hwvPrgPZQGnT95XxGwMef0d3Cy+8t3LM0iJ1Yge8L7cX2e5nZNip9Y5S2N9ZCaY/F5ZztI3hHMQllpaBtMt0RXSRpvZISWCtao7eJAx2D1uEfwGP2eOVOZmaUgaqkbcEkLdeHp35ZJaHEMcpLMHd24+BRpb3DOcksc1odw4vVpN6l0LpTgVe2ko6FEr/YY917XfO/+9DOeNnBOy5QciiuVpM="},{"i":"89921619b67aae35","iv":"zTldi4IuXPeP3YyL","ct":"TV247j0yuBWclg5P78HjeuZf0ETmyOLr6h5qBAo83nB1jCvPYwUgy6wzoNgnMTGcksUBIhXOgMQlkmvQR8AjrOpPq6blGLJMY7KFDgcrpjQzJpEqmZwBHFOtfBu6rxcuoLY="},{"i":"bd3e0b90314f7bbc","iv":"1AmorVZAArQdgyQb","ct":"z4xNydQpxvzR5kYSdm1hk4pQIwCc2O5pZ7/STllKOQlLevsYAvfXgaNEFnbFQxchZmUvs72agYFT6XrCd8Qdu56d4w/iq5n7OrnThpFdYA8fmAHIFsErpN9LmHxKz4DiwIU="},{"i":"0bd39bdd41651688","iv":"cYo0r4nd9geKbiR2","ct":"XHmjMdFq1iyw72B+NaGYEQdyDLM/FoyXvkJ3bH78GsMdD4KBfWm+fe+lNzJd08srJTasn7rMbEZZHA1IttbfzoXQKDBfTD//AkeqExJlaE8dvZXRdSmembyJcOBmDV0pyqu/CscW2GPCymEnBjxRdXcQl2jR+2Uw8gxMbDrMDxavd8OhTp85qiik3de3L62k3pUzqc9UL5zpTNmQTg+53RhhWtzueoaa+it0sCNAj/DtEeYm0kntiyNxMT/6bo0PT4Y914yS4tq31EiUivGVaAYrgJh7nzJ2OUT1QAInqXQzHKvhMxSPPG7vK4aJLkrMign6q4N4PKLPcnVfoiLvbDylnugkZAYhLVY="},{"i":"3fe3fc06f0fc64ed","iv":"Jd41smLq167IWls2","ct":"DCzvLEz4QIKfBptOsODlq0thMfOc9HQT0axn081RqIvYiNhVkWvsXwzi8vTtGTrFcnTXrsCN86DHeX3CfsGYXnjEPnSknljNeMIrdL6tNrAroJJBQXOIFQ8G6xOdSe2PuhtuRuGaxdu1GzBDofRiU/5FsKn71ycNxN/F3pjK0Yzj979kfVBoOEuY4ydYjqc8uoFG8LMSEPl6AA=="}]};
+const TELEGRAM_USER = "Far6od_H";
+const SUB_TOKEN_KEY = "koodak_sub_token";   // opaque credential; tampering with it cannot grant a tier
+const TIER_ORDER = ["FREE","BRONZE","SILVER","GOLD","DIAMOND"];
+const tierRank = t => TIER_ORDER.indexOf(t);
+const TIER_PRICES = {BRONZE:"", SILVER:"", GOLD:"", DIAMOND:""};   // fill in later, e.g. "۱۰۰٬۰۰۰ تومان"; empty = shown as "price via Telegram"
+const TIER_INFO = {
+  BRONZE:{em:"🥉", fa:"برنز", desc:"شروع عالی برای کشف واژه‌های تازه", benefits:["درس‌های ویژه‌ی برنز","واژگان بدن، شکل‌ها و میوه‌ها","تمرین تلفظ، شنیدن و املا"], cats:"واژگان"},
+  SILVER:{em:"🥈", fa:"نقره", desc:"واژه‌ها و جمله‌های روزمره", benefits:["همه‌ی درس‌های برنز","شغل‌ها و برنامه‌ی روزانه","اسباب‌بازی‌ها و ساختن جمله"], cats:"واژگان • جمله‌سازی • گفت‌وگو"},
+  GOLD:{em:"🥇", fa:"طلا", desc:"دنیای ورزش، دریا و طبیعت", benefits:["همه‌ی درس‌های نقره و برنز","ورزش‌ها، دنیای دریا، طبیعت","خواندن جمله‌های توصیفی"], cats:"واژگان • خواندن"},
+  DIAMOND:{em:"💎", fa:"الماس", desc:"همه‌ی درس‌های ویژه، از فضا تا فصل‌ها", benefits:["همه‌ی درس‌های ویژه","سفر به فضا، متضادها، فصل‌ها","جمله‌های بلندتر و گرامر ساده"], cats:"خواندن • گرامر • گفت‌وگو"}
+};
+const premEsc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let sub = {tier:"FREE", status:"none", expiresAt:null};
+let premCatalog = null;   // null = not loaded; [] = loaded/empty; "error" = unavailable
+const getToken = () => { try{ return localStorage.getItem(SUB_TOKEN_KEY)||""; }catch(e){ return ""; } };
+const setToken = t => { try{ if(t) localStorage.setItem(SUB_TOKEN_KEY,t); else localStorage.removeItem(SUB_TOKEN_KEY); }catch(e){} };
+
+/* Telegram request message (pure function; also used by tests) */
+function buildTelegramMessage(tier){
+  return `Hello! I would like to purchase the KoodakEnglish ${tier} subscription. Could you please tell me the current price and how I can purchase it? Thank you!`;
+}
+function buildTelegramLink(tier){
+  return `https://t.me/${TELEGRAM_USER}?text=${encodeURIComponent(buildTelegramMessage(tier))}`;
+}
+function normalizeCodeClient(raw){
+  const d = String(raw||"").replace(/[۰-۹]/g,c=>c.charCodeAt(0)-0x06f0).replace(/[٠-٩]/g,c=>c.charCodeAt(0)-0x0660).replace(/[\s\-\u2010-\u2015\u2212\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff]/g,"");
+  return /^\d{16}$/.test(d) ? d.match(/.{4}/g).join("-") : null;   // UX check only; the server re-validates
+}
+
+async function api(path, opts){
+  if(!API_BASE) throw {code:"not_configured"};
+  const headers = Object.assign({}, (opts&&opts.headers)||{});
+  const tok = (opts && opts.token !== undefined) ? opts.token : getToken();
+  if(tok) headers["Authorization"] = "Bearer "+tok;
+  let res;
+  try{ res = await fetch(API_BASE.replace(/\/+$/,"")+path, Object.assign({}, opts, {headers})); }
+  catch(e){ throw {code:"network"}; }
+  let data = null; try{ data = await res.json(); }catch(e){}
+  return {status:res.status, data:data||{}};
+}
+/* ---- no-server backend: premium lessons are AES-GCM encrypted in this file; a valid code unlocks the keys ---- */
+const OFF_KEYS_KEY = "koodak_sub_keys", OFF_USED_KEY = "koodak_sub_used";
+let offLessons = {}, offFails = 0, offLockUntil = 0;
+const b64d = s => Uint8Array.from(atob(s), c=>c.charCodeAt(0));
+const utf8 = s => new TextEncoder().encode(s);
+const hexOf = u => [...u].map(b=>b.toString(16).padStart(2,"0")).join("");
+async function sha256Bytes(...parts){ const buf = new Uint8Array(parts.reduce((n,p)=>n+p.length,0)); let o=0; parts.forEach(p=>{ buf.set(p,o); o+=p.length; }); return new Uint8Array(await crypto.subtle.digest("SHA-256", buf)); }
+async function aesDecrypt(keyBytes, ivB64, ctB64){ const k = await crypto.subtle.importKey("raw", keyBytes, "AES-GCM", false, ["decrypt"]); return new Uint8Array(await crypto.subtle.decrypt({name:"AES-GCM", iv:b64d(ivB64)}, k, b64d(ctB64))); }
+const loadOffKeys = () => { try{ return JSON.parse(localStorage.getItem(OFF_KEYS_KEY)||"{}")||{}; }catch(e){ return {}; } };
+const getRestoreKey = () => API_BASE ? getToken() : btoa(JSON.stringify(loadOffKeys()));
+async function offUnlockTiers(keys){   // highest tier whose bundle really decrypts (AES-GCM authenticates); fake keys unlock nothing
+  let best = "FREE"; offLessons = {};
+  for(const t of ["BRONZE","SILVER","GOLD","DIAMOND"]){
+    const b = OFFLINE_BUNDLE.tiers[t]; if(!keys[t] || !b) continue;
+    try{ offLessons[t] = JSON.parse(new TextDecoder().decode(await aesDecrypt(b64d(keys[t]), b.iv, b.ct))); best = t; }catch(e){}
+  }
+  return best;
+}
+async function offRedeemGuarded(code){
+  if(Date.now() < offLockUntil) return {ok:false, error:"rate_limited"};
+  const r = await offRedeem(code);
+  if(!r.ok && r.error==="invalid"){ if(++offFails >= 5){ offLockUntil = Date.now()+30000; offFails = 0; } } else if(r.ok) offFails = 0;
+  return r;
+}
+async function offRedeem(code){
+  if(!(window.crypto && crypto.subtle)) throw {code:"no_crypto"};
+  const slow = new Uint8Array(await crypto.subtle.deriveBits({name:"PBKDF2", hash:"SHA-256", salt:b64d(OFFLINE_BUNDLE.salt), iterations:OFFLINE_BUNDLE.iter},
+    await crypto.subtle.importKey("raw", utf8(code), "PBKDF2", false, ["deriveBits"]), 256));
+  const idx = hexOf(await sha256Bytes(slow, utf8("idx"))).slice(0,16);
+  const entry = OFFLINE_BUNDLE.entries.find(e=>e.i===idx);
+  if(!entry) return {ok:false, error:"invalid"};
+  let payload;
+  try{ payload = JSON.parse(new TextDecoder().decode(await aesDecrypt(await sha256Bytes(slow, utf8("wrap")), entry.iv, entry.ct))); }catch(e){ return {ok:false, error:"invalid"}; }
+  let used = []; try{ used = JSON.parse(localStorage.getItem(OFF_USED_KEY)||"[]"); }catch(e){}
+  if(used.includes(idx)) return {ok:false, error:"already_yours"};
+  const keys = loadOffKeys();
+  if(tierRank(payload.tier) < tierRank(await offUnlockTiers(keys))) return {ok:false, error:"higher_tier_active"};
+  Object.assign(keys, payload.keys);
+  used.push(idx);
+  try{ localStorage.setItem(OFF_KEYS_KEY, JSON.stringify(keys)); localStorage.setItem(OFF_USED_KEY, JSON.stringify(used)); }catch(e){ throw {code:"storage"}; }
+  return {ok:true, codeTier:payload.tier, tier: await offUnlockTiers(keys)};
+}
+
+async function refreshAccess(){
+  if(!API_BASE && OFFLINE_BUNDLE){ const t = await offUnlockTiers(loadOffKeys()); sub = {tier:t, status:t==="FREE"?"none":"active", expiresAt:null}; renderSubStatus(); renderPremium(); return; }
+  if(!API_BASE){ sub = {tier:"FREE",status:"none",expiresAt:null}; renderSubStatus(); return; }
+  try{
+    const r = await api("/check-access");
+    if(r.status===200) sub = {tier:r.data.tier, status:r.data.status, expiresAt:r.data.expiresAt};
+  }catch(e){ /* offline: keep showing last known tier for display only; the server still enforces access */ }
+  renderSubStatus(); renderPremium();
+}
+async function loadPremCatalog(){
+  if(!API_BASE && OFFLINE_BUNDLE){ premCatalog = OFFLINE_BUNDLE.catalog; renderPremium(); return; }
+  if(!API_BASE){ premCatalog = "unconfigured"; renderPremium(); return; }
+  try{
+    const r = await api("/catalog");
+    premCatalog = (r.status===200 && Array.isArray(r.data.lessons)) ? r.data.lessons : "error";
+  }catch(e){ premCatalog = "error"; }
+  renderPremium();
+}
+const fmtDate = ms => new Date(ms).toLocaleDateString("fa-IR");
+function renderSubStatus(){
+  const el = document.getElementById("subStatus"); if(!el) return;
+  let h = `اشتراک فعلی تو: <span class="tier-chip ${sub.tier}">${sub.tier}</span>`;
+  if(sub.status==="active" && sub.tier!=="FREE"){
+    h += sub.expiresAt ? ` — تا ${fmtDate(sub.expiresAt)}` : " — بدون تاریخ انقضا";
+    h += ` <button type="button" class="link-btn" id="copyKeyBtn">کپی کلید بازیابی</button>`;
+  } else if(sub.status==="expired"){
+    h += `<br>اشتراکت تموم شده. پیشرفتت حفظ شده و فقط درس‌های رایگان باز هستن. <a href="#subscription" class="link-btn">تمدید</a>`;
+  } else if(sub.status==="revoked"){
+    h += `<br>این اشتراک دیگه فعال نیست.`;
+  }
+  el.innerHTML = h;
+  const kb = document.getElementById("copyKeyBtn");
+  if(kb) kb.addEventListener("click", ()=> copyText(getRestoreKey(), "کلید بازیابی کپی شد. جای امنی نگهش دار 🔑"));
+}
+function copyText(text, okMsg){
+  const done = ()=> toast(okMsg||"کپی شد ✅");
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, ()=> fallbackCopy(text, done)); }
+  else fallbackCopy(text, done);
+}
+function fallbackCopy(text, done){
+  const ta = document.createElement("textarea"); ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand("copy"); done(); }catch(e){ toast("کپی نشد؛ متن رو دستی انتخاب کن"); }
+  ta.remove();
+}
+
+/* ---- premium catalog ---- */
+function renderPremium(){
+  const wrap = document.getElementById("premGroups"); if(!wrap) return;
+  if(premCatalog===null){ wrap.innerHTML = `<div class="prem-empty">در حال بارگذاری درس‌های ویژه...</div>`; return; }
+  if(premCatalog==="unconfigured"){ wrap.innerHTML = `<div class="prem-empty">🔧 سرویس اشتراک هنوز راه‌اندازی نشده.<br>درس‌های رایگان کودک‌انگلیش مثل همیشه کار می‌کنن.</div>`; return; }
+  if(premCatalog==="error"){ wrap.innerHTML = `<div class="prem-empty">الان به سرویس اشتراک وصل نمی‌شیم. چند لحظه بعد دوباره امتحان کن.<br><button type="button" class="link-btn" id="premRetry">تلاش دوباره</button></div>`; document.getElementById("premRetry").addEventListener("click", loadPremCatalog); return; }
+  wrap.innerHTML = ["BRONZE","SILVER","GOLD","DIAMOND"].map(tier=>{
+    const list = premCatalog.filter(l=>l.tier===tier); if(!list.length) return "";
+    const open = tierRank(sub.tier) >= tierRank(tier);
+    return `<div class="prem-group"><h3 class="prem-group-title">${TIER_INFO[tier].em} <span class="tier-chip ${tier}">${tier}</span></h3>
+      <div class="prem-grid">${list.map(l=>{
+        const done = state.premiumDone.includes(l.id);
+        return `<button type="button" class="prem-card ${tier} ${open?'':'locked'}" data-id="${premEsc(l.id)}" aria-label="${premEsc(l.titleFa)}${open?'':' — نیاز به اشتراک '+tier}">
+          ${done?'<span class="pc-done" title="کامل شده">✅</span>':''}${open?'':`<span class="pc-lock">🔒 ${tier}</span>`}
+          <div class="pc-em">${premEsc(l.emoji)}</div><div class="pc-title">${premEsc(l.titleFa)}</div><div class="pc-en en">${premEsc(l.titleEn)}</div>
+          <div class="pc-desc">${premEsc(l.descFa)}</div><span class="pc-cat">${premEsc(l.category)}</span></button>`;
+      }).join("")}</div></div>`;
+  }).join("");
+  wrap.querySelectorAll(".prem-card").forEach(c=> c.addEventListener("click", ()=> openPremiumLesson(c.dataset.id)));
+}
+const premModal = document.getElementById("premModal");
+const premBody = document.getElementById("premModalBody");
+function openPremModal(){ premModal.classList.add("open"); }
+function closePremModal(){ premModal.classList.remove("open"); }
+document.getElementById("closePremModal").addEventListener("click", closePremModal);
+premModal.addEventListener("click", e=>{ if(e.target===premModal) closePremModal(); });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closePremModal(); document.getElementById("tgModal").classList.remove("open"); document.getElementById("subOkModal").classList.remove("open"); }});
+
+function showTierLocked(required, current, status){
+  const exp = status==="expired" ? `<p style="font-size:13px;color:var(--ink-soft);">اشتراکت منقضی شده؛ پیشرفتت حفظ شده.</p>` : "";
+  premBody.innerHTML = `<div style="text-align:center;">
+    <div style="font-size:54px;">🔒</div>
+    <h3 id="premModalTitle" style="margin:8px 0;">این درس برای اشتراک <span class="tier-chip ${required}">${required}</span> هست</h3>
+    <p style="font-size:13px;color:var(--ink-soft);line-height:2;">اشتراک فعلی تو: <span class="tier-chip ${current||'FREE'}">${current||'FREE'}</span>. اشتراک ${required} یا بالاتر این درس رو باز می‌کنه.</p>${exp}
+    <div class="modal-actions"><button class="btn btn-primary" id="seeSubsBtn" type="button">مشاهده‌ی اشتراک‌ها</button><button class="btn btn-ghost" id="lockCloseBtn" type="button">بعداً</button></div></div>`;
+  document.getElementById("seeSubsBtn").addEventListener("click", ()=>{ closePremModal(); document.getElementById("subscription").scrollIntoView({behavior:"smooth"}); });
+  document.getElementById("lockCloseBtn").addEventListener("click", closePremModal);
+  openPremModal(); SND.wrong();
+}
+async function openPremiumLesson(id){
+  if(!API_BASE && OFFLINE_BUNDLE){
+    const meta = OFFLINE_BUNDLE.catalog.find(l=>l.id===id); if(!meta){ toast("درس پیدا نشد 😕"); return; }
+    const lesson = (offLessons[meta.tier]||[]).find(l=>l.id===id);
+    if(lesson) startPremLesson(lesson); else showTierLocked(meta.tier, sub.tier, "none");
+    return;
+  }
+  try{
+    const r = await api("/lesson/"+encodeURIComponent(id));
+    if(r.status===200 && r.data.lesson){ startPremLesson(r.data.lesson); return; }
+    if(r.status===403){ sub.tier = r.data.current||sub.tier; showTierLocked(r.data.required, r.data.current, r.data.status); if(r.data.status==="expired"){ sub.status="expired"; renderSubStatus(); renderPremium(); } return; }
+    toast("درس پیدا نشد 😕");
+  }catch(e){ toast(e.code==="not_configured" ? "سرویس اشتراک هنوز راه‌اندازی نشده" : "اتصال برقرار نشد؛ دوباره امتحان کن"); }
+}
+
+/* ---- lesson player: learn -> practice -> result ---- */
+const shuffleArr = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+function startPremLesson(lesson){
+  const items = lesson.items;
+  const learnScreen = ()=>{
+    premBody.innerHTML = `<div style="text-align:center;">
+      <div style="font-size:46px;">${premEsc(lesson.emoji)}</div>
+      <h3 id="premModalTitle" style="margin:4px 0;">${premEsc(lesson.titleFa)} <span class="en" style="font-size:13px;color:var(--ink-faint);">${premEsc(lesson.titleEn)}</span></h3>
+      <span class="tier-chip ${lesson.tier}">${lesson.tier}</span> <span class="pc-cat" style="display:inline-block;font-size:11px;font-weight:800;background:var(--purple-light);color:var(--purple-deep);border-radius:99px;padding:2px 10px;">${premEsc(lesson.category)}</span>
+      <div class="lesson-obj"><b>هدف‌های این درس:</b><br>${lesson.objectives.map(o=>"• "+premEsc(o)).join("<br>")}</div>
+      <div class="lesson-items">${items.map((w,i)=>`<button type="button" class="lesson-item" data-i="${i}"><span class="em">${premEsc(w.em)}</span><span class="w en">${premEsc(w.word)}</span><span class="ipa en">${premEsc(w.ipa)}</span><span class="fa">${premEsc(w.fa)}</span></button>`).join("")}</div>
+      ${lesson.sentences.map((s,i)=>`<button type="button" class="lesson-sent" data-s="${i}"><span>🔊</span><span class="en">${premEsc(s.en)}</span><span class="fa">${premEsc(s.fa)}</span></button>`).join("")}
+      <div class="modal-actions"><button class="btn btn-primary" id="startPractice" type="button">شروع تمرین ✏️</button></div></div>`;
+    premBody.querySelectorAll(".lesson-item").forEach(b=> b.addEventListener("click", ()=> speak(items[+b.dataset.i].word)));
+    premBody.querySelectorAll(".lesson-sent").forEach(b=> b.addEventListener("click", ()=> speak(lesson.sentences[+b.dataset.s].en)));
+    document.getElementById("startPractice").addEventListener("click", practice);
+  };
+  const buildExercises = ()=>{
+    const ex = [];
+    items.forEach(w=>{
+      const others = shuffleArr(items.filter(x=>x!==w)).slice(0,2);
+      ex.push({type:"mcq", w, opts:shuffleArr([w,...others])});
+      ex.push({type:"listen", w, opts:shuffleArr([w,...others])});
+      if(/^[A-Za-z]{3,9}$/.test(w.word)) ex.push({type:"spell", w});
+    });
+    return shuffleArr(ex);
+  };
+  const practice = ()=>{
+    const list = buildExercises(); let idx = 0, correct = 0;
+    const next = ()=>{ idx++; idx<list.length ? show() : result(); };
+    const finishQ = (ok, w, btnArea)=>{
+      if(ok) correct++;
+      const fb = document.getElementById("exFb");
+      fb.className = "ex-fb "+(ok?"ok":"no");
+      fb.textContent = ok ? "آفرین! درسته ✅" : `نه، جواب درست: ${w.word} ${w.em}`;
+      ok ? SND.correct && SND.correct() : SND.wrong();
+      btnArea.innerHTML = `<button class="btn btn-primary" id="exNext" type="button">${idx+1<list.length?'بعدی':'پایان'}</button>`;
+      document.getElementById("exNext").addEventListener("click", next);
+      document.getElementById("exNext").focus();
+    };
+    const show = ()=>{
+      const e = list[idx], w = e.w;
+      const head = `<div class="ex-prog" aria-hidden="true"><div style="width:${Math.round(idx/list.length*100)}%"></div></div><div class="ex-wrap">`;
+      const foot = `<div class="ex-fb" id="exFb" role="status" aria-live="polite"></div><div id="exBtns"></div></div>`;
+      if(e.type==="mcq"){
+        premBody.innerHTML = head + `<div class="ex-big">${premEsc(w.em)}</div><div class="ex-q" id="premModalTitle">این به انگلیسی چی می‌شه؟</div><div class="ex-opts">${e.opts.map(o=>`<button type="button" class="ex-opt en" data-w="${premEsc(o.word)}">${premEsc(o.word)}</button>`).join("")}</div>` + foot;
+        premBody.querySelectorAll(".ex-opt").forEach(b=> b.addEventListener("click", ()=>{
+          premBody.querySelectorAll(".ex-opt").forEach(x=>{ x.disabled=true; if(x.dataset.w===w.word) x.classList.add("right"); });
+          const ok = b.dataset.w===w.word; if(!ok) b.classList.add("wrong");
+          finishQ(ok, w, document.getElementById("exBtns"));
+        }));
+      } else if(e.type==="listen"){
+        premBody.innerHTML = head + `<div class="ex-q" id="premModalTitle">گوش کن و عکس درست رو بزن</div><button type="button" class="btn btn-secondary" id="exPlay">🔊 پخش</button><div class="ex-opts grid3">${e.opts.map(o=>`<button type="button" class="ex-opt emoji" aria-label="${premEsc(o.fa)}" data-w="${premEsc(o.word)}">${premEsc(o.em)}</button>`).join("")}</div>` + foot;
+        const play = ()=> speak(w.word); document.getElementById("exPlay").addEventListener("click", play); setTimeout(play, 250);
+        premBody.querySelectorAll(".ex-opt").forEach(b=> b.addEventListener("click", ()=>{
+          premBody.querySelectorAll(".ex-opt").forEach(x=>{ x.disabled=true; if(x.dataset.w===w.word) x.classList.add("right"); });
+          const ok = b.dataset.w===w.word; if(!ok) b.classList.add("wrong");
+          finishQ(ok, w, document.getElementById("exBtns"));
+        }));
+      } else {
+        const letters = w.word.toLowerCase().split(""); let picked = [];
+        let order = shuffleArr(letters.map((c,i)=>({c,i}))); if(order.map(o=>o.c).join("")===letters.join("") && letters.length>1) order = order.reverse();
+        premBody.innerHTML = head + `<div class="ex-big">${premEsc(w.em)}</div><div class="ex-q" id="premModalTitle">املای کلمه (${premEsc(w.fa)}) رو بساز</div><div class="ex-slots en" id="exSlots" aria-live="polite">${"_ ".repeat(letters.length)}</div><div class="ex-tiles">${order.map(o=>`<button type="button" class="ex-tile en" data-i="${o.i}">${premEsc(o.c)}</button>`).join("")}</div><button type="button" class="link-btn" id="exUndo">پاک کردن</button>` + foot;
+        const slots = document.getElementById("exSlots");
+        const redraw = ()=>{ slots.textContent = picked.map(p=>letters[p]).join("") + " _".repeat(letters.length-picked.length); };
+        premBody.querySelectorAll(".ex-tile").forEach(t=> t.addEventListener("click", ()=>{
+          picked.push(+t.dataset.i); t.disabled = true; redraw();
+          if(picked.length===letters.length){
+            const ok = picked.map(p=>letters[p]).join("")===letters.join("");
+            premBody.querySelectorAll(".ex-tile").forEach(x=>x.disabled=true); document.getElementById("exUndo").remove();
+            finishQ(ok, w, document.getElementById("exBtns"));
+          }
+        }));
+        document.getElementById("exUndo").addEventListener("click", ()=>{ picked=[]; premBody.querySelectorAll(".ex-tile").forEach(x=>x.disabled=false); redraw(); });
+      }
+    };
+    const result = ()=>{
+      const pct = Math.round(correct/list.length*100), pass = pct>=70;
+      let xpLine = "";
+      if(pass && !state.premiumDone.includes(lesson.id)){
+        state.premiumDone.push(lesson.id); saveState();
+        addXp(40, "درس ویژه کامل شد"); confettiBurst(); xpLine = `<p style="font-weight:800;color:#1F8F5B;">+۴۰ XP برای اولین تکمیل این درس 🎉</p>`;
+        renderPremium();
+      } else if(pass){ xpLine = `<p style="font-size:13px;color:var(--ink-soft);">این درس رو قبلاً کامل کرده بودی ✅</p>`; }
+      premBody.innerHTML = `<div class="ex-wrap"><div class="ex-big">${pass?"🏆":"💪"}</div><h3 id="premModalTitle">${pass?"آفرین! درس کامل شد":"تقریباً! یه بار دیگه امتحان کن"}</h3>
+        <p>نتیجه: <b>${correct}</b> از <b>${list.length}</b> (${pct}٪)</p>${pass?"":`<p style="font-size:13px;color:var(--ink-soft);">برای کامل شدن درس حداقل ۷۰٪ لازمه.</p>`}${xpLine}
+        <div class="modal-actions">${pass?"":`<button class="btn btn-primary" id="exRetry" type="button">تمرین دوباره</button>`}<button class="btn btn-secondary" id="exReview" type="button">مرور درس</button><button class="btn btn-ghost" id="exClose" type="button">بستن</button></div></div>`;
+      if(!pass) document.getElementById("exRetry").addEventListener("click", practice);
+      document.getElementById("exReview").addEventListener("click", learnScreen);
+      document.getElementById("exClose").addEventListener("click", closePremModal);
+    };
+    show();
+  };
+  learnScreen(); openPremModal(); SND.open();
+}
+
+/* ---- subscription cards + Telegram request ---- */
+function renderTierCards(){
+  const grid = document.getElementById("tierGrid"); if(!grid) return;
+  grid.innerHTML = ["BRONZE","SILVER","GOLD","DIAMOND"].map(t=>{
+    const i = TIER_INFO[t], price = TIER_PRICES[t];
+    return `<article class="tier-card ${t}" aria-label="اشتراک ${i.fa}">
+      <div class="tc-head"><div class="tc-em">${i.em}</div><div class="tc-name en">${t}</div><div class="tc-desc">${i.desc}</div></div>
+      <div class="tc-body"><ul>${i.benefits.map(b=>`<li>${b}</li>`).join("")}</ul>
+        <div class="tc-cats">دسته‌ها: ${i.cats}</div>
+        <div class="tc-price" data-tier-price="${t}">${price? "قیمت: "+premEsc(price) : "قیمت: از طریق تلگرام اعلام می‌شه"}</div>
+        <button type="button" class="btn btn-primary tier-request" data-tier="${t}" style="justify-content:center;">درخواست اشتراک <span class="en" style="font-weight:700;opacity:.9;">Request Subscription</span></button></div></article>`;
+  }).join("");
+  grid.querySelectorAll(".tier-request").forEach(b=> b.addEventListener("click", ()=> openTelegramRequest(b.dataset.tier)));
+}
+function openTelegramRequest(tier){
+  const msg = buildTelegramMessage(tier), link = buildTelegramLink(tier);
+  const m = document.getElementById("tgModal");
+  document.getElementById("tgBody").innerHTML = `<h3 id="tgTitle" style="margin:0 0 6px;">درخواست اشتراک <span class="tier-chip ${tier}">${tier}</span></h3>
+    <p style="font-size:13px;color:var(--ink-soft);line-height:2;margin:0 0 10px;">این پیام آماده‌ست. با «باز کردن تلگرام» چت من باز می‌شه (اگه متن خودکار نیومد، «کپی پیام» رو بزن و تو چت بچسبون). <b>خودت باید پیام رو بفرستی؛ چیزی خودکار ارسال نمی‌شه.</b> این فقط یه درخواسته، نه پرداخت و نه فعال‌سازی.</p>
+    <textarea class="tg-msg" id="tgMsg" readonly aria-label="متن پیام">${premEsc(msg)}</textarea>
+    <div class="modal-actions"><a class="btn btn-primary" id="tgOpen" href="${link}" target="_blank" rel="noopener noreferrer">باز کردن تلگرام ✈️</a><button type="button" class="btn btn-secondary" id="tgCopy">کپی پیام 📋</button></div>`;
+  document.getElementById("tgCopy").addEventListener("click", ()=> copyText(msg, "پیام کپی شد ✅ حالا تو تلگرام بچسبونش"));
+  m.classList.add("open"); SND.open();
+}
+document.getElementById("closeTgModal").addEventListener("click", ()=> document.getElementById("tgModal").classList.remove("open"));
+document.getElementById("tgModal").addEventListener("click", e=>{ if(e.target.id==="tgModal") e.target.classList.remove("open"); });
+
+/* ---- redeem ---- */
+const REDEEM_ERRORS = {
+  malformed:"فرمت کد درست نیست. باید ۱۶ رقم باشه، مثل 1111-1111-1111-1111",
+  invalid:"این کد معتبر نیست. دوباره چک کن.",
+  already_used:"این کد قبلاً استفاده شده.",
+  already_yours:"این کد رو قبلاً روی همین اشتراکت فعال کرده بودی.",
+  higher_tier_active:"اشتراک فعلی‌ات از این کد بالاتره؛ کد مصرف نشد و می‌تونی بعداً ازش استفاده کنی.",
+  rate_limited:"تلاش‌های ناموفق زیاد بود. چند دقیقه صبر کن و دوباره امتحان کن.",
+  network:"اتصال برقرار نشد. اینترنتت رو چک کن و دوباره امتحان کن.",
+  not_configured:"این فایل نسخه‌ی قالب است و کدها داخلش نیست؛ فایل koodakenglish-offline.html رو باز کن.",
+  no_crypto:"مرورگرت از رمزگشایی امن پشتیبانی نمی‌کنه. از یه مرورگر به‌روز یا آدرس https استفاده کن.",
+  storage:"مرورگرت اجازه‌ی ذخیره‌ی اشتراک رو نداد (حالت خصوصی؟).",
+  server_error:"مشکلی پیش اومد. کمی بعد دوباره امتحان کن."
+};
+function setRedeemMsg(text, kind){ const el=document.getElementById("redeemMsg"); el.textContent=text||""; el.className="redeem-msg "+(kind||""); }
+document.getElementById("redeemForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const input = document.getElementById("redeemInput"), btn = document.getElementById("redeemBtn");
+  const code = normalizeCodeClient(input.value);
+  input.classList.toggle("bad", !code);
+  if(!code){ setRedeemMsg(REDEEM_ERRORS.malformed, "err"); input.focus(); return; }
+  btn.disabled = true; const label = btn.textContent; btn.textContent = "...";
+  setRedeemMsg("در حال بررسی کد...", "");
+  if(!API_BASE && OFFLINE_BUNDLE){
+    try{
+      const r = await offRedeemGuarded(code);
+      if(r.ok){ sub = {tier:r.tier, status:"active", expiresAt:null}; input.value=""; setRedeemMsg("اشتراک فعال شد ✅","ok"); renderSubStatus(); renderPremium(); showSubSuccess(r.codeTier); }
+      else setRedeemMsg(REDEEM_ERRORS[r.error]||REDEEM_ERRORS.server_error,"err");
+    }catch(err){ setRedeemMsg((REDEEM_ERRORS[err.code]||REDEEM_ERRORS.server_error)+" ["+(err.code||err.name||"error")+": "+String(err.message||"").slice(0,80)+"]","err"); }
+    btn.disabled = false; btn.textContent = label; return;
+  }
+  try{
+    const r = await api("/redeem", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({code})});
+    if(r.status===200 && r.data.ok){
+      setToken(r.data.token); sub = {tier:r.data.tier, status:"active", expiresAt:r.data.expiresAt};
+      input.value = ""; setRedeemMsg("اشتراک فعال شد ✅", "ok");
+      renderSubStatus(); renderPremium(); showSubSuccess();
+    } else setRedeemMsg(REDEEM_ERRORS[r.data.error] || REDEEM_ERRORS.server_error, "err");
+  }catch(err){ setRedeemMsg(REDEEM_ERRORS[err.code] || REDEEM_ERRORS.server_error, "err"); }
+  btn.disabled = false; btn.textContent = label;
+});
+function showSubSuccess(tierShown){
+  const shown = tierShown || sub.tier, i = TIER_INFO[shown];
+  document.getElementById("subOkBody").innerHTML = `<div style="font-size:56px;">${i.em}</div>
+    <h3 id="subOkTitle" style="margin:6px 0;">اشتراک <span class="tier-chip ${shown}">${shown}</span> فعال شد! 🎉</h3>
+    <p style="font-size:14px;line-height:2;">${sub.expiresAt ? "اعتبار تا: <b>"+fmtDate(sub.expiresAt)+"</b>" : "این اشتراک تاریخ انقضا نداره."}</p>
+    <p style="font-size:12px;color:var(--ink-soft);line-height:2;">برای اینکه اگه مرورگرت پاک شد اشتراکت رو از دست ندی، کلید بازیابی رو کپی و جای امنی ذخیره کن.</p>
+    <div class="modal-actions"><button class="btn btn-primary" id="subOkGo" type="button">دیدن درس‌های ویژه</button><button class="btn btn-secondary" id="subOkKey" type="button">کپی کلید بازیابی 🔑</button></div>`;
+  document.getElementById("subOkModal").classList.add("open"); confettiBurst(); SND.levelup();
+  document.getElementById("subOkKey").addEventListener("click", ()=> copyText(getRestoreKey(), "کلید بازیابی کپی شد 🔑"));
+  document.getElementById("subOkGo").addEventListener("click", ()=>{ document.getElementById("subOkModal").classList.remove("open"); document.getElementById("premium").scrollIntoView({behavior:"smooth"}); });
+}
+document.getElementById("closeSubOk").addEventListener("click", ()=> document.getElementById("subOkModal").classList.remove("open"));
+document.getElementById("restoreBtn").addEventListener("click", async ()=>{
+  const key = document.getElementById("restoreInput").value.trim();
+  if(key.length<20){ setRedeemMsg("کلید بازیابی درست نیست.", "err"); return; }
+  if(!API_BASE && OFFLINE_BUNDLE){
+    let keys = null; try{ keys = JSON.parse(atob(key)); }catch(e){}
+    const t = keys && typeof keys==="object" ? await offUnlockTiers(keys) : "FREE";
+    if(t==="FREE"){ setRedeemMsg("با این کلید اشتراک فعالی پیدا نشد.", "err"); await offUnlockTiers(loadOffKeys()); return; }
+    try{ localStorage.setItem(OFF_KEYS_KEY, JSON.stringify(keys)); }catch(e){}
+    sub = {tier:t, status:"active", expiresAt:null}; document.getElementById("restoreInput").value="";
+    setRedeemMsg("اشتراکت بازیابی شد ✅", "ok"); renderSubStatus(); renderPremium(); return;
+  }
+  try{
+    const r = await api("/check-access", {token:key});
+    if(r.status===200 && r.data.status==="active" && r.data.tier!=="FREE"){
+      setToken(key); sub = {tier:r.data.tier, status:"active", expiresAt:r.data.expiresAt};
+      document.getElementById("restoreInput").value=""; setRedeemMsg("اشتراکت بازیابی شد ✅", "ok"); renderSubStatus(); renderPremium();
+    } else setRedeemMsg("با این کلید اشتراک فعالی پیدا نشد.", "err");
+  }catch(err){ setRedeemMsg(REDEEM_ERRORS[err.code]||REDEEM_ERRORS.server_error, "err"); }
+});
+function renderRedeemEnv(){
+  const el = document.getElementById("redeemEnv"); if(!el) return;
+  const hasCrypto = !!(window.crypto && crypto.subtle);
+  let t = "", k = "";
+  if(API_BASE){ t = "🌐 حالت سرور فعال است"; k = "ok"; }
+  else if(!OFFLINE_BUNDLE){ t = "⚠️ این فایل «نسخه‌ی قالب» است و کدها داخلش نیست. فایل ساخته‌شده‌ی koodakenglish-offline.html رو باز کن."; k = "bad"; }
+  else if(!hasCrypto){ t = "⚠️ این مرورگر یا آدرس اجازه‌ی رمزگشایی امن نمی‌ده (آدرس http ساده یا مرورگر داخل برنامه). فایل رو مستقیم توی Chrome/Safari/Firefox باز کن یا روی https بذار."; k = "bad"; }
+  else { t = ""; k = "ok"; }
+  el.textContent = t; el.className = "redeem-env " + k;
+}
+function initSubscription(){ renderRedeemEnv(); renderTierCards(); renderSubStatus(); renderPremium(); refreshAccess(); loadPremCatalog(); }
+
 /* ======================= RE-RENDER EVERYTHING LOCK-DEPENDENT ======================= */
 function renderAllLockDependent(){
   renderTopics(); renderContinue(); renderGameGrid(); renderStories();
   renderGrammar(); renderConversationGrid(); renderExamList(); renderLevelMap(); renderNextCard();
-  renderMyGifts();
 }
 document.getElementById("luClose").addEventListener("click", ()=> document.getElementById("levelUpOverlay").classList.remove("open"));
 
@@ -3205,8 +3453,8 @@ function init(){
   renderExamList();
   renderAchTabs();
   renderAchievementsFull();
-  renderMyGifts();
   renderProgress();
+  initSubscription();
   updateBottomNav();
 }
 init();
